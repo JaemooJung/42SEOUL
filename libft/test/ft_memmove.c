@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 15:26:26 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/04 17:23:37 by jaemjung         ###   ########.fr       */
+/*   Created: 2021/05/04 18:28:06 by jaemjung          #+#    #+#             */
+/*   Updated: 2021/05/04 19:14:01 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_memcpy.c"
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*temp;
-	size_t			i;
+	void			*buffer;
 
-	temp = s;
-	i = 0;
-	while (i < n)
-	{
-		*temp = 0;
-		i++;
-		temp++;
-	}
+	buffer = (unsigned char *)malloc(sizeof(unsigned char) * len);
+	ft_memcpy(buffer, src, len);
+	ft_memcpy(dst, buffer, len);
+	free(buffer);
+	return (dst);
 }
