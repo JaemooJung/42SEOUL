@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/07 13:29:13 by jaemjung          #+#    #+#             */
+/*   Created: 2021/05/07 15:26:20 by jaemjung          #+#    #+#             */
 /*   Updated: 2021/05/07 16:48:52 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tolower(int c)
+char	*ft_strdup(const char *s1)
 {
-	if (ft_isalpha(c) == 1)
-		return (c + 32);
-	else
-		return (c);
+	char	*rtn;
+	int		check;
+
+	rtn = (char *)malloc(ft_strlen(s1) + 1);
+	if (rtn == NULL)
+		return (NULL);
+	ft_strlcpy(rtn, s1, ft_strlen(s1) + 1);
+	return (rtn);
 }

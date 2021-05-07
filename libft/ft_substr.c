@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/07 13:29:13 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/07 16:48:52 by jaemjung         ###   ########.fr       */
+/*   Created: 2021/05/07 15:36:46 by jaemjung          #+#    #+#             */
+/*   Updated: 2021/05/07 16:47:20 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+// #include "libft.h"
 
-int	ft_tolower(int c)
-{
-	if (ft_isalpha(c) == 1)
-		return (c + 32);
-	else
-		return (c);
-}
+// char	*ft_substr(char const *s, unsigned int start, size_t len)
+// {
+// 	char	*rtn;
+
+// 	rtn = (char *)malloc(len * sizeof(char) + 1);
+// 	ft_strlcpy();
+// }
