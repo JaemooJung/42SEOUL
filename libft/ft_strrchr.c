@@ -19,11 +19,13 @@ char	*ft_strrchr(const char *s, int c)
 	casted_c = (char)c;
 	while (*s)
 	{
-		if (*s == c)
+		if (*s == casted_c)
 		{
 			last_c = (char *)s;
 		}
 		s++;
 	}
+	if (casted_c == '\0')
+		return ((char *)s);
 	return (last_c);
 }

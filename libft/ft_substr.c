@@ -17,5 +17,6 @@
 // 	char	*rtn;
 
 // 	rtn = (char *)malloc(len * sizeof(char) + 1);
-// 	ft_strlcpy();
+// 	ft_strlcpy(rtn, s + start, len + 1);
+//     return (rtn);
 // }
