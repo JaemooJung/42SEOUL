@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 16:47:13 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/07 16:47:20 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/09 18:12:00 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@
 # include <unistd.h>
 # include "libft.h"
 
-# ifndef WELCOME
-#  define WELCOME "42_friends"
-# endif
 
 int		ft_atoi(char *str);
 void	ft_bzero(void *s, size_t n);

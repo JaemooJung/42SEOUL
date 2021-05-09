@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:43:44 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/07 16:47:20 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/09 14:20:41 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	s_len;
 	size_t	d_len;
 
-	s_len = ft_strlen((char *)src);
+	s_len = ft_strlen(src);
 	d_len = ft_strlen(dst);
 	if (dstsize == 0)
 		return (s_len);
