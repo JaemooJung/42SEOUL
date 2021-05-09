@@ -1,11 +1,6 @@
-#include "ft_memmove.c"
-#include <stdio.h>
+#include "ft_putnbr_fd.c"
 
 int main(void)
 {
-	char str[50] = "aossuepr8.tistory.com";
-	
-	puts(str);
-	ft_memmove(str + 21, str + 17, 4);
-	puts(str);
+	ft_putnbr_fd(1234543, 1);
 }

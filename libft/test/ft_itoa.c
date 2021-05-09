@@ -1,5 +1,5 @@
-#include "libft.h"
-
+#include <stdlib.h>
+#include <stdio.h>
 static int		get_numlen(int n)
 {
 	int	cnt;
