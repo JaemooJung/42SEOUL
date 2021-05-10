@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 11:11:44 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/10 15:57:28 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/10 19:12:24 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		free_words(char **result, int i)
 {
 	if (i > 0)
 	{
-		while (i != 0)
+		while (i >= 0)
 		{
 			free(result[i]);
 			result[i] = NULL;
