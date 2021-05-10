@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 15:14:06 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/10 15:21:03 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/10 19:02:30 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,13 @@ int			ft_atoi(char *str)
 	int_ret = 0;
 	while (is_white_space(str[i]))
 		i++;
-	while (str[i] == '+' || str[i] == '-')
+	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
-			sign *= -1;
+			sign = -1;
 		i++;
+		if (str[i] == '+' || str[i] == '-')
+			return (0);
 	}
 	while ((str[i] >= '0') && (str[i] <= '9'))
 	{
