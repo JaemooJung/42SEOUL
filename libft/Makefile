@@ -6,7 +6,7 @@
 #    By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/07 16:04:08 by jaemjung          #+#    #+#              #
-#    Updated: 2021/05/07 16:48:52 by jaemjung         ###   ########.fr        #
+#    Updated: 2021/05/10 13:00:25 by jaemjung         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,9 +51,6 @@ FILES = ft_memset \
 		ft_putstr_fd \
 		ft_putendl_fd \
 		ft_putnbr_fd \
-		ft_strtok \
-		ft_strcmp \
-		get_next_line \
 
 FILES_B = 	ft_lstnew \
 	  		ft_lstadd_front \

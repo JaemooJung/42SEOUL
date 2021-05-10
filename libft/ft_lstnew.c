@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 17:29:48 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/10 14:46:09 by jaemjung         ###   ########.fr       */
+/*   Created: 2021/05/10 16:51:16 by jaemjung          #+#    #+#             */
+/*   Updated: 2021/05/10 16:58:24 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+t_list	*ft_lstnew(void *content)
 {
-	size_t			i;
-	unsigned char	*casted_dst;
-	unsigned char	*casted_src;
+	t_list	*new_element;
 
-	if (!dst && !src)
+	new_element = (t_list *)malloc(sizeof(t_list));
+	if (!new_element)
 		return (NULL);
-	i = 0;
-	casted_dst = dst;
-	casted_src = (unsigned char *)src;
-	while (i < n)
-	{
-		*casted_dst = *casted_src;
-		casted_dst++;
-		casted_src++;
-		i++;
-	}
-	return (dst);
+	new_element->content = content;
+	new_element->next = NULL;
+	return (new_element);
 }

@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 17:29:48 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/10 14:46:09 by jaemjung         ###   ########.fr       */
+/*   Created: 2021/05/10 17:22:19 by jaemjung          #+#    #+#             */
+/*   Updated: 2021/05/10 17:36:59 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	size_t			i;
-	unsigned char	*casted_dst;
-	unsigned char	*casted_src;
+	t_list	*curr;
+	t_list	*next;
 
-	if (!dst && !src)
-		return (NULL);
-	i = 0;
-	casted_dst = dst;
-	casted_src = (unsigned char *)src;
-	while (i < n)
+	curr = *lst;
+	while (curr)
 	{
-		*casted_dst = *casted_src;
-		casted_dst++;
-		casted_src++;
-		i++;
+		next = curr->next;
+		ft_lstdelone(curr, del);
+		curr = next;
 	}
-	return (dst);
+	*lst = NULL;
 }

@@ -6,16 +6,13 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 13:28:44 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/07 16:48:52 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/10 15:38:19 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isdigit(int c)
 {
-	char casted_c;
-
-	casted_c = (char)c;
-	if (casted_c >= '0' && casted_c <= '9')
+	if (c >= '0' && c <= '9')
 		return (1);
 	else
 		return (0);

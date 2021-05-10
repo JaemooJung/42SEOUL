@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 17:57:32 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/07 16:48:52 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/10 12:33:57 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		if (*casted_dst == casted_c)
-			return ((void *)casted_dst++);
-		*casted_dst = *casted_src;
-		casted_dst++;
-		casted_src++;
+		casted_dst[i] = casted_src[i];
+		if (casted_src[i] == casted_c)
+			return (dst + i + 1);
 		i++;
 	}
 	return (NULL);
