@@ -6,11 +6,9 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 19:19:44 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/07 16:48:52 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/10 19:14:46 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {

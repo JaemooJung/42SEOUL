@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 13:29:10 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/10 13:48:30 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/10 19:15:46 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		len--;
 		haystack++;
 	}
-	return (0);
+	return (NULL);
 }
