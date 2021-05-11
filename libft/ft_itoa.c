@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 11:10:53 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/10 11:12:48 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/11 15:09:38 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 static int		get_numlen(int n)
 {
-	int	cnt;
+	int	len;
 
 	if (n == -2147483648)
 		return (11);
 	if (n == 0)
 		return (1);
-	cnt = 0;
+	len = 0;
 	if (n < 0)
 	{
-		cnt++;
+		len++;
 		n = -n;
 	}
 	while (n > 0)
 	{
 		n = n / 10;
-		cnt++;
+		len++;
 	}
-	return (cnt);
+	return (len);
 }
 
 static void		make_num_str(char *str, long int n, int numlen)
