@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 17:44:06 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/10 18:51:23 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/13 13:23:05 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,28 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new_head;
-	t_list	*new_next;
-	t_list	*curr;
+	t_list	*mapped_head;
+	t_list	*mapped_next;
+	t_list	*mapped_curr;
 
 	if (lst == NULL || f == NULL || del == NULL)
 		return (NULL);
-	if ((new_head = ft_lstnew(f(lst->content))) == NULL)
+	mapped_head = ft_lstnew(f(lst->content));
+	if (!mapped_head)
 		return (NULL);
-	curr = new_head;
+	mapped_curr = mapped_head;
 	lst = lst->next;
 	while (lst)
 	{
-		if ((new_next = ft_lstnew(f(lst->content))) == NULL)
+		mapped_next = ft_lstnew(f(lst->content));
+		if (!mapped_next)
 		{
-			ft_lstclear(&new_head, del);
+			ft_lstclear(&mapped_head, del);
 			return (NULL);
 		}
-		curr->next = new_next;
-		curr = new_next;
+		mapped_curr->next = mapped_next;
+		mapped_curr = mapped_next;
 		lst = lst->next;
 	}
-	return (new_head);
+	return (mapped_head);
 }

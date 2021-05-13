@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 11:10:53 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/11 15:09:38 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2021/05/13 13:23:05 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ static int		get_numlen(int n)
 
 static void		make_num_str(char *str, long int n, int numlen)
 {
-	int sign;
+	int is_negative;
 
 	if (n < 0)
 	{
-		sign = 1;
+		is_negative = 1;
 		n = -n;
 	}
 	else
-		sign = 0;
+		is_negative = 0;
 	str[numlen] = '\0';
 	numlen--;
 	if (n == 0)
@@ -58,7 +58,7 @@ static void		make_num_str(char *str, long int n, int numlen)
 		n = n / 10;
 		numlen--;
 	}
-	if (sign)
+	if (is_negative)
 		str[numlen] = '-';
 }
 

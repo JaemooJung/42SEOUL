@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:37:05 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/10 15:28:10 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/13 11:57:35 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 size_t	ft_strlen(const char *str)
 {
-	size_t count;
+	size_t	len;
 
-	count = 0;
-	while (str[count] != '\0')
-		count++;
-	return (count);
+	len = 0;
+	while (str[len] != '\0')
+		len++;
+	return (len);
 }

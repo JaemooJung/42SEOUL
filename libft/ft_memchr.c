@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 19:20:02 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/07 16:50:27 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/13 11:49:11 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	unsigned char	casted_c;
 
 	i = 0;
-	casted_c = c;
 	casted_s = (unsigned char *)s;
+	casted_c = (unsigned char)c;
 	while (i < n)
 	{
 		if (*casted_s == casted_c)

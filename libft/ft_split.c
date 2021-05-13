@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 11:11:44 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/10 19:12:24 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/13 13:18:18 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	count_words(char const *s, char c)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (*s)
@@ -32,21 +32,21 @@ static int	count_words(char const *s, char c)
 	return (count);
 }
 
-void		free_words(char **result, int i)
+static void	free_words(char **result, int i)
 {
 	if (i > 0)
 	{
-		while (i >= 0)
+		while (i - 1 >= 0)
 		{
-			free(result[i]);
-			result[i] = NULL;
+			free(result[i - 1]);
+			result[i - 1] = NULL;
 			i--;
 		}
 	}
 	free(result);
 }
 
-int			split_words(char **result, char const *s, char c, int i)
+static int	split_words(char **result, char const *s, char c, int i)
 {
 	char	*word;
 	int		j;
