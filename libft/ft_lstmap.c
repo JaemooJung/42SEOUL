@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 17:44:06 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/13 13:23:05 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/14 12:15:15 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*mapped_next;
 	t_list	*mapped_curr;
 
-	if (lst == NULL || f == NULL || del == NULL)
+	if (!lst || !f)
 		return (NULL);
 	mapped_head = ft_lstnew(f(lst->content));
 	if (!mapped_head)

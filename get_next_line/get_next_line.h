@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_1.h                                          :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemjung <jaemjung@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 16:28:11 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/07 16:25:12 by jaemjung         ###   ########seoul.kr  */
+/*   Created: 2021/05/18 12:36:09 by jaemjung          #+#    #+#             */
+/*   Updated: 2021/05/18 12:37:45 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-#include <stdlib.h>
-#include <unistd.h>
+# include <unistd.h>
 
-int			ft_atoi(char *str);
-void		ft_bzero(void *s, size_t n);
-void		*ft_calloc(size_t count, size_t size);
+
 
 #endif

@@ -6,7 +6,7 @@
 #    By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/07 16:04:08 by jaemjung          #+#    #+#              #
-#    Updated: 2021/05/13 17:28:37 by jaemjung         ###   ########.fr        #
+#    Updated: 2021/05/14 11:44:30 by jaemjung         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(AR) $@ $^
 
-bonus: $(BONUS_OBJS)
+bonus: $(OBJS) $(BONUS_OBJS)
 	$(AR) $(NAME) $^
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 17:08:48 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/07 16:47:20 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/14 12:28:15 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	*ft_memset(void *b, int c, size_t len)
 	size_t			i;
 
 	i = 0;
-	temp = b;
-	casted_c = c;
+	temp = (unsigned char *)b;
+	casted_c = (unsigned char)c;
 	while (i < len)
 	{
 		*temp = casted_c;

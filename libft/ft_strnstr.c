@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 13:29:10 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/10 19:15:46 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/14 13:12:55 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	char	*tmp_needle;
 	int		curr;
 
+	if (!haystack && !len)
+		return (NULL);
 	if (*needle == '\0')
 		return ((char *)haystack);
 	while (*haystack && len)

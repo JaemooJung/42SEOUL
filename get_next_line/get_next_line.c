@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 17:29:48 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/04 19:14:37 by jaemjung         ###   ########.fr       */
+/*   Created: 2021/05/18 12:27:36 by jaemjung          #+#    #+#             */
+/*   Updated: 2021/05/18 12:53:50 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "get_next_line.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+int	get_next_line(int fd, char **line)
 {
-	size_t			i;
-	unsigned char	*casted_dst;
-	unsigned char	*casted_src;
-
-	i = 0;
-	casted_dst = dst;
-	casted_src = (unsigned char *)src;
-	while (i < n)
-	{
-		*casted_dst = *casted_src;
-		casted_dst++;
-		casted_src++;
-		i++;
-	}
-	return (dst);
+	
 }

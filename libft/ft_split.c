@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 11:11:44 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/13 13:18:18 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/14 12:22:23 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	free_words(char **result, int i)
 		}
 	}
 	free(result);
+	result = NULL;
 }
 
 static int	split_words(char **result, char const *s, char c, int i)

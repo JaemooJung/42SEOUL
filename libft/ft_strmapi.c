@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 11:11:55 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/10 11:16:28 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/14 12:39:09 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 	if (!s)
 		return (NULL);
-	if (!(*f))
-		return ((char *)s);
 	rtn = (char *)malloc(ft_strlen(s) * sizeof(char) + 1);
 	if (!rtn)
 		return (NULL);
