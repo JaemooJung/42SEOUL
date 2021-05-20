@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:36:09 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/18 15:39:50 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/20 13:09:10 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define GET_NEXT_LINE_H
 
 # define BUFFER_SIZE 32
-# define LINE_READ 1
-# define LINE_EOF 0
+# define LINE_READ_SUCCESS 1
+# define LINE_FILE_EOF 0
 # define LINE_ERROR -1
 
 # include <unistd.h>
