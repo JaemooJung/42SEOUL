@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:27:36 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/25 17:26:47 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/25 18:24:14 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*save_file_content(char *file_content, char *buff)
 	else
 	{
 		temp_content = file_content;
-		file_content = ft_strjoin(file_content,buff);
+		file_content = ft_strjoin(file_content, buff);
 		free(temp_content);
 	}
 	if (!file_content)
@@ -51,28 +51,18 @@ char	*save_file_content(char *file_content, char *buff)
 	return (file_content);
 }
 
-int		fill_ln_and_reset_container(char **line, char **file_content)
+int		fill_ln_rtn(char **line, char **file_content, char **nl_point)
 {
-	char *new_line_point;
 	char *temp_content;
 
-	if ((new_line_point = ft_strchr(*file_content, '\n')))
-	{
-		*new_line_point = '\0';
-		*line = ft_strdup(*file_content);
-		temp_content = *file_content;
-		*file_content = ft_strdup(new_line_point + 1);
-		free(temp_content);
-		if (!(*file_content))
-			return (-1);
-		return (1);
-	}
-	return (0);
-}
-
-int		return_result()
-{
-	
+	**nl_point = '\0';
+	*line = ft_strdup(*file_content);
+	temp_content = *file_content;
+	*file_content = ft_strdup(*nl_point + 1);
+	free(temp_content);
+	if (!(*file_content))
+		return (LINE_ERROR);
+	return (LINE_READ_SUCCESS);
 }
 
 int		get_next_line(int fd, char **line)
@@ -80,7 +70,7 @@ int		get_next_line(int fd, char **line)
 	static char	*file_contents[OPEN_MAX];
 	char		*buff;
 	ssize_t		read_size;
-	int			ln_check;
+	char		*nl_ptr;
 
 	if (fd < 0 || !line || BUFFER_SIZE < 1 ||
 	!(buff = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char))))
@@ -91,43 +81,18 @@ int		get_next_line(int fd, char **line)
 		file_contents[fd] = save_file_content(file_contents[fd], buff);
 		if (!file_contents[fd])
 			return (LINE_ERROR);
-		ln_check = fill_ln_and_reset_container(line, &file_contents[fd]);
-		if (ln_check < 0)
-			return (LINE_ERROR);
-		else if (ln_check == 1)
+		if ((nl_ptr = ft_strchr(file_contents[fd], '\n')))
 		{
 			free(buff);
-			return (LINE_READ_SUCCESS);
-		}
-		if (!(*file_contents[fd]))
-		{
-			*line = ft_strdup("");
-			free(file_contents[fd]);
-			free(buff);
-			return (LINE_FILE_EOF);
+			return (fill_ln_rtn(line, &file_contents[fd], &nl_ptr));
 		}
 	}
-	// 버퍼 사이즈가 충분히 커서 이미 contents에 다 내용이 들어온 경우도 처리해줘야함... 어떻게 처리할 것인가?
-	free(buff);
-	return ();
-}
-
-#include <stdio.h>
-#include <fcntl.h>
-
-int main(void)
-{
-	char* line;
-	int	check;
-	int	fd;
-
-	fd = open("test.txt", O_RDONLY);
-	while ((check = get_next_line(fd, &line)) > 0)
+	if ((nl_ptr = ft_strchr(file_contents[fd], '\n')))
 	{
-		printf("%s\n", line);
-		free(line);
+		free(buff);
+		return (fill_ln_rtn(line, &file_contents[fd], &nl_ptr));
 	}
-	printf("%s\n", line);
-	free(line);
-	return (0);
+	*line = ft_strdup(file_contents[fd]);
+	free(buff);
+	return (LINE_FILE_EOF);
 }
