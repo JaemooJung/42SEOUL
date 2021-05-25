@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:27:36 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/25 18:24:14 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/25 18:40:32 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int		fill_ln_rtn(char **line, char **file_content, char **nl_point)
 
 int		get_next_line(int fd, char **line)
 {
-	static char	*file_contents[OPEN_MAX];
+	static char	*f_contents[OPEN_MAX];
 	char		*buff;
 	ssize_t		read_size;
 	char		*nl_ptr;
@@ -78,21 +78,21 @@ int		get_next_line(int fd, char **line)
 	while ((read_size = read(fd, buff, BUFFER_SIZE)) > 0)
 	{
 		buff[read_size] = '\0';
-		file_contents[fd] = save_file_content(file_contents[fd], buff);
-		if (!file_contents[fd])
+		f_contents[fd] = save_file_content(f_contents[fd], buff);
+		if (!f_contents[fd])
 			return (LINE_ERROR);
-		if ((nl_ptr = ft_strchr(file_contents[fd], '\n')))
+		if ((nl_ptr = ft_strchr(f_contents[fd], '\n')))
 		{
 			free(buff);
-			return (fill_ln_rtn(line, &file_contents[fd], &nl_ptr));
+			return (fill_ln_rtn(line, &f_contents[fd], &nl_ptr));
 		}
 	}
-	if ((nl_ptr = ft_strchr(file_contents[fd], '\n')))
+	if ((nl_ptr = ft_strchr(f_contents[fd], '\n')))
 	{
 		free(buff);
-		return (fill_ln_rtn(line, &file_contents[fd], &nl_ptr));
+		return (fill_ln_rtn(line, &f_contents[fd], &nl_ptr));
 	}
-	*line = ft_strdup(file_contents[fd]);
+	*line = ft_strdup(f_contents[fd]);
 	free(buff);
 	return (LINE_FILE_EOF);
 }

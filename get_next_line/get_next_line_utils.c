@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:28:02 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/20 14:04:51 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/25 18:36:28 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ char	*ft_strchr(const char *s, int c)
 	char casted_c;
 	char *tmp_s;
 
+	if (!s)
+		return (NULL);
 	casted_c = (char)c;
 	tmp_s = (char *)s;
 	while (*tmp_s)
@@ -87,6 +89,8 @@ char	*ft_strdup(const char *s1)
 	char	*rtn;
 	size_t	s1_len;
 
+	if (!s1)
+		return (NULL);
 	s1_len = ft_strlen(s1);
 	rtn = (char *)malloc(s1_len + 1);
 	if (rtn == NULL)
