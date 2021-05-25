@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:27:36 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/20 14:51:38 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/25 17:26:47 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,53 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (rtn);
 }
 
-
-
-int	get_next_line(int fd, char **line)
+char	*save_file_content(char *file_content, char *buff)
 {
-	static char	*file_content;
+	char *temp_content;
+
+	if (!file_content)
+		file_content = ft_strdup(buff);
+	else
+	{
+		temp_content = file_content;
+		file_content = ft_strjoin(file_content,buff);
+		free(temp_content);
+	}
+	if (!file_content)
+		return (NULL);
+	return (file_content);
+}
+
+int		fill_ln_and_reset_container(char **line, char **file_content)
+{
+	char *new_line_point;
+	char *temp_content;
+
+	if ((new_line_point = ft_strchr(*file_content, '\n')))
+	{
+		*new_line_point = '\0';
+		*line = ft_strdup(*file_content);
+		temp_content = *file_content;
+		*file_content = ft_strdup(new_line_point + 1);
+		free(temp_content);
+		if (!(*file_content))
+			return (-1);
+		return (1);
+	}
+	return (0);
+}
+
+int		return_result()
+{
+	
+}
+
+int		get_next_line(int fd, char **line)
+{
+	static char	*file_contents[OPEN_MAX];
 	char		*buff;
-	char		*temp_content;
 	ssize_t		read_size;
+	int			ln_check;
 
 	if (fd < 0 || !line || BUFFER_SIZE < 1 ||
 	!(buff = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char))))
@@ -49,32 +88,28 @@ int	get_next_line(int fd, char **line)
 	while ((read_size = read(fd, buff, BUFFER_SIZE)) > 0)
 	{
 		buff[read_size] = '\0';
-		// 버퍼의 내용을 콘텐트로 옮겨줌. 콘텐트가 null이면 buff의 내용을 content로 strdup 아니면 이전 strjoin으로 새로운 콘텐트를 만들고 이전 콘텐트를 프리
-		if (!file_content)
-			file_content = ft_strdup(buff);
-		else
+		file_contents[fd] = save_file_content(file_contents[fd], buff);
+		if (!file_contents[fd])
+			return (LINE_ERROR);
+		ln_check = fill_ln_and_reset_container(line, &file_contents[fd]);
+		if (ln_check < 0)
+			return (LINE_ERROR);
+		else if (ln_check == 1)
 		{
-			temp_content = file_content;
-			file_content = ft_strjoin(file_content, buff);
-			free(temp_content);
-		}
-		// 파일콘텐트에서 '\n'을 찾으면
-		// 콘텐트의 '\n'을 0으로 바꿔주고 *line으로 strlcpy.
-		// 콘텐트의 주소값을 다음으로 옮김.
-		// 1 리턴
-		if (ft_strchr(file_content, '\n'))
-		{
-			*(ft_strchr(file_content, '\n')) = '\0';
-			ft_strlcpy(*line, file_content, ft_strlen(file_content) + 1);
-			file_content = ft_strchr(file_content, '\0') + 1;
 			free(buff);
 			return (LINE_READ_SUCCESS);
 		}
-		//eof를 만나면
-		//남아있는 str을 line에 넣어주고
-		//0 리턴
+		if (!(*file_contents[fd]))
+		{
+			*line = ft_strdup("");
+			free(file_contents[fd]);
+			free(buff);
+			return (LINE_FILE_EOF);
+		}
 	}
-	return (LINE_FILE_EOF);
+	// 버퍼 사이즈가 충분히 커서 이미 contents에 다 내용이 들어온 경우도 처리해줘야함... 어떻게 처리할 것인가?
+	free(buff);
+	return ();
 }
 
 #include <stdio.h>
@@ -82,18 +117,17 @@ int	get_next_line(int fd, char **line)
 
 int main(void)
 {
-	char *line;
-	int fd;
+	char* line;
+	int	check;
+	int	fd;
 
-	line = (char *)malloc(100);
 	fd = open("test.txt", O_RDONLY);
-	get_next_line(fd, &line);
-	printf("%s\n", line);
-	get_next_line(fd, &line);
-	printf("%s\n", line);
-	get_next_line(fd, &line);
-	printf("%s\n", line);
-	get_next_line(fd, &line);
+	while ((check = get_next_line(fd, &line)) > 0)
+	{
+		printf("%s\n", line);
+		free(line);
+	}
 	printf("%s\n", line);
 	free(line);
+	return (0);
 }

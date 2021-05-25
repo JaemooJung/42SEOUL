@@ -6,20 +6,24 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:36:09 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/20 13:09:10 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/05/25 17:08:16 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# define BUFFER_SIZE 32
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 32
+# endif
+
 # define LINE_READ_SUCCESS 1
 # define LINE_FILE_EOF 0
 # define LINE_ERROR -1
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
 int		get_next_line(int fd, char **line);
 size_t	ft_strlen(const char *str);
