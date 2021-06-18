@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:36:09 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/25 18:19:10 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/06/16 14:44:27 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 2
 # endif
 
-# define LINE_READ_SUCCESS 1
-# define LINE_FILE_EOF 0
-# define LINE_ERROR -1
+# define GNL_READ_SUCCESS 1
+# define GNL_EOF 0
+# define GNL_ERROR -1
 
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <fcntl.h>
 
 int		get_next_line(int fd, char **line);
 size_t	ft_strlen(const char *str);

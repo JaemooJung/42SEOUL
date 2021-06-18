@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:27:36 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/25 18:40:32 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/06/18 13:06:38 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,65 +34,55 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (rtn);
 }
 
-char	*save_file_content(char *file_content, char *buff)
+void	ft_free(char *ptr)
 {
-	char *temp_content;
-
-	if (!file_content)
-		file_content = ft_strdup(buff);
-	else
-	{
-		temp_content = file_content;
-		file_content = ft_strjoin(file_content, buff);
-		free(temp_content);
-	}
-	if (!file_content)
-		return (NULL);
-	return (file_content);
-}
-
-int		fill_ln_rtn(char **line, char **file_content, char **nl_point)
-{
-	char *temp_content;
-
-	**nl_point = '\0';
-	*line = ft_strdup(*file_content);
-	temp_content = *file_content;
-	*file_content = ft_strdup(*nl_point + 1);
-	free(temp_content);
-	if (!(*file_content))
-		return (LINE_ERROR);
-	return (LINE_READ_SUCCESS);
+	free(ptr);
+	ptr = NULL;
 }
 
 int		get_next_line(int fd, char **line)
 {
-	static char	*f_contents[OPEN_MAX];
-	char		*buff;
-	ssize_t		read_size;
+	static char *container;
+	char		buff[BUFFER_SIZE + 1];
 	char		*nl_ptr;
-
-	if (fd < 0 || !line || BUFFER_SIZE < 1 ||
-	!(buff = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char))))
-		return (LINE_ERROR);
+	char		*tmp;
+	int			read_size;
+	
+	if (!line || fd < 0 || BUFFER_SIZE <= 0)
+		return (GNL_ERROR);
+	if (!container)
+		container = ft_strdup("");
 	while ((read_size = read(fd, buff, BUFFER_SIZE)) > 0)
 	{
-		buff[read_size] = '\0';
-		f_contents[fd] = save_file_content(f_contents[fd], buff);
-		if (!f_contents[fd])
-			return (LINE_ERROR);
-		if ((nl_ptr = ft_strchr(f_contents[fd], '\n')))
+		if (read_size < 0)
+			return (GNL_ERROR);
+		buff[read_size] = '\0';	
+		tmp = ft_strjoin(container, buff);
+		ft_free(container);
+		container = tmp;
+		if ((nl_ptr = ft_strchr(container, '\n')))
 		{
-			free(buff);
-			return (fill_ln_rtn(line, &f_contents[fd], &nl_ptr));
+			*nl_ptr = '\0';
+			*line = ft_strdup(container);
+			tmp = ft_strdup(nl_ptr + 1);
+			ft_free(container);
+			container = tmp;
+			return (GNL_READ_SUCCESS);
 		}
 	}
-	if ((nl_ptr = ft_strchr(f_contents[fd], '\n')))
+	if (read_size < 0)
+		return (GNL_ERROR);
+	if ((nl_ptr = ft_strchr(container, '\n')))
 	{
-		free(buff);
-		return (fill_ln_rtn(line, &f_contents[fd], &nl_ptr));
+		*nl_ptr = '\0';
+		*line = ft_strdup(container);
+		tmp = ft_strdup(nl_ptr + 1);
+		ft_free(container);
+		container = tmp;
+		return (GNL_READ_SUCCESS);
 	}
-	*line = ft_strdup(f_contents[fd]);
-	free(buff);
-	return (LINE_FILE_EOF);
+	*line = ft_strdup(container);
+	ft_free(container);
+	container = ft_strdup("");
+	return (GNL_EOF);
 }
