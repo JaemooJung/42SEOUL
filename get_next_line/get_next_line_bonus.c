@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:27:36 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/06/18 16:39:29 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/06/18 16:40:42 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -106,23 +106,23 @@ int		last_line(char **line, char **ctnr, ssize_t read_size)
 
 int		get_next_line(int fd, char **line)
 {
-	static char *ctnr;
+	static char *ctnr[OPEN_MAX];
 	char		buff[BUFFER_SIZE + 1];
 	char		*nl;
 	ssize_t		read_size;
 
 	if (!line || (fd < 0 || fd > OPEN_MAX) || BUFFER_SIZE <= 0)
 		return (GNL_ERROR);
-	if (!ctnr)
-		ctnr = ft_strdup("");
+	if (!ctnr[fd])
+		ctnr[fd] = ft_strdup("");
 	while ((read_size = read(fd, buff, BUFFER_SIZE)) > 0)
 	{
-		if (!(buff_to_container(&ctnr, buff, read_size)))
+		if (!(buff_to_container(&ctnr[fd], buff, read_size)))
 			return (GNL_ERROR);
-		if ((nl = ft_strchr(ctnr, '\n')))
-			return (container_to_line(&ctnr, line, &nl, read_size));
+		if ((nl = ft_strchr(ctnr[fd], '\n')))
+			return (container_to_line(&ctnr[fd], line, &nl, read_size));
 	}
-	if ((nl = ft_strchr(ctnr, '\n')))
-		return (container_to_line(&ctnr, line, &nl, read_size));
-	return (last_line(line, &ctnr, read_size));
+	if ((nl = ft_strchr(ctnr[fd], '\n')))
+		return (container_to_line(&ctnr[fd], line, &nl, read_size));
+	return (last_line(line, &ctnr[fd], read_size));
 }
