@@ -7,6 +7,9 @@ int main(int argc, char **argv)
 	char *line; 
 	int ret;
 
+	(void)argc;
+	(void)argv;
+
 	int fd = open("./test.txt", O_RDONLY);
 	while((ret = get_next_line(fd, &line)) > 0)
 	{
@@ -28,8 +31,6 @@ int main(int argc, char **argv)
 	printf("return : %d\n",ret);
 	printf("line : %s\n",line);
 	free(line);
-
-	printf("%d", OPEN_MAX);
 
 	printf("read lines from stdin");
 	while (1)
