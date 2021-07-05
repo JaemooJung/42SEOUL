@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 17:06:11 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/10 19:05:25 by jaemjung         ###   ########.fr       */
+/*   Created: 2021/05/04 18:28:06 by jaemjung          #+#    #+#             */
+/*   Updated: 2021/05/10 16:52:59 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int	size;
+	unsigned char	*tmp_src;
+	unsigned char	*tmp_dst;
 
-	size = 0;
-	while (lst)
+	if (!src && !dst)
+		return (NULL);
+	if (dst <= src)
 	{
-		lst = lst->next;
-		size++;
+		tmp_src = (unsigned char *)src;
+		tmp_dst = (unsigned char *)dst;
+		while (len--)
+			*tmp_dst++ = *tmp_src++;
 	}
-	return (size);
+	else
+	{
+		tmp_dst = (unsigned char *)dst + len;
+		tmp_src = (unsigned char *)src + len;
+		while (len--)
+			*--tmp_dst = *--tmp_src;
+	}
+	return (dst);
 }

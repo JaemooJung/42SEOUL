@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 17:06:11 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/10 19:05:25 by jaemjung         ###   ########.fr       */
+/*   Created: 2021/05/07 13:29:11 by jaemjung          #+#    #+#             */
+/*   Updated: 2021/05/09 17:01:32 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_lstsize(t_list *lst)
+char	*ft_strrchr(const char *s, int c)
 {
-	int	size;
+	char	*last_c;
+	char	casted_c;
 
-	size = 0;
-	while (lst)
+	last_c = 0;
+	casted_c = (char)c;
+	while (*s)
 	{
-		lst = lst->next;
-		size++;
+		if (*s == casted_c)
+		{
+			last_c = (char *)s;
+		}
+		s++;
 	}
-	return (size);
+	if (casted_c == '\0')
+		return ((char *)s);
+	return (last_c);
 }

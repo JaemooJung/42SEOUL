@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:27:36 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/06/18 16:40:42 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/07/05 12:53:52 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (rtn);
 }
 
-int		buff_to_container(char **ctnr, char *buff, ssize_t rd_sz)
+int	buff_to_container(char **ctnr, char *buff, ssize_t rd_sz)
 {
-	char *tmp;
+	char	*tmp;
 
 	if (rd_sz < 0)
 	{
@@ -57,9 +57,9 @@ int		buff_to_container(char **ctnr, char *buff, ssize_t rd_sz)
 	return (1);
 }
 
-int		container_to_line(char **ctnr, char **line, char **nl, ssize_t rd_sz)
+int	container_to_line(char **ctnr, char **line, char **nl, ssize_t rd_sz)
 {
-	char *tmp;
+	char	*tmp;
 
 	if (rd_sz < 0)
 	{
@@ -85,7 +85,7 @@ int		container_to_line(char **ctnr, char **line, char **nl, ssize_t rd_sz)
 	return (GNL_READ_SUCCESS);
 }
 
-int		last_line(char **line, char **ctnr, ssize_t read_size)
+int	last_line(char **line, char **ctnr, ssize_t read_size)
 {
 	if (read_size < 0)
 	{
@@ -104,9 +104,9 @@ int		last_line(char **line, char **ctnr, ssize_t read_size)
 	return (GNL_EOF);
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
-	static char *ctnr[OPEN_MAX];
+	static char	*ctnr[OPEN_MAX];
 	char		buff[BUFFER_SIZE + 1];
 	char		*nl;
 	ssize_t		read_size;

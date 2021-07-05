@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 17:06:11 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/05/10 19:05:25 by jaemjung         ###   ########.fr       */
+/*   Created: 2021/05/04 17:57:32 by jaemjung          #+#    #+#             */
+/*   Updated: 2021/05/13 11:46:16 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	int	size;
+	unsigned char	*casted_dst;
+	unsigned char	*casted_src;
+	unsigned char	casted_c;
+	size_t			i;
 
-	size = 0;
-	while (lst)
+	if (!dst && !src)
+		return (NULL);
+	casted_dst = (unsigned char *)dst;
+	casted_src = (unsigned char *)src;
+	casted_c = c;
+	i = 0;
+	while (i < n)
 	{
-		lst = lst->next;
-		size++;
+		casted_dst[i] = casted_src[i];
+		if (casted_src[i] == casted_c)
+			return (dst + i + 1);
+		i++;
 	}
-	return (size);
+	return (NULL);
 }
