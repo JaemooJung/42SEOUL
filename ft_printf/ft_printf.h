@@ -21,5 +21,6 @@ typedef struct s_opts
 int	ft_printf(const char *f_str, ...);
 
 int print_c(char c, t_opts *opts);
+int print_s(char *s, t_opts *opts);
 
 #endif

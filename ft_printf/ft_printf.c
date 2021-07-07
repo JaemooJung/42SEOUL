@@ -5,7 +5,7 @@ int	print_f_str(char **f_str, t_opts *opts, va_list ap)
 	if (opts->type == 'c')
 		return (print_c(va_arg(ap, int), opts));
 	else if (opts->type == 's')
-	{}
+		return (print_s(va_arg(ap, char *), opts));
 	else if (opts->type == 'd' || opts->type == 'i')
 	{}
 	else if (opts->type == 'u')
@@ -14,25 +14,17 @@ int	print_f_str(char **f_str, t_opts *opts, va_list ap)
 	{}
 	else if (opts->type == 'X')
 	{}
+	else if (opts->type == 'p')
+	{}
 	return (0);
 }
 
 void	get_width_prec(char **f_str, t_opts *opts, va_list ap)
 {
-	if (**f_str == '*')
-	{
-		if (opts->prec)
-			opts->prec_scale = va_arg(ap, int);
-		else
-			opts->width = va_arg(ap, int);
-	}
-	else if (ft_isdigit(**f_str))
-	{
-		if (opts->prec) // prec이 켜져있으면 prec_scale로, 아니면 width로.
-			opts->prec_scale = (opts->prec_scale * 10) + (**f_str - '0');
-		else
-			opts->width = (opts->width * 10) + (**f_str - '0');
-	}
+	if (opts->prec) // prec이 켜져있으면 prec_scale로, 아니면 width로.
+		opts->prec_scale = (opts->prec_scale * 10) + (**f_str - '0');
+	else
+		opts->width = (opts->width * 10) + (**f_str - '0');
 }
 
 int	start_parsing(char **f_str, va_list ap)
@@ -50,7 +42,7 @@ int	start_parsing(char **f_str, va_list ap)
 			opts->prec = 1;
 		else if (**f_str == '0' && opts->width == 0 && opts->prec != 1)
 			opts->zero = 1;
-		else if (ft_isdigit(**f_str) || **f_str == '*')
+		else if (ft_isdigit(**f_str))
 			get_width_prec(f_str, opts, ap); // TODO : 이부분에서 width 와 prec 체크하는 함수
 		(*f_str)++;
 	}
@@ -79,7 +71,7 @@ int	ft_printf(const char *f_str, ...)
 		else // 있으면 포맷스트링 출력을 위해 파싱
 		{
 			f_str++; // 일단 % 다음으로 포인터를 넘겨주고
-			start_parsing((char **)&f_str, ap); // 파싱 시작
+			out_len += start_parsing((char **)&f_str, ap); // 파싱 시작
 		}
 	}
 	return (out_len);
