@@ -41,14 +41,15 @@ int main(void)
 	//test = "Hello, world";
 	//char_test(test);
 	printf("----------------------printf-------------------------------------------\n");
-	int real_s = printf("str : |%30.1s|\n", "hello world");
-	printf("ft_s rtn = %d\n", real_s);
+	//int real_s = printf("str : |%30.1s|\n", "hello world");
+	//printf("ft_s rtn = %d\n", real_s);
 	//int real_c = printf("char : |%.30c|%020c|%-020c|\n", 'C', 'B', 'A');
 	//printf("real rtn = %d\n", real_c);
-	//int real_d = printf("int : |%.0d|\n", -10);
+	int real_d = printf("int : |%10.4d|\n", -10);
+	printf("real_d rtn = %d\n", real_d);
 	printf("-------------------ft_printf-------------------------------------------\n");
-	int ft_s = ft_printf("str : |%30.1s|\n", "hello world");
-	printf("ft_s rtn = %d\n", ft_s);
+	//int ft_s = ft_printf("str : |%30.1s|\n", "hello world");
+	//printf("ft_s rtn = %d\n", ft_s);
 	//int ft_c = ft_printf("char : |%.30c|%020c|%-020c|\n", 'C', 'B', 'A');
 	//printf("ft_c rtn = %d\n", ft_c);
 }

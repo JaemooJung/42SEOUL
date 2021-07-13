@@ -3,13 +3,13 @@
 int	print_f_str(char **f_str, t_opts *opts, va_list ap)
 {
 	int	f_str_len;
-	
+
 	if (opts->type == 'c')
 		f_str_len = print_c(va_arg(ap, int), opts);
 	else if (opts->type == 's')
 		f_str_len = print_s(va_arg(ap, char *), opts);
 	else if (opts->type == 'd' || opts->type == 'i')
-	{}
+		f_str_len = print_d(va_arg(ap, int), opts);
 	else if (opts->type == 'u')
 	{}
 	else if (opts->type == 'x')
@@ -25,7 +25,7 @@ int	print_f_str(char **f_str, t_opts *opts, va_list ap)
 
 void	get_width_prec(char **f_str, t_opts *opts, va_list ap)
 {
-	if (opts->prec) // prec이 켜져있으면 prec_scale로, 아니면 width로.
+	if (opts->prec)
 		opts->prec_scale = (opts->prec_scale * 10) + (**f_str - '0');
 	else
 		opts->width = (opts->width * 10) + (**f_str - '0');
@@ -35,10 +35,10 @@ int	start_parsing(char **f_str, va_list ap)
 {
 	t_opts	*opts;
 
-	opts = ft_calloc(1, sizeof(t_opts)); // 옵션 초기화 #### TODO: free() => [X]
-	if (!opts) // 말록 실패 시 가드
+	opts = ft_calloc(1, sizeof(t_opts));
+	if (!opts)
 		return (-1);
-	while (**f_str != '\0' && !(ft_strchr(TYPES, **f_str))) // 타입이 나오기 전까지 돌면서 옵션들 체크
+	while (**f_str != '\0' && !(ft_strchr(TYPES, **f_str)))
 	{
 		if (**f_str == '-')
 			opts->minus = 1;
@@ -47,14 +47,14 @@ int	start_parsing(char **f_str, va_list ap)
 		else if (**f_str == '0' && opts->width == 0 && opts->prec != 1)
 			opts->zero = 1;
 		else if (ft_isdigit(**f_str))
-			get_width_prec(f_str, opts, ap); // TODO : 이부분에서 width 와 prec 체크하는 함수
+			get_width_prec(f_str, opts, ap);
 		(*f_str)++;
 	}
-	if (opts->minus) // - 옵션이 켜진 경우 제로는 무조건 무시되므로 이 경우 제거
+	if (opts->minus)
 		opts->zero = 0;
-	opts->type = **f_str;// 포맷 타입 저장
+	opts->type = **f_str;
 	(*f_str)++;
-	return (print_f_str(f_str, opts, ap));// 이제 파싱한 내용을 바탕으로 포맷 스트링 출력
+	return (print_f_str(f_str, opts, ap));
 }
 
 int	ft_printf(const char *f_str, ...)
@@ -64,18 +64,18 @@ int	ft_printf(const char *f_str, ...)
 
 	va_start(ap, f_str);
 	out_len = 0;
-	while (*f_str != '\0') // 주어진 포맷스트링을 돌며
+	while (*f_str != '\0')
 	{
-		if (*f_str != '%') // % 기호가 없으면 그냥 출력
+		if (*f_str != '%')
 		{
 			ft_putchar_fd(*f_str, 1);
 			f_str++;
 			out_len++;
 		}
-		else // 있으면 포맷스트링 출력을 위해 파싱
+		else
 		{
-			f_str++; // 일단 % 다음으로 포인터를 넘겨주고
-			out_len += start_parsing((char **)&f_str, ap); // 파싱 시작
+			f_str++;
+			out_len += start_parsing((char **)&f_str, ap);
 		}
 	}
 	return (out_len);

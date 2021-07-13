@@ -22,5 +22,6 @@ int	ft_printf(const char *f_str, ...);
 
 int print_c(char c, t_opts *opts);
 int print_s(char *s, t_opts *opts);
+int print_d(int i, t_opts *opts);
 
 #endif

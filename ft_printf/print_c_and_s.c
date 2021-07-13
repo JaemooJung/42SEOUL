@@ -4,6 +4,7 @@ int	print_c(char c, t_opts *opts)
 {
 	int		i;
 	char	blk;
+
 	i = 0;
 	if (opts->zero)
 		blk = '0';
@@ -75,7 +76,7 @@ int	print_fstr_with_width(char *s, t_opts *opts, char blk)
 	return (rtn);
 }
 
-int print_fstr_without_width(char *s, t_opts *opts, char blk)
+int	print_fstr_without_width(char *s, t_opts *opts, char blk)
 {
 	int	rtn;
 
