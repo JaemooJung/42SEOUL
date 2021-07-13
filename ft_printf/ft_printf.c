@@ -2,10 +2,12 @@
 
 int	print_f_str(char **f_str, t_opts *opts, va_list ap)
 {
+	int	f_str_len;
+	
 	if (opts->type == 'c')
-		return (print_c(va_arg(ap, int), opts));
+		f_str_len = print_c(va_arg(ap, int), opts);
 	else if (opts->type == 's')
-		return (print_s(va_arg(ap, char *), opts));
+		f_str_len = print_s(va_arg(ap, char *), opts);
 	else if (opts->type == 'd' || opts->type == 'i')
 	{}
 	else if (opts->type == 'u')
@@ -16,7 +18,9 @@ int	print_f_str(char **f_str, t_opts *opts, va_list ap)
 	{}
 	else if (opts->type == 'p')
 	{}
-	return (0);
+	free(opts);
+	opts = NULL;
+	return (f_str_len);
 }
 
 void	get_width_prec(char **f_str, t_opts *opts, va_list ap)

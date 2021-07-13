@@ -2,25 +2,23 @@
 
 int	print_c(char c, t_opts *opts)
 {
-	int	i;
-
+	int		i;
+	char	blk;
 	i = 0;
 	if (opts->zero)
-	{
-		while (i++ < opts->width - 1)
-			ft_putchar_fd('0', 1);
-		ft_putchar_fd(c, 1);
-	}
-	else if (opts->minus)
+		blk = '0';
+	else
+		blk = ' ';
+	if (opts->minus)
 	{
 		ft_putchar_fd(c, 1);
 		while (i++ < opts->width - 1)
-			ft_putchar_fd(' ', 1);
+			ft_putchar_fd(blk, 1);
 	}
 	else
 	{
 		while (i++ < opts->width - 1)
-			ft_putchar_fd(' ', 1);
+			ft_putchar_fd(blk, 1);
 		ft_putchar_fd(c, 1);
 	}
 	if (opts->width > 0)
@@ -28,53 +26,88 @@ int	print_c(char c, t_opts *opts)
 	return (1);
 }
 
-int	print_s(char *s, t_opts *opts)
+int	process_width(char *s, int len, t_opts *opts, char blk)
 {
-	int len;
-	int i;
-	char *tmp_s;
+	int	i;
 
-	if (!s)
-	{
-		ft_putstr_fd("(null)", 1);
-		return (6);
-	}
-	len = ft_strlen(s);
 	i = 0;
-	/*
-	경우의수 : width < len : 그냥 스트링 출력
-			width > len : width - len 만큼 ' ' 출력한 후 스트링 출력
-			
-			precision이 켜진경우 -> precision의 갯수 만큼 스트링 출력
-
-			- 옵션이 켜진경우 -> 따로 처리 할 것. 
-	*/
-	if (opts->prec) // prec 이 켜진 경우
+	if (opts->minus)
 	{
-		// width 가 prec 보다 작은 경우 
-		while (i < opts->prec_scale && i < len)
+		ft_putstr_fd(s, 1);
+		while (i < (opts->width - len))
 		{
+			ft_putchar_fd(blk, 1);
+			i++;
 		}
-
-		// width 가 prec 보다 큰 경우
 	}
-	else // prec 없는 경우
+	else
 	{
-		if (opts->width <= len)
+		while (i < (opts->width - len))
+		{
+			ft_putchar_fd(blk, 1);
+			i++;
+		}
+		ft_putstr_fd(s, 1);
+	}
+	return (opts->width);
+}
+
+int	print_fstr_with_width(char *s, t_opts *opts, char blk)
+{
+	int	rtn;
+
+	if (opts->prec)
+	{
+		s = ft_substr(s, 0, opts->prec_scale);
+		rtn = process_width(s, ft_strlen(s), opts, blk);
+		free(s);
+	}
+	else
+	{
+		if (opts->width <= ft_strlen(s))
 		{
 			ft_putstr_fd(s, 1);
-			return (len);
+			rtn = ft_strlen(s);
 		}
 		else
-		{
-			while (i < (opts->width - len))
-			{
-				ft_putchar_fd(' ', 1);
-				i++;
-			}
-			ft_putstr_fd(s, 1);
-			return (opts->width);
-		}
+			rtn = process_width(s, ft_strlen(s), opts, blk);
 	}
-	return (0);
+	return (rtn);
+}
+
+int print_fstr_without_width(char *s, t_opts *opts, char blk)
+{
+	int	rtn;
+
+	if (opts->prec)
+	{
+		s = ft_substr(s, 0, opts->prec_scale);
+		ft_putstr_fd(s, 1);
+		rtn = ft_strlen(s);
+		free(s);
+	}
+	else
+	{
+		ft_putstr_fd(s, 1);
+		rtn = ft_strlen(s);
+	}
+	return (rtn);
+}
+
+int	print_s(char *s, t_opts *opts)
+{
+	int		rtn;
+	char	blk;
+
+	if (!s)
+		s = "(null)";
+	if (opts->zero)
+		blk = '0';
+	else
+		blk = ' ';
+	if (opts->width)
+		rtn = print_fstr_with_width(s, opts, blk);
+	else
+		rtn = print_fstr_without_width(s, opts, blk);
+	return (rtn);
 }
