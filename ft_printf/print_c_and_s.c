@@ -27,7 +27,7 @@ int	print_c(char c, t_opts *opts)
 	return (1);
 }
 
-int	process_width(char *s, int len, t_opts *opts, char blk)
+int	process_s_width(char *s, int len, t_opts *opts, char blk)
 {
 	int	i;
 
@@ -60,8 +60,8 @@ int	print_fstr_with_width(char *s, t_opts *opts, char blk)
 	if (opts->prec)
 	{
 		s = ft_substr(s, 0, opts->prec_scale);
-		rtn = process_width(s, ft_strlen(s), opts, blk);
-		free(s);
+		rtn = process_s_width(s, ft_strlen(s), opts, blk);
+		ft_free(s);
 	}
 	else
 	{
@@ -71,7 +71,7 @@ int	print_fstr_with_width(char *s, t_opts *opts, char blk)
 			rtn = ft_strlen(s);
 		}
 		else
-			rtn = process_width(s, ft_strlen(s), opts, blk);
+			rtn = process_s_width(s, ft_strlen(s), opts, blk);
 	}
 	return (rtn);
 }
@@ -85,7 +85,7 @@ int	print_fstr_without_width(char *s, t_opts *opts, char blk)
 		s = ft_substr(s, 0, opts->prec_scale);
 		ft_putstr_fd(s, 1);
 		rtn = ft_strlen(s);
-		free(s);
+		ft_free(s);
 	}
 	else
 	{

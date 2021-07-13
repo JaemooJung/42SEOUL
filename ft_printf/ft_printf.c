@@ -18,7 +18,7 @@ int	print_f_str(char **f_str, t_opts *opts, va_list ap)
 	{}
 	else if (opts->type == 'p')
 	{}
-	free(opts);
+	ft_free(opts);
 	opts = NULL;
 	return (f_str_len);
 }
