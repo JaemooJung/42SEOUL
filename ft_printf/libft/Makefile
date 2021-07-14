@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+         #
+#    By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/07 16:04:08 by jaemjung          #+#    #+#              #
-#    Updated: 2021/05/14 11:44:30 by jaemjung         ###   ########.fr        #
+#    Updated: 2021/07/14 20:45:15 by jaemoojung       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ FUNCS =			ft_memset.c \
 				ft_strtrim.c \
 				ft_split.c \
 				ft_itoa.c \
+				ft_itoa_hex.c \
 				ft_strmapi.c \
 				ft_putchar_fd.c \
 				ft_putstr_fd.c \

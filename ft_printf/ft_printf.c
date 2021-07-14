@@ -6,20 +6,17 @@ int	print_f_str(char **f_str, t_opts *opts, va_list ap)
 
 	if (opts->type == 'c')
 		f_str_len = print_c(va_arg(ap, int), opts);
+	else if (opts->type == '%')
+		f_str_len = print_c('%', opts);
 	else if (opts->type == 's')
 		f_str_len = print_s(va_arg(ap, char *), opts);
 	else if (opts->type == 'd' || opts->type == 'i')
-		f_str_len = print_d(va_arg(ap, int), opts);
-	else if (opts->type == 'u')
-	{}
-	else if (opts->type == 'x')
-	{}
-	else if (opts->type == 'X')
-	{}
+		f_str_len = print_num(va_arg(ap, int), opts);
+	else if (opts->type == 'x' || opts->type == 'X' || opts->type == 'u')
+		f_str_len = print_num(va_arg(ap, unsigned int), opts);
 	else if (opts->type == 'p')
-	{}
+		f_str_len = print_num(va_arg(ap, unsigned long long), opts);
 	ft_free(opts);
-	opts = NULL;
 	return (f_str_len);
 }
 

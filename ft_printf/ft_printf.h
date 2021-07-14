@@ -25,7 +25,9 @@ int			ft_printf(const char *f_str, ...);
 
 int			print_c(char c, t_opts *opts);
 int			print_s(char *s, t_opts *opts);
-int			print_d(int i, t_opts *opts);
+int			print_num(long long num, t_opts *opts);
+
+char		*process_hex(long long num, t_opts *opts);
 
 void		ft_free(void *ptr);
 
