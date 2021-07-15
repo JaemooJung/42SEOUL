@@ -20,6 +20,7 @@ char	*process_hex(long long num, t_opts *opts)
 		return (NULL);
 	if (opts->type == 'X')
 	{
+		i = 0;
 		while (rtn[i])
 		{
 			rtn[i] = ft_toupper(rtn[i]);

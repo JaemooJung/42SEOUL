@@ -86,7 +86,6 @@ int	print_num(long long num, t_opts *opts)
 {
 	char	*buff;
 	int		rtn;
-	char	*tmp;
 
 	buff = make_buffer(num, opts);
 	if (!buff)

@@ -6,7 +6,7 @@
 #    By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/07 16:04:08 by jaemjung          #+#    #+#              #
-#    Updated: 2021/07/15 20:42:48 by jaemoojung       ###   ########.fr        #
+#    Updated: 2021/07/15 21:08:05 by jaemoojung       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,11 @@ FUNCS =			ft_printf.c \
 				print_c_and_s.c \
 				print_num.c \
 				print_num_utils.c \
-				utils.c
 
 BONUS_FUNCS =	ft_printf_bonus.c \
 				print_c_and_s_bonus.c \
 				print_num_bonus.c \
 				print_num_utils_bonus.c \
-				utils_bonus.c
 
 SRCS		= $(FUNCS)
 BONUS_SRCS	= $(BONUS_FUNCS)

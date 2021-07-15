@@ -1,9 +1,10 @@
 #include "ft_printf_bonus.h"
 
-int	print_f_str(char **f_str, t_opts *opts, va_list ap)
+static int	print_f_str(t_opts *opts, va_list ap)
 {
 	int	f_str_len;
 
+	f_str_len = 0;
 	if (opts->type == 'c')
 		f_str_len = print_c(va_arg(ap, int), opts);
 	else if (opts->type == '%')
@@ -20,7 +21,7 @@ int	print_f_str(char **f_str, t_opts *opts, va_list ap)
 	return (f_str_len);
 }
 
-void	get_width_prec(char **f_str, t_opts *opts, va_list ap)
+static void	get_width_prec(char **f_str, t_opts *opts)
 {
 	if (opts->prec)
 		opts->prec_scale = (opts->prec_scale * 10) + (**f_str - '0');
@@ -28,7 +29,7 @@ void	get_width_prec(char **f_str, t_opts *opts, va_list ap)
 		opts->width = (opts->width * 10) + (**f_str - '0');
 }
 
-int	start_parsing(char **f_str, va_list ap)
+static int	start_parsing(char **f_str, va_list ap)
 {
 	t_opts	*opts;
 
@@ -44,14 +45,14 @@ int	start_parsing(char **f_str, va_list ap)
 		else if (**f_str == '0' && opts->width == 0 && opts->prec != 1)
 			opts->zero = 1;
 		else if (ft_isdigit(**f_str))
-			get_width_prec(f_str, opts, ap);
+			get_width_prec(f_str, opts);
 		(*f_str)++;
 	}
 	if (opts->minus)
 		opts->zero = 0;
 	opts->type = **f_str;
 	(*f_str)++;
-	return (print_f_str(f_str, opts, ap));
+	return (print_f_str(opts, ap));
 }
 
 int	ft_printf(const char *f_str, ...)

@@ -76,7 +76,7 @@ static int	print_fstr_with_width(char *s, t_opts *opts, char blk)
 	return (rtn);
 }
 
-static int	print_fstr_without_width(char *s, t_opts *opts, char blk)
+static int	print_fstr_without_width(char *s, t_opts *opts)
 {
 	int	rtn;
 
@@ -109,6 +109,6 @@ int	print_s(char *s, t_opts *opts)
 	if (opts->width)
 		rtn = print_fstr_with_width(s, opts, blk);
 	else
-		rtn = print_fstr_without_width(s, opts, blk);
+		rtn = print_fstr_without_width(s, opts);
 	return (rtn);
 }
