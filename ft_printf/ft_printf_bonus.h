@@ -17,6 +17,7 @@ typedef struct s_opts
 	char	type;
 	int		format_len;
 	int		d_negative;
+	int		prec_processed;
 }			t_opts;
 
 int			ft_printf(const char *f_str, ...);

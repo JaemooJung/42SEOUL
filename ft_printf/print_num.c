@@ -18,7 +18,7 @@ static char	*process_num_blank(char *buff, char blk, int total_len, t_opts *opts
 	while (i < blk_size)
 		blk_str[i++] = blk;
 	blk_str[i] = '\0';
-	if (opts->minus && opts->prec < 1)
+	if (opts->minus && opts->prec_processed)
 		rtn = ft_strjoin(buff, blk_str);
 	else
 		rtn = ft_strjoin(blk_str, buff);
@@ -47,7 +47,7 @@ static char	*make_buffer(long long num, t_opts *opts)
 		opts->d_negative = 1;
 	}
 	if (opts->prec && opts->prec_scale == 0 && num == 0)
-		rtn = ft_strdup(" ");
+		rtn = ft_strdup("");
 	else
 	{
 		if (opts->type == 'X' || opts->type == 'x' || opts->type == 'p')
@@ -59,7 +59,7 @@ static char	*make_buffer(long long num, t_opts *opts)
 		return (NULL);
 	if (opts->prec && (opts->prec_scale > ft_strlen(rtn)))
 		rtn = process_num_blank(rtn, '0', opts->prec_scale, opts);
-	opts->prec = -1;
+	opts->prec_processed = 1;
 	if (opts->d_negative > 0)
 		rtn = process_negative(rtn, opts);
 	return (rtn);
