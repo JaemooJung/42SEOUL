@@ -15,6 +15,8 @@ char	*process_hex(long long num, t_opts *opts)
 	char	*tmp;
 	int		i;
 
+	if (opts->prec && opts->prec_scale == 0 && num == 0 && opts->type == 'p')
+		return (ft_strdup("0x"));
 	rtn = ft_itoa_hex(num);
 	if (!rtn)
 		return (NULL);

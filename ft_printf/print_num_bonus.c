@@ -37,7 +37,7 @@ static char	*make_buffer(long long num, t_opts *opts)
 		num = -num;
 		opts->d_negative = 1;
 	}
-	if (opts->prec && opts->prec_scale == 0 && num == 0)
+	if (opts->prec && opts->prec_scale == 0 && num == 0 && opts->type != 'p')
 		rtn = ft_strdup("");
 	else
 	{

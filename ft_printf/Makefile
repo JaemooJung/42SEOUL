@@ -6,7 +6,7 @@
 #    By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/07 16:04:08 by jaemjung          #+#    #+#              #
-#    Updated: 2021/07/15 21:08:05 by jaemoojung       ###   ########.fr        #
+#    Updated: 2021/07/22 23:49:24 by jaemoojung       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,15 @@ CFLAGS = -Wall -Wextra -Werror
 AR = ar rcus
 RM = rm -f
 
-FUNCS =			ft_printf.c \
-				print_c_and_s.c \
+FUNCS 		=	ft_printf.c \
+				print_c.c \
+				print_s.c \
 				print_num.c \
 				print_num_utils.c \
 
 BONUS_FUNCS =	ft_printf_bonus.c \
-				print_c_and_s_bonus.c \
+				print_c_bonus.c \
+				print_s_bonus.c \
 				print_num_bonus.c \
 				print_num_utils_bonus.c \
 
