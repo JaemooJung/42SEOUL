@@ -3,7 +3,7 @@
 
 # include <stdarg.h>
 # include <stdlib.h>
-# include "./libft/libft.h"
+# include "libft/libft.h"
 
 # define TYPES "cspdiuxX%"
 
@@ -27,6 +27,9 @@ int			print_s(char *s, t_opts *opts);
 int			print_num(long long num, t_opts *opts);
 
 char		*process_hex(long long num, t_opts *opts);
+
+char		*process_negative(char *buff, t_opts *opts);
+char		*process_negative_with_zero(char *buff, t_opts *opts);
 
 void		ft_free(void *ptr);
 

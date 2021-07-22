@@ -43,7 +43,7 @@ int main(void)
 	// int test_real = printf("char : %020c|\n str : %030.1s|\n num : %030.1d|\n unsigned num : %-30u|\n hex : %-30x|\n pointer : %-30p|\n", 'A', NULL, 42, 4242, 4242, NULL);
 	// printf("ft_return = %d\n", test_ft);
 	// printf("real_return = %d\n", test_real);
-	printf("%05d\n", 43);
-	ft_printf("%05d\n", 43);
+	printf("|%.p|\n", NULL);
+	ft_printf("|%.p|\n", NULL);
 }
 

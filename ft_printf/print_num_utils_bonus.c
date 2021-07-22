@@ -35,3 +35,47 @@ char	*process_hex(long long num, t_opts *opts)
 	}
 	return (rtn);
 }
+
+char	*process_negative(char *buff, t_opts *opts)
+{
+	char	*rtn;
+
+	if ((!(opts->zero) || (opts->zero && opts->prec))
+		&& (opts->type == 'i' || opts->type == 'd'))
+	{
+		rtn = ft_strjoin("-", buff);
+		ft_free(buff);
+		opts->d_negative = -1;
+		return (rtn);
+	}
+	return (buff);
+}
+
+char	*process_negative_with_zero(char *buff, t_opts *opts)
+{
+	char	*rtn;
+
+	rtn = NULL;
+	if (opts->zero)
+	{
+		if (ft_strlen(buff) > opts->width)
+		{
+			rtn = ft_strjoin("-", buff);
+			free(buff);
+		}
+		else
+		{
+			if (buff[0] == '0')
+			{
+				buff[0] = '-';
+				return (buff);
+			}
+			else
+			{
+				rtn = ft_strjoin("-", buff);
+				free(buff);
+			}
+		}
+	}
+	return (rtn);
+}

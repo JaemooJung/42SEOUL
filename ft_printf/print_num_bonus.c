@@ -1,6 +1,7 @@
 #include "ft_printf_bonus.h"
 
-static char	*process_num_blank(char *buff, char blk, int total_len, t_opts *opts)
+static char	*process_num_blank(char *buff, char blk, int total_len,
+			t_opts *opts)
 {
 	char	*rtn;
 	char	*blk_str;
@@ -24,16 +25,6 @@ static char	*process_num_blank(char *buff, char blk, int total_len, t_opts *opts
 		rtn = ft_strjoin(blk_str, buff);
 	ft_free(buff);
 	ft_free(blk_str);
-	return (rtn);
-}
-
-static char	*process_negative(char *buff, t_opts *opts)
-{
-	char	*rtn;
-
-	rtn = ft_strjoin("-", buff);
-	opts->d_negative = -1;
-	ft_free(buff);
 	return (rtn);
 }
 
@@ -78,7 +69,7 @@ static char	*process_width(char *buff, t_opts *opts)
 		buff = process_num_blank(buff, blk, opts->width, opts);
 	}
 	if (opts->d_negative > 0)
-		buff = process_negative(buff, opts);
+		buff = process_negative_with_zero(buff, opts);
 	return (buff);
 }
 
