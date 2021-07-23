@@ -41,7 +41,7 @@ static int	start_parsing(char **f_str, va_list ap)
 
 	opts = ft_calloc(1, sizeof(t_opts));
 	if (!opts)
-		return (-1);
+		return (0);
 	while (**f_str != '\0' && !(ft_strchr(TYPES, **f_str)))
 	{
 		if (**f_str == '-')
@@ -58,7 +58,7 @@ static int	start_parsing(char **f_str, va_list ap)
 		opts->zero = 0;
 	opts->type = **f_str;
 	if (!(opts->type) || !(ft_strchr(TYPES, opts->type)))
-		handle_incorrect_format(opts);
+		return (handle_incorrect_format(opts));
 	(*f_str)++;
 	return (print_f_str(opts, ap));
 }
