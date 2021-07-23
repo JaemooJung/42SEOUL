@@ -29,13 +29,19 @@ static void	get_width_prec(char **f_str, t_opts *opts)
 		opts->width = (opts->width * 10) + (**f_str - '0');
 }
 
+static int	handle_incorrect_format(t_opts *opts)
+{
+	ft_free(opts);
+	return (0);
+}
+
 static int	start_parsing(char **f_str, va_list ap)
 {
 	t_opts	*opts;
 
 	opts = ft_calloc(1, sizeof(t_opts));
 	if (!opts)
-		return (-1);
+		return (0);
 	while (**f_str != '\0' && !(ft_strchr(TYPES, **f_str)))
 	{
 		if (**f_str == '-')
@@ -51,6 +57,8 @@ static int	start_parsing(char **f_str, va_list ap)
 	if (opts->minus)
 		opts->zero = 0;
 	opts->type = **f_str;
+	if (!(opts->type) || !(ft_strchr(TYPES, opts->type)))
+		return (handle_incorrect_format(opts));
 	(*f_str)++;
 	return (print_f_str(opts, ap));
 }
@@ -76,5 +84,6 @@ int	ft_printf(const char *f_str, ...)
 			out_len += start_parsing((char **)&f_str, ap);
 		}
 	}
+	va_end(ap);
 	return (out_len);
 }
