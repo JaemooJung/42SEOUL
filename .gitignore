@@ -64,4 +64,5 @@ dkms.conf
 .history
 .ionide
 
-.DS_STORE
+.DS_Store
+
