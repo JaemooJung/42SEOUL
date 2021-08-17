@@ -1,6 +1,6 @@
 #include "minitalk.h"
 
-void sent_to_server(int pid, int bit)
+void	sent_to_server(int pid, int bit)
 {
 	if (bit == 1)
 		kill(pid, SIGUSR1);
@@ -9,7 +9,7 @@ void sent_to_server(int pid, int bit)
 	usleep(100);
 }
 
-void change_to_bit_and_send(int pid, char c, int bit_len)
+void	change_to_bit_and_send(int pid, char c, int bit_len)
 {
 	if (c == 0)
 	{
@@ -27,9 +27,9 @@ void change_to_bit_and_send(int pid, char c, int bit_len)
 	}
 }
 
-void send_message(int pid, char *str)
+void	send_message(int pid, char *str)
 {
-	int end_conv_marker;
+	int	end_conv_marker;
 
 	end_conv_marker = 8;
 	while (*str)
@@ -41,9 +41,18 @@ void send_message(int pid, char *str)
 		sent_to_server(pid, 1);
 }
 
-int main(int argc, char **argv)
+int	err_hander(int err)
+{
+	if (err == 1)
+		ft_printf("usage : [pid] [message to send]\n");
+	return (err);
+}
+
+int	main(int argc, char **argv)
 {
 	if (argc != 3)
-		return (1);
+		return (err_hander(1));
+	ft_printf("client pid : [%d]\n", getpid());
 	send_message(ft_atoi(argv[1]), argv[2]);
+	ft_printf("message sended to server pid [%d]\n", ft_atoi(argv[1]));
 }
