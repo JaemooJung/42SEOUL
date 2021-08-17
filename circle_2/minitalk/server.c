@@ -2,18 +2,36 @@
 
 void sig_handler(int signo, siginfo_t *info, void *context)
 {
+	static unsigned char c;
+	static int bit_len;
+
+	if (--bit_len == -1)
+	{
+		bit_len = 7;
+		c = 0;
+	}
 	if (signo == SIGUSR1)
-		printf("1 received\n");
+		c |= (1 << bit_len);
 	else if (signo == SIGUSR2)
-		printf("0 received\n");
+		c &= ~(1 << bit_len);
+	if (c == 255)
+	{	
+		ft_putchar_fd('\n', 1);
+		return ;
+	}
+	if (bit_len == 0)
+		ft_putchar_fd(c, 1);
 }
 
 int display_pid()
 {
-	int pid;
+	char *pid;
 
-	pid = getpid();
-	printf("pid : %d\n", pid);
+	pid = ft_itoa(getpid());
+	ft_putstr_fd("pid : ", 1);
+	ft_putstr_fd(pid, 1);
+	ft_putstr_fd("\n", 1);
+	free(pid);
 	return (0);
 }
 

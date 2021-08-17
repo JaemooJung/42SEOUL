@@ -4,6 +4,7 @@
 # include <signal.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h> // 나중에 지우기
+# include "libft/libft.h"
+
 
 #endif
