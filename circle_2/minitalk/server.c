@@ -1,15 +1,17 @@
 #include "minitalk.h"
 
-void	print_client_info(siginfo_t *info)
+static void	print_client_info(siginfo_t *info)
 {
-	ft_printf(" #message from pid [%d]\n", info->si_pid);
+	ft_printf(" [message from pid %d]\n", info->si_pid);
 }
 
-void	sig_handler(int signo, siginfo_t *info, void *context)
+static void	sig_handler(int signo, siginfo_t *info, void *context)
 {
 	static unsigned char	c;
 	static int				bit_len;
 
+	if (info->si_pid <= 100)
+		return ;
 	if (--bit_len == -1)
 	{
 		bit_len = 7;
@@ -34,10 +36,12 @@ int	main(int argc, char **argv)
 
 	action.sa_sigaction = sig_handler;
 	action.sa_flags = SA_SIGINFO;
-	ft_printf("server pid : [%d]. ready to receive message.\n", getpid());
-	sigaction(SIGUSR1, &action, 0);
-	sigaction(SIGUSR2, &action, 0);
+	ft_printf("server pid : [%d] | ready to receive message.\n", getpid());
+	if (sigaction(SIGUSR1, &action, 0) != 0)
+		error_hander("sigaction failure");
+	if (sigaction(SIGUSR2, &action, 0) != 0)
+		error_hander("sigaction failure");
 	while (1)
-		;
+		pause();
 	return (0);
 }

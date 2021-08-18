@@ -6,4 +6,6 @@
 # include <unistd.h>
 # include "libft/ft_printf.h"
 
+void	error_hander(char *err_str);
+
 #endif

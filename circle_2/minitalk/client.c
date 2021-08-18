@@ -1,15 +1,21 @@
 #include "minitalk.h"
 
-void	sent_to_server(int pid, int bit)
+static void	sent_to_server(int pid, int bit)
 {
 	if (bit == 1)
-		kill(pid, SIGUSR1);
+	{
+		if (kill(pid, SIGUSR1) < 0)
+			error_hander("signal send failure. check your pid again");
+	}
 	else if (bit == 0)
-		kill(pid, SIGUSR2);
+	{
+		if (kill(pid, SIGUSR2) < 0)
+			error_hander("signal send failure. check your pid again");
+	}
 	usleep(100);
 }
 
-void	change_to_bit_and_send(int pid, char c, int bit_len)
+static void	change_to_bit_and_send(int pid, char c, int bit_len)
 {
 	if (c == 0)
 	{
@@ -27,7 +33,7 @@ void	change_to_bit_and_send(int pid, char c, int bit_len)
 	}
 }
 
-void	send_message(int pid, char *str)
+static void	send_message(int pid, char *str)
 {
 	int	end_conv_marker;
 
@@ -41,17 +47,23 @@ void	send_message(int pid, char *str)
 		sent_to_server(pid, 1);
 }
 
-int	err_hander(int err)
+static int	check_pid(char *pid)
 {
-	if (err == 1)
-		ft_printf("usage : [pid] [message to send]\n");
-	return (err);
+	while (*pid)
+	{
+		if (ft_isdigit(*pid) == 0)
+			return (0);
+		pid++;
+	}
+	return (1);
 }
 
 int	main(int argc, char **argv)
 {
 	if (argc != 3)
-		return (err_hander(1));
+		error_hander("usage : ./client [pid] [message to send]");
+	else if (check_pid(argv[1]) == 0)
+		error_hander("wrong pid. pid only contains digits");
 	ft_printf("client pid : [%d]\n", getpid());
 	send_message(ft_atoi(argv[1]), argv[2]);
 	ft_printf("message sended to server pid [%d]\n", ft_atoi(argv[1]));
