@@ -5,14 +5,14 @@ static void	sent_to_server(int pid, int bit)
 	if (bit == 1)
 	{
 		if (kill(pid, SIGUSR1) < 0)
-			error_hander("signal send failure. check your pid again");
+			error_hander("signal transmission failure. check your pid again");
 	}
 	else if (bit == 0)
 	{
 		if (kill(pid, SIGUSR2) < 0)
-			error_hander("signal send failure. check your pid again");
+			error_hander("signal transmission failure. check your pid again");
 	}
-	usleep(100);
+	usleep(250);
 }
 
 static void	change_to_bit_and_send(int pid, char c, int bit_len)

@@ -15,22 +15,23 @@ CLI_SRCS = $(CLI_FUNCS)
 SRV_OBJS = $(SRV_SRCS:.c=.o)
 CLI_OBJS = $(CLI_SRCS:.c=.o)
 
+LIBFT = libft.a
+
 .PHONY: all clean fclean re
 
-all: $(NAME_SRV) $(NAME_CLI)
+all: $(LIBFT) $(NAME_SRV) $(NAME_CLI)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-$(NAME_SRV): $(SRV_OBJS)
+$(LIBFT) :
 	make all -C libft/
-	cp libft/libft.a $(NAME_SRV)
-	$(AR) $@ $^
 
-$(NAME_CLI): $(CLI_OBJS)
-	make all -C libft/
-	cp libft/libft.a $(NAME_CLI)
-	$(AR) $@ $^
+$(NAME_SRV) : $(SRV_OBJS)
+	$(CC) -o $@ $^ libft/libft.a
+
+$(NAME_CLI) : $(CLI_OBJS)
+	$(CC) -o $@ $^ libft/libft.a
 
 clean:
 	$(RM) $(SRV_OBJS) $(CLI_OBJS)

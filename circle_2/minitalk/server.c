@@ -10,8 +10,7 @@ static void	sig_handler(int signo, siginfo_t *info, void *context)
 	static unsigned char	c;
 	static int				bit_len;
 
-	if (info->si_pid <= 100)
-		return ;
+	(void) *context;
 	if (--bit_len == -1)
 	{
 		bit_len = 7;
@@ -30,7 +29,7 @@ static void	sig_handler(int signo, siginfo_t *info, void *context)
 		ft_putchar_fd(c, 1);
 }
 
-int	main(int argc, char **argv)
+int	main(void)
 {
 	struct sigaction	action;
 
@@ -42,6 +41,6 @@ int	main(int argc, char **argv)
 	if (sigaction(SIGUSR2, &action, 0) != 0)
 		error_hander("sigaction failure");
 	while (1)
-		pause();
+		;
 	return (0);
 }
