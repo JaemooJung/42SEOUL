@@ -4,7 +4,7 @@
 
 
 | Circle |    Subject    |                                   Misson                                   | Estimated time to complete | Actual time spent |  Score  |  status |
-|:------:|:-------------:|:--------------------------------------------------------------------------:|:--------------------------:|:-----------------:|:-------:|:-------:|
+|:------:|:-------------:|----------------------------------------------------------------------------|:--------------------------:|:-----------------:|:-------:|:-------:|
 |    0   | libft         | Make your own libc.                                                        |                       70 h |             100 h | 115/100 |   pass  |
 |    1   | get_next_line | Make a function that reads the next line of a file.                        |                       70 h |              95 h | 114/100 |   pass  |
 |        | Born2beroot   | Set up your own operating system while implementing strict rules.          |                       40 h |              50 h | 120/100 |   pass  |
