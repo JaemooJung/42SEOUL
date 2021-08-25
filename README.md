@@ -11,3 +11,6 @@
 |        | ft_printf     | Make your own printf function.                                             |                      175 h |             100 h | 115/100 |   pass  |
 |    2   | minitalk      | Make a small data exchange program using UNIX signal; SIGUSR1 and SIGUSR2. |                       50 h |              30 h | 100/100 |   pass  |
 |        | so_long       | Make a very small 2D game.                                                 |                       60 h |                   |  0/100  | ongoing |
+
+\*Estimated Time to Complete
+\**Actual Time Spent
