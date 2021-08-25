@@ -12,5 +12,5 @@
 |    2   | minitalk      | Make a small data exchange program using UNIX signal; SIGUSR1 and SIGUSR2. |                       50 h |              30 h | 100/100 |   pass  |
 |        | so_long       | Make a very small 2D game.                                                 |                       60 h |                   |  0/100  | ongoing |
 
-\*Estimated Time to Complete
+\*Estimated Time to Complete <br\>
 \**Actual Time Spent
