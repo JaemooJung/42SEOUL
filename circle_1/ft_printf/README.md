@@ -17,6 +17,6 @@ int ft_printf(const char *, ...);
 
 과제를 진행하기 위해서는 다음과 같은 지식들이 필요합니다.
 * 가변인자
-	* 참조 : man 3 stdarg & https://jhnyang.tistory.com/293
+	* 참조 : `man 3 stdarg` & https://jhnyang.tistory.com/293
 * printf의 사용법
-	* 참조 : man 3 printf & https://m.blog.naver.com/jamespiggy/221499808227 
+	* 참조 : `man 3 printf` & https://m.blog.naver.com/jamespiggy/221499808227 
