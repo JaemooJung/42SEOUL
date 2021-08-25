@@ -5,6 +5,8 @@
 * 1000자의 문자열을 전송하는데 2초 이상의 시간이 소요되어서는 안됩니다.
 ___
 ### 본 과제를 수행하기 위해 필요한 지식
+* 프로세스와 pid
+  * 참고 : https://bowbowbow.tistory.com/16
 * UNIX Signal
   * 참고 : `man 3 signal` & https://www.joinc.co.kr/w/Site/system_programing/Book_LSP/ch06_Signal
 * 2진수를 이용해 데이터를 처리하는 법
