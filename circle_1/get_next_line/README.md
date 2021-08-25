@@ -10,6 +10,7 @@ int *get_next_line(int fd, char **line);
 * 두 번째 파라미터 line에 할당하는 함수를 만드는 것입니다.
 
 이를 위해 필요한 지식은 다음과 같습니다.
+<pr/>
 * #### 버퍼란?
   * 참고 : https://dololak.tistory.com/84
 * #### 정적변수
