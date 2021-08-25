@@ -19,4 +19,4 @@ ___
 * sudo
   * 참고 : https://namu.wiki/w/sudo
 * Linux 비밀번호 정책 설정
-  * https://www.linuxtechi.com/enforce-password-policies-linux-ubuntu-centos/
+  * 참고 : https://www.linuxtechi.com/enforce-password-policies-linux-ubuntu-centos/
