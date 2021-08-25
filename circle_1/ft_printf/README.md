@@ -1,5 +1,9 @@
 # ft_printf
 
+```
+int ft_printf(const char *, ...);
+```
+
 안타깝게도 42 Seoul에서는 표준 입출력 라이브러리에 속한 강력한 함수 printf를 사용할 수 없습니다. <br/>
 따라서 앞으로 사용할 자신만의 ft_printf를 만드는 것이 본 과제의 목표입니다. <br/>
 
