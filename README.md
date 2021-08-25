@@ -13,5 +13,5 @@
 |        | so_long       | Make a very small 2D game.                                                 |                       60 h |                   |  0/100  | ongoing |
 
 \*Estimated Time to Complete 
-<br\>
+<br/>
 \**Actual Time Spent
