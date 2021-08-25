@@ -3,7 +3,7 @@
 ### 42서울 본과정을 진행하며 작성한 코드들입니다. 아래의 표는 프로젝트 진행 상황의 간단한 요약입니다.
 
 
-| Circle |    Subject    |                                   Misson                                   | Estimated time to complete | Actual time spent |  Score  |  Status |
+| Circle |    Subject    |                                   Misson                                   | ETC* | ATS** |  Score  |  Status |
 |:------:|:-------------:|----------------------------------------------------------------------------|:--------------------------:|:-----------------:|:-------:|:-------:|
 |    0   | libft         | Make your own libc.                                                        |                       70 h |             100 h | 115/100 |   pass  |
 |    1   | get_next_line | Make a function that reads the next line of a file.                        |                       70 h |              95 h | 114/100 |   pass  |
