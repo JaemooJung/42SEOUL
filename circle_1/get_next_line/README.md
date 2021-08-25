@@ -14,5 +14,9 @@ int *get_next_line(int fd, char **line);
   * 참고 : https://dololak.tistory.com/84
 * 정적변수
   * 참고 : https://dojang.io/mod/page/view.php?id=690
+* 프로세스의 메모리 레이아웃
+  * 참고 : https://bigpel66.oopy.io/library/c/chewing-c/5
+* 파일 디스크립터(File descriptor)
+  * 참고 : https://code4human.tistory.com/123
 * gcc의 -D 옵션 사용법
   * 참고 : https://jangpd007.tistory.com/220
