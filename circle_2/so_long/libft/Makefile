@@ -6,7 +6,7 @@
 #    By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/07 16:04:08 by jaemjung          #+#    #+#              #
-#    Updated: 2021/09/23 16:40:40 by jaemoojung       ###   ########.fr        #
+#    Updated: 2021/09/27 14:24:41 by jaemoojung       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ BONUS_OBJS	= $(BONUS_SRCS:.c=.o)
 
 .PHONY: all bonus clean fclean re
 
-all: $(NAME)
+all: $(NAME) bonus
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<

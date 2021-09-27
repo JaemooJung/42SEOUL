@@ -1,47 +1,67 @@
 #include "so_long.h"
 
-int parse_map(char *file_name)
+static int	check_map_validity(int map_fd, t_map_info *map_info)
 {
-	char **map;
-	int map_fd;
+	char	*line;
+	int		gnl_check;
+	int		first_ln_done;
 
-	// 파일 이름이 없을 경우 에러리턴
-	if (!file_name)
-		return (1);
-	printf("%s\n", file_name);
-	char *check = ft_strrchr(file_name, '.');
-	printf("%s\n", check);
-	int a = ft_strncmp(check, ".ber", 4);
-	printf("%d\n", a);
-
-	//파일이름 확인하여 확장자가 .ber 형식이 아니라면 에러 리턴
-	if (ft_strncmp(ft_strrchr(file_name, '.'), ".ber", 4) != 0)
-		printf("wrong map file. wrong extension\n");
-
-	//파일 오픈. 파일이 안열렸다면 에러 리턴.
-	map_fd = open(file_name);
-	if (map_fd < 0)
-		return (1);
-	//get_next_line으로 맵 받아와서 저장
-	//맵 크기를 알아야 말록 가능 ... 시부랄
-	// 한글자씩 읽어오며 저장? 어떻게 할까
-	// 너무 무모한거같은데...
-	
-
-
-	//맵 체크 시작. 
-	
-	// 맵이 첫 번째 줄이 모두 1인지 체크
-	// 맵 두번째 줄 부터 마지막까지 시작과 끝이 1인지 체크 하나라도 이상하면 에러
-	// 맵 마지막 줄이 모두 1인지 체크 하나라도 이상하면 에러
-	// 맵 마지막줄까지 한 줄이라도 첫 번째 줄의 길이와 다르면 에러 리턴.
-	// 맵에 P와 E가 1개인지 체크. 2개 이상이라면 에러 리턴.
-	// 맵에 C가 0개이면 에러 리턴.
+	first_ln_done = 0;
+	gnl_check = get_next_line(map_fd, &line);
+	while (gnl_check > 0)
+	{
+		if (!first_ln_done)
+		{
+			check_map_first_line(line, map_info);
+			first_ln_done = 1;
+		}
+		else
+			check_map_middle_line(line, map_info);
+		gnl_check = get_next_line(map_fd, &line);
+	}
+	if (gnl_check < 0)
+		error_handler("Failed to read from map file");
+	check_map_last_line(line, map_info);
+	check_for_last(map_info);
 	return (0);
 }
 
-int main(int argc, char **argv)
+static int	check_file_extension(char *file_name)
 {
-	parse_map(argv[1]);
+	char	*file_extension;
+
+	file_extension = ft_strrchr(file_name, '.');
+	if (file_extension == NULL || ft_strncmp(file_extension, ".ber", 4) != 0)
+	{
+		printf("Error\nWrong file extension. only .ber file is avaliable");
+		exit(1);
+	}
+	else
+		return (0);
+}
+
+void print_map_iter(void *content)
+{
+	printf("%s\n", (char *)content);
+}
+
+void print_map(t_map_info *map_info)
+{
+	ft_lstiter(map_info->temp_map, &print_map_iter);
+}
+
+int	parse_map(char *file_name, t_map_info *map_info)
+{
+	int	map_fd;
+
+	check_file_extension(file_name);
+	map_fd = open(file_name, O_RDONLY);
+	if (map_fd < 0)
+	{
+		printf("Error\n%s", strerror(errno));
+		exit(errno);
+	}
+	check_map_validity(map_fd, map_info);
+	print_map(map_info);
 	return (0);
 }

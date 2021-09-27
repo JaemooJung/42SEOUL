@@ -1,7 +1,15 @@
 #include "so_long.h"
 
-void error_handler(char *error_message, int error_code)
+void error_handler(char *error_message)
 {
-	ft_printf(error_message);
-	exit(error_code);
+	if (!error_message)
+	{
+		printf("Error\n%s\n", strerror(errno));
+		exit(errno);
+	}
+	else
+	{
+		printf("Error\n%s\n", error_message);
+		exit(1);
+	}
 }
