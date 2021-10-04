@@ -16,25 +16,32 @@ OBJS		= $(SRCS:.c=.o)
 
 LIBFT		= libft.a
 
+MLX			= libmlx.dylib
+
 .PHONY: all clean fclean re
 
-all: $(LIBFT) $(NAME)
+all: $(MLX) $(LIBFT) $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -I ./minilibx -c -o $@ $<
 
 $(LIBFT):
 	make all -C libft/
 
-$(NAME): $(OBJS)
-	$(CC) -o $@ $^ $(LIB)
+$(MLX):
+	make all -C minilibx/
 
+$(NAME): $(OBJS)
+	$(CC) -L ./minilibx -lmlx -framework OpenGL -framework AppKit -o $@ $^ $(LIB)
+	install_name_tool -change libmlx.dylib ./minilibx/libmlx.dylib $(NAME)
 clean:
 	$(RM) $(OBJS)
 	make clean -C libft
+	make clean -C minilibx
 
 fclean: clean
 	$(RM) $(NAME)
 	make fclean -C libft
+	make clean -C minilibx
 	
 re: clean all

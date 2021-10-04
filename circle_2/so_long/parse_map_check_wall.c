@@ -57,7 +57,7 @@ int	check_map_middle_line(char *line, t_map_info *map_info)
 }
 
 //TODO : 마지막 라인 처리 
-int check_map_last_line(char *line, t_map_info *map_info)
+int	check_map_last_line(char *line, t_map_info *map_info)
 {
 	int i;
 	t_list *tmp;
@@ -78,7 +78,7 @@ int check_map_last_line(char *line, t_map_info *map_info)
 //각 라인에서 오류가 없으면 연결리스트에 해당 라인 저장
 
 //최종적으로 구조체 검사. P나 C나 E의 갯수가 올바르지 않으면 에러 메세지 표시 후 종료.
-int check_for_last(t_map_info *map_info)
+int	check_for_last(t_map_info *map_info)
 {
 	if (map_info->number_of_player > 1 ||
 		map_info->number_of_collectibles < 1 ||
