@@ -1,6 +1,5 @@
 #include "../../includes/so_long.h"
 
-
 static int	check_map_validity(int map_fd, t_map_info *map_info)
 {
 	char	*line;
@@ -41,6 +40,7 @@ static int	check_file_extension(char *file_name)
 		return (0);
 }
 
+// 나중에 지우기
 void print_map_iter(void *content)
 {
 	printf("%s\n", (char *)content);
@@ -50,6 +50,7 @@ void print_map(t_map_info *map_info)
 {
 	ft_lstiter(map_info->temp_map, &print_map_iter);
 }
+// ___________________________
 
 int	parse_map(char *file_name, t_map_info *map_info)
 {
@@ -63,6 +64,6 @@ int	parse_map(char *file_name, t_map_info *map_info)
 		exit(errno);
 	}
 	check_map_validity(map_fd, map_info);
-	print_map(map_info);
+	print_map(map_info); // 나중에 지우기 
 	return (0);
 }

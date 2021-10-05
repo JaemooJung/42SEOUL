@@ -1,6 +1,6 @@
 #include "../includes/so_long.h"
 
-void error_handler(char *error_message)
+void	error_handler(char *error_message)
 {
 	if (!error_message)
 	{
