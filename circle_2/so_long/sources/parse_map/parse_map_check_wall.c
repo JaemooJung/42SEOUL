@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "../../includes/so_long.h"
 
 // TODO : 첫번째 라인 처리
 int	check_map_first_line(char *line, t_map_info *map_info)

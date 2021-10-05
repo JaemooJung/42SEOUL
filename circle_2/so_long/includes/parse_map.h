@@ -1,12 +1,7 @@
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef PARSE_MAP_H
+# define PARSE_MAP_H
 
-# include "libft/libft.h"
-# include "minilibx/mlx.h"
-# include <stdio.h>
-# include <errno.h>
-# include <string.h>
-# include <fcntl.h>
+# include "../libft/libft.h"
 
 typedef struct	s_map_info
 {
@@ -23,7 +18,5 @@ int	check_map_first_line(char *line, t_map_info *map_info);
 int	check_map_middle_line(char *line, t_map_info *map_info);
 int check_map_last_line(char *line, t_map_info *map_info);
 int check_for_last(t_map_info *map_info);
-
-void error_handler(char *error_message);
 
 #endif

@@ -1,4 +1,5 @@
-#include "so_long.h"
+#include "../../includes/so_long.h"
+
 
 static int	check_map_validity(int map_fd, t_map_info *map_info)
 {

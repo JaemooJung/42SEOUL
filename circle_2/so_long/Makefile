@@ -5,25 +5,29 @@ CFLAGS		=	-Wall -Wextra -Werror
 LIB			=	libft/libft.a
 RM			=	rm -f
 
-FUNCS 		=	so_long.c \
-				parse_map.c \
-				parse_map_check_wall.c \
-				error.c
+FILES 		=	so_long.c \
+				error.c \
+				parse_map/parse_map.c \
+				parse_map/parse_map_check_wall.c \
+				
 
-SRCS		= $(FUNCS)
+SRC_DIR		=	./sources/
+INC_DIR		=	./includes
 
-OBJS		= $(SRCS:.c=.o)
+SRCS		=	$(addprefix $(SRC_DIR), $(FILES))
 
-LIBFT		= libft.a
+OBJS		=	$(SRCS:.c=.o)
 
-MLX			= libmlx.dylib
+LIBFT		=	libft.a
+
+MLX			=	libmlx.dylib
 
 .PHONY: all clean fclean re
 
 all: $(MLX) $(LIBFT) $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I ./minilibx -c -o $@ $<
+	$(CC) $(CFLAGS) -I./minilibx -I$(INC_DIR) -c -o $@ $<
 
 $(LIBFT):
 	make all -C libft/
