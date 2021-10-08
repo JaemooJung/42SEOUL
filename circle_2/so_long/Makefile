@@ -10,7 +10,8 @@ FILES 		=	so_long.c \
 				parse_map/parse_map.c \
 				parse_map/parse_map_check_wall.c \
 				init_game/init_game.c \
-				init_game/init_game_draw_map.c
+				init_game/init_game_draw_map.c \
+				init_game/init_game_features.c
 				
 
 SRC_DIR		=	./sources/

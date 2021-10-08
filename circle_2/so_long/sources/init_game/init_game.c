@@ -20,6 +20,7 @@ static void	make_2d_map(t_map_info *map_info, t_game *game)
 	game->map = arr_map;
 	game->map_height = map_info->height;
 	game->map_width = map_info->width;
+	game->number_of_collectibles = map_info->number_of_collectibles;
 }
 
 static void	init_window(t_game *game)
@@ -57,7 +58,7 @@ int	init_game(t_map_info *map_info, t_game *game)
 	make_2d_map(map_info, game);
 	init_window(game);
 	init_image(game);
-	printf("image init done\n"); //TODO : 나중에 지우기
-	draw_wall_and_space(game);
+	init_features(game);
+	draw_map(game);
 	return (0);
 }
