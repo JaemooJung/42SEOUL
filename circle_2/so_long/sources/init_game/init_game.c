@@ -39,18 +39,27 @@ static void	init_window(t_game *game)
 static void	init_image(t_game *game)
 {
 	t_tiles	tiles;
-	// TODO : 이미지 주소 설정하는법 알아내기. 
+
 	tiles.wall.image_pointer = mlx_png_file_to_image(game->mlx_ptr,
-			"/Users/jaemoojung/Desktop/42/42SEOUL/circle_2/so_long/imgs/map_wall.png", &tiles.wall.width, &tiles.wall.height);
+			"imgs/map_wall.png", &tiles.wall.width, &tiles.wall.height);
 	tiles.space.image_pointer = mlx_png_file_to_image(game->mlx_ptr,
-			"/Users/jaemoojung/Desktop/42/42SEOUL/circle_2/so_long/imgs/map_space.png", &tiles.space.width, &tiles.space.height);
+			"imgs/map_space.png", &tiles.space.width, &tiles.space.height);
 	tiles.player.image_pointer = mlx_png_file_to_image(game->mlx_ptr,
-			"/Users/jaemoojung/Desktop/42/42SEOUL/circle_2/so_long/imgs/map_player.png", &tiles.player.width, &tiles.player.height);
+			"imgs/map_player.png", &tiles.player.width, &tiles.player.height);
 	tiles.collectible.image_pointer = mlx_png_file_to_image(game->mlx_ptr,
-			"/Users/jaemoojung/Desktop/42/42SEOUL/circle_2/so_long/imgs/map_collectible.png", &tiles.collectible.width, &tiles.collectible.height);
+			"imgs/map_collectible.png", &tiles.collectible.width,
+			&tiles.collectible.height);
 	tiles.exit.image_pointer = mlx_png_file_to_image(game->mlx_ptr,
-			"/Users/jaemoojung/Desktop/42/42SEOUL/circle_2/so_long/imgs/map_exit.png", &tiles.exit.width, &tiles.exit.height);
+			"imgs/map_exit.png", &tiles.exit.width, &tiles.exit.height);
 	game->tiles = tiles;
+}
+
+static void	print_init_message(t_game *game)
+{
+	printf("__________so_long__________\n");
+	printf("Save all of the cats and escape with minimal movement\n");
+	printf("Number of cats you have to save : %d\n",
+		game->number_of_collectibles);
 }
 
 int	init_game(t_map_info *map_info, t_game *game)
@@ -60,5 +69,6 @@ int	init_game(t_map_info *map_info, t_game *game)
 	init_image(game);
 	init_features(game);
 	draw_map(game);
+	print_init_message(game);
 	return (0);
 }

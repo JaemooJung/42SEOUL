@@ -3,13 +3,13 @@
 static void	move_player(int keycode, t_game *game)
 {
 	if (keycode == KEY_W || keycode == KEY_A
-		|| keycode ==  KEY_S || keycode == KEY_D)
+		|| keycode == KEY_S || keycode == KEY_D)
 	{
-	check_wall_and_move(keycode, game);
-	check_collectible(game);
-	draw_map(game);
-	check_exit(game);
-	printf("current move : %d\n", ++game->player.moves);
+		check_wall_and_move(keycode, game);
+		check_collectible(game);
+		draw_map(game);
+		printf("current move : %d\n", ++game->player.moves);
+		check_exit(game);
 	}
 }
 

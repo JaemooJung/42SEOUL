@@ -2,23 +2,21 @@
 
 void	check_exit(t_game *game)
 {
-	printf("current collected: %d\n", game->player.did_collect);
-	printf("num of collectibles: %d\n", game->number_of_collectibles);
 	if (game->player.did_collect != game->number_of_collectibles)
 		return ;
-	if (game->exit.x == game->player.current_x 
+	if (game->exit.x == game->player.current_x
 		&& game->exit.y == game->player.current_y)
-		{
-			game->exit.is_opened = 1;
-			printf("_____YOU WIN!_____\n");
-			printf("Your total move : %d\n", game->player.moves);
-			exit(0);
-		}
+	{
+		game->exit.is_opened = 1;
+		printf("_____YOU WIN!_____\n");
+		printf("Your total move : %d\n", game->player.moves);
+		exit(0);
+	}
 }
 
 void	check_collectible(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < game->number_of_collectibles)

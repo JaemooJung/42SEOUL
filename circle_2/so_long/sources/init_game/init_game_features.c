@@ -34,6 +34,8 @@ void	init_features(t_game *game)
 	i = 0;
 	game->collectibles = (t_collectible *)malloc(sizeof(t_collectible)
 			* game->number_of_collectibles);
+	if (game->collectibles == NULL)
+		error_handler("Failed to malloc collectible array");
 	while (i < game->map_height)
 	{
 		j = 0;
