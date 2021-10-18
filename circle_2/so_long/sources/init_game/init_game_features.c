@@ -28,12 +28,12 @@ static void	init_collectibles(t_game *game, int x, int y)
 
 void	init_features(t_game *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	game->collectibles = (t_collectible *)malloc(sizeof(t_collectible)
-		* game->number_of_collectibles);
+			* game->number_of_collectibles);
 	while (i < game->map_height)
 	{
 		j = 0;

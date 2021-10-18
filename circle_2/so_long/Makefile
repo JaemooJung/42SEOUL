@@ -11,8 +11,9 @@ FILES 		=	so_long.c \
 				parse_map/parse_map_check_wall.c \
 				init_game/init_game.c \
 				init_game/init_game_draw_map.c \
-				init_game/init_game_features.c
-				
+				init_game/init_game_features.c \
+				key_input_handler/key_input_handler.c \
+				key_input_handler/key_input_handler_check.c
 
 SRC_DIR		=	./sources/
 INC_DIR		=	./includes

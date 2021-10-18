@@ -40,7 +40,7 @@ static int	check_file_extension(char *file_name)
 		return (0);
 }
 
-// 나중에 지우기
+// TODO: 나중에 지우기
 void print_map_iter(void *content)
 {
 	printf("%s\n", (char *)content);
@@ -64,6 +64,6 @@ int	parse_map(char *file_name, t_map_info *map_info)
 		exit(errno);
 	}
 	check_map_validity(map_fd, map_info);
-	print_map(map_info); // 나중에 지우기 
+	print_map(map_info); // TODO: 나중에 지우기 
 	return (0);
 }

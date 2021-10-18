@@ -4,6 +4,7 @@
 # include "../minilibx/mlx.h"
 # include "parse_map.h"
 # include "init_game.h"
+# include "key_input_handler.h"
 
 # include <stdio.h>
 # include <errno.h>
