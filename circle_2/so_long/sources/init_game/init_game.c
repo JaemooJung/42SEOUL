@@ -52,6 +52,12 @@ static void	init_image(t_game *game)
 			&tiles.collectible.height);
 	tiles.exit.image_pointer = mlx_png_file_to_image(game->mlx_ptr,
 			"imgs/map_exit_64.png", &tiles.exit.width, &tiles.exit.height);
+	if (tiles.wall.image_pointer == NULL
+		|| tiles.space.image_pointer == NULL
+		|| tiles.player.image_pointer == NULL
+		|| tiles.collectible.image_pointer == NULL
+		|| tiles.exit.image_pointer == NULL)
+		error_handler("Failed to load images.");
 	game->tiles = tiles;
 }
 
