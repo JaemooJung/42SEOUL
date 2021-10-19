@@ -45,7 +45,8 @@ static void	init_image(t_game *game)
 	tiles.space.image_pointer = mlx_png_file_to_image(game->mlx_ptr,
 			"imgs/map_space_64.png", &tiles.space.width, &tiles.space.height);
 	tiles.player.image_pointer = mlx_png_file_to_image(game->mlx_ptr,
-			"imgs/map_player_64.png", &tiles.player.width, &tiles.player.height);
+			"imgs/map_player_64.png", &tiles.player.width,
+			&tiles.player.height);
 	tiles.collectible.image_pointer = mlx_png_file_to_image(game->mlx_ptr,
 			"imgs/map_collectible_64.png", &tiles.collectible.width,
 			&tiles.collectible.height);

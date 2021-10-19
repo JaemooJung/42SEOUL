@@ -31,7 +31,9 @@ static int	check_file_extension(char *file_name)
 	char	*file_extension;
 
 	file_extension = ft_strrchr(file_name, '.');
-	if (file_extension == NULL || ft_strncmp(file_extension, ".ber", 4) != 0)
+	if (file_extension == NULL
+		|| ft_strlen(file_extension) != 4
+		|| ft_strncmp(file_extension, ".ber", 4) != 0)
 		error_handler("Wrong file extension. only .ber file is avaliable");
 	return (0);
 }
