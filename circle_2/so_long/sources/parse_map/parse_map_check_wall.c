@@ -73,9 +73,9 @@ int	check_map_last_line(char *line, t_map_info *map_info)
 
 int	check_for_last(t_map_info *map_info)
 {
-	if (map_info->number_of_player > 1
+	if (map_info->number_of_player != 1
 		|| map_info->number_of_collectibles < 1
-		|| map_info->number_of_exit > 1)
+		|| map_info->number_of_exit != 1)
 		error_handler("Wrong map format.");
 	map_info->height = ft_lstsize(map_info->temp_map);
 	return (0);

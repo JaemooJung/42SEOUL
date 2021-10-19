@@ -34,6 +34,11 @@ void	check_collectible(t_game *game)
 
 void	check_wall_and_move(int keycode, t_game *game)
 {
+	int	tmp_x;
+	int	tmp_y;
+
+	tmp_x = game->player.current_x;
+	tmp_y = game->player.current_y;
 	if (keycode == KEY_W
 		&& game->map[game->player.current_y - 1][game->player.current_x]
 		!= '1')
@@ -50,4 +55,6 @@ void	check_wall_and_move(int keycode, t_game *game)
 		&& game->map[game->player.current_y][game->player.current_x + 1]
 		!= '1')
 		game->player.current_x++;
+	if (game->player.current_x != tmp_x || game->player.current_y != tmp_y)
+		game->player.moves++;
 }
