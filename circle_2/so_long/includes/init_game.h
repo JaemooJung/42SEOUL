@@ -1,7 +1,7 @@
 #ifndef INIT_GAME_H
 # define INIT_GAME_H
 
-# define TILE_SIZE 32
+# define TILE_SIZE 64
 
 typedef struct s_image
 {

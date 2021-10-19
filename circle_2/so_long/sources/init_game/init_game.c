@@ -41,16 +41,16 @@ static void	init_image(t_game *game)
 	t_tiles	tiles;
 
 	tiles.wall.image_pointer = mlx_png_file_to_image(game->mlx_ptr,
-			"imgs/map_wall.png", &tiles.wall.width, &tiles.wall.height);
+			"imgs/map_wall_64.png", &tiles.wall.width, &tiles.wall.height);
 	tiles.space.image_pointer = mlx_png_file_to_image(game->mlx_ptr,
-			"imgs/map_space.png", &tiles.space.width, &tiles.space.height);
+			"imgs/map_space_64.png", &tiles.space.width, &tiles.space.height);
 	tiles.player.image_pointer = mlx_png_file_to_image(game->mlx_ptr,
-			"imgs/map_player.png", &tiles.player.width, &tiles.player.height);
+			"imgs/map_player_64.png", &tiles.player.width, &tiles.player.height);
 	tiles.collectible.image_pointer = mlx_png_file_to_image(game->mlx_ptr,
-			"imgs/map_collectible.png", &tiles.collectible.width,
+			"imgs/map_collectible_64.png", &tiles.collectible.width,
 			&tiles.collectible.height);
 	tiles.exit.image_pointer = mlx_png_file_to_image(game->mlx_ptr,
-			"imgs/map_exit.png", &tiles.exit.width, &tiles.exit.height);
+			"imgs/map_exit_64.png", &tiles.exit.width, &tiles.exit.height);
 	game->tiles = tiles;
 }
 
