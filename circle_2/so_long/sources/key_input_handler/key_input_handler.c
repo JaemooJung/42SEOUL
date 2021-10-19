@@ -8,7 +8,6 @@ static void	move_player(int keycode, t_game *game)
 		check_wall_and_move(keycode, game);
 		check_collectible(game);
 		draw_map(game);
-		printf("current move : %d\n", game->player.moves);
 		check_exit(game);
 	}
 }

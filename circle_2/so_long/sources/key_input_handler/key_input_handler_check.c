@@ -56,5 +56,5 @@ void	check_wall_and_move(int keycode, t_game *game)
 		!= '1')
 		game->player.current_x++;
 	if (game->player.current_x != tmp_x || game->player.current_y != tmp_y)
-		game->player.moves++;
+		printf("current move : %d\n", ++game->player.moves);
 }
