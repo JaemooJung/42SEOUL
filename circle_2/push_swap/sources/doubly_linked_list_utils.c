@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   doubly_linked_list_utils.c                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/16 17:16:11 by jaemjung          #+#    #+#             */
+/*   Updated: 2021/11/16 17:16:31 by jaemjung         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 static int	is_duplicated(t_node *curr, t_node *new_node)
@@ -38,7 +50,7 @@ void	dupcheck_and_append(t_node **head, t_node *new_node)
 		curr = curr->next;
 	}
 	if (is_duplicated(curr, new_node))
-	error_handler();
+		error_handler();
 	curr->next = new_node;
 	new_node->prev = curr;
 }
