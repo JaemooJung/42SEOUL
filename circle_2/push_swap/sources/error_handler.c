@@ -6,13 +6,13 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:14 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/11/16 17:16:31 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/11/16 17:19:50 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	error_handler()
+void	error_handler(void)
 {
 	ft_putstr_fd("Error\n", 2);
 	exit(1);

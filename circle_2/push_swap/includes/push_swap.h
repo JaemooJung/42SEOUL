@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:00 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/11/16 17:16:30 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/11/16 17:20:05 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_node	*new_node(int value);
 void	dupcheck_and_append(t_node **head, t_node *new_node);
 void	append(t_node **head, t_node *new_node);
 
-void	error_handler();
+void	error_handler(void);
 
 long long	ft_atoi(char *str);
 

@@ -6,16 +6,16 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:08 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/11/16 17:16:30 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/11/16 17:18:54 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include <stdio.h> //TODO : 나중에 지우기
 
-void free_str_nums(char **str_nums)
+void	free_str_nums(char **str_nums)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str_nums[i] != NULL)
@@ -30,7 +30,7 @@ void free_str_nums(char **str_nums)
 
 int	is_arg_digit(char *arg)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arg[i] != '\0')
@@ -42,7 +42,7 @@ int	is_arg_digit(char *arg)
 	return (1);
 }
 
-void check_and_append(t_node **node, char *arg)
+void	check_and_append(t_node **node, char *arg)
 {
 	long long	value;
 
