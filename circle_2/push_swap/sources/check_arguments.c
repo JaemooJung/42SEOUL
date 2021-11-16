@@ -55,17 +55,19 @@ int	check_arguments_and_append(int argc, char **argv)
 	{
 		str_nums = ft_split(argv[i++], ' ');
 		if (str_nums == NULL)
-			exit(1);
+			error_handler();
 		j = 0;
 		while (str_nums[j] != NULL)
 			check_and_append(&node, str_nums[j++]);
 		free_str_nums(str_nums);
 	}
+	//TODO : 나중에 지우기
 	while (node->next != NULL)
 	{
 		printf("%d ", node->value);
 		node = node->next;
 	}
 	printf("%d\n", node->value);
+	//---------------------
 	return (0);
 }
