@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:25:16 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/11/16 17:25:38 by jaemjung         ###   ########.fr       */
+/*   Updated: 2021/11/22 05:25:49 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,20 @@ static void	make_2d_map(t_map_info *map_info, t_game *game)
 {
 	char	**arr_map;
 	int		i;
+	t_list	*tmp_head;
 
 	arr_map = (char **)malloc(sizeof(char *) * (map_info->height + 1));
 	if (arr_map == NULL)
 		error_handler("2d map malloc failed.");
 	i = 0;
-	while (map_info->temp_map->next != NULL)
+	tmp_head = map_info->temp_map;
+	while (tmp_head->next != NULL)
 	{
-		arr_map[i] = map_info->temp_map->content;
-		map_info->temp_map = map_info->temp_map->next;
+		arr_map[i] = tmp_head->content;
+		tmp_head = tmp_head->next;
 		i++;
 	}
-	arr_map[i] = map_info->temp_map->content;
+	arr_map[i] = tmp_head->content;
 	arr_map[++i] = NULL;
 	game->map = arr_map;
 	game->map_height = map_info->height;
