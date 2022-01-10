@@ -1,7 +1,7 @@
 NAME 		=	push_swap
 
 CC 			=	gcc
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror -g
 LIB			=	libft/libft.a
 RM			=	rm -f
 
@@ -9,7 +9,8 @@ FILES 		=	main.c \
 				check_arguments.c \
 				doubly_linked_list_utils.c \
 				error_handler.c \
-				init_stack.c 
+				init_stack.c \
+				stack_utils.c
 
 SRC_DIR		=	./sources/
 INC_DIR		=	./includes

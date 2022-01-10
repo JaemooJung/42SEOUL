@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   doubly_linked_list_utils.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:11 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/11/16 17:19:31 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/01/10 01:23:45 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

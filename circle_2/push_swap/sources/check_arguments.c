@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_arguments.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:08 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/11/16 17:18:54 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/01/11 01:41:56 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,13 @@ void	check_and_append(t_node **node, char *arg)
 	dupcheck_and_append(node, new_node((int)value));
 }
 
-int	check_arguments_and_append(int argc, char **argv)
+int	check_arguments_and_append(int argc, char **argv, t_node **node)
 {
 	char	**str_nums;
 	int		i;
 	int		j;
-	t_node	*node;
 
 	i = 1;
-	node = NULL;
 	while (i < argc)
 	{
 		str_nums = ft_split(argv[i++], ' ');
@@ -70,16 +68,19 @@ int	check_arguments_and_append(int argc, char **argv)
 			error_handler();
 		j = 0;
 		while (str_nums[j] != NULL)
-			check_and_append(&node, str_nums[j++]);
+			check_and_append(node, str_nums[j++]);
 		free_str_nums(str_nums);
 	}
+	if (*node == NULL)
+		error_handler();
 	//TODO : 나중에 지우기
-	while (node->next != NULL)
+	t_node *tmp = *node;
+	while (tmp->next != NULL)
 	{
-		printf("%d ", node->value);
-		node = node->next;
+		printf("%d ", tmp->value);
+		tmp = tmp->next;
 	}
-	printf("%d\n", node->value);
+	printf("%d\n", tmp->value);
 	//---------------------
 	return (0);
 }

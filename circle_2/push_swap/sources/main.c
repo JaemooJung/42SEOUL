@@ -3,18 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:18 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/11/16 17:22:05 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/01/11 03:05:55 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
+//TODO : 나중에 지우기
+#include <stdio.h>
+//------------------------------
 int	main(int argc, char **argv)
 {
+	t_node	*node;
+	t_stack	*a;
+	t_stack	*b;
+
 	if (argc < 2)
 		error_handler();
-	check_arguments_and_append(argc, argv);
+	node = NULL;
+	check_arguments_and_append(argc, argv, &node);
+	a = NULL;
+	b = NULL;
+	init_stacks(&node, &a, &b);
+	print_stack_info(a, 'a');
+	print_stack_info(b, 'b');
 }
