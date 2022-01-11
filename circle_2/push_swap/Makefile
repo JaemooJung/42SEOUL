@@ -10,7 +10,10 @@ FILES 		=	main.c \
 				doubly_linked_list_utils.c \
 				error_handler.c \
 				init_stack.c \
-				stack_utils.c
+				stack_utils.c \
+				stack_operation_1.c \
+				stack_operation_2.c \
+				stack_operation_3.c
 
 SRC_DIR		=	./sources/
 INC_DIR		=	./includes
