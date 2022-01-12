@@ -6,7 +6,7 @@
 /*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:18 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/11 12:08:51 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/01/12 14:35:51 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ int	main(int argc, char **argv)
 	pb(&a, &b);
 	pb(&a, &b);
 	pb(&a, &b);
+
 	rrr(&a, &b);
+	
 	print_stack_info(a, 'a');
 	print_stack_info(b, 'b');
+	exit(0);
 }

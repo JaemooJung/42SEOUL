@@ -6,7 +6,7 @@
 /*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:09:59 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/01/11 12:10:20 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/01/12 14:49:18 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int rrr(t_stack **a, t_stack **b)
 {
-	rra(a);
-	rrb(b);
-	ft_putstr_fd("rrr\n", 1);
+	if (reverse_rotate(a) == 0 && reverse_rotate(b) == 0)
+		ft_putstr_fd("rrr\n", 1);
 	return (0);
 }
