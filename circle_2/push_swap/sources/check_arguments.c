@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_arguments.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:08 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/13 10:30:26 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/01/17 18:14:45 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,13 @@ int	check_arguments_and_append(int argc, char **argv, t_node **node)
 	if (is_sorted(node) == 1)
 		exit(1);
 	//TODO : 나중에 지우기
-	t_node *tmp = *node;
-	while (tmp->next != NULL)
-	{
-		printf("%d ", tmp->value);
-		tmp = tmp->next;
-	}
-	printf("%d\n", tmp->value);
+	// t_node *tmp = *node;
+	// while (tmp->next != NULL)
+	// {
+	// 	printf("%d ", tmp->value);
+	// 	tmp = tmp->next;
+	// }
+	// printf("%d\n", tmp->value);
 	//---------------------
 	return (0);
 }

@@ -57,6 +57,7 @@ void sort_three_b(t_stack **stack)
 	}
 	else if (top < middle && bottom < middle && bottom < top)
 		rrb(stack);
+	
 	return ;
 }
 
@@ -119,6 +120,7 @@ void	a_to_b(t_stack **a, t_stack **b, int size)
 				rb_count++;
 			}
 		}
+		tmp = (*a)->top->value;
 	}
 	j = 0;
 	k = 0;
@@ -126,6 +128,8 @@ void	a_to_b(t_stack **a, t_stack **b, int size)
 		rra(a);
 	while (k++ < rb_count)
 		rrb(b);
+	//print_stack_info(*a, 'a');
+	//print_stack_info(*b, 'b');
 	a_to_b(a, b, ra_count);
 }
 
@@ -144,6 +148,9 @@ void	b_to_a(t_stack **a, t_stack **b, int size)
 	if (size < 3)
 	{
 		sort_three_b(b);
+		pa(a, b);
+		pa(a, b);
+		pa(a, b);
 		return ;
 	}
 	set_pivot(&bigger, &smaller, a);
@@ -169,6 +176,7 @@ void	b_to_a(t_stack **a, t_stack **b, int size)
 				ra_count++;
 			}
 		}
+		tmp = (*b)->top->value;
 	}
 	a_to_b(a, b, pa_count - ra_count);
 	j = 0;
@@ -177,6 +185,8 @@ void	b_to_a(t_stack **a, t_stack **b, int size)
 		ra(a);
 	while (k++ < rb_count)
 		rb(b);
+	//print_stack_info(*a, 'a');
+	//print_stack_info(*b, 'b');
 	a_to_b(a, b, ra_count);
 	b_to_a(a, b, rb_count);
 }
