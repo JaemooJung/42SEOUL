@@ -6,7 +6,7 @@
 /*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:18 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/12 14:35:51 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/01/13 13:52:12 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,13 @@ int	main(int argc, char **argv)
 	t_stack	*b;
 
 	if (argc < 2)
-		error_handler();
+		exit(1);
 	node = NULL;
 	check_arguments_and_append(argc, argv, &node);
 	a = NULL;
 	b = NULL;
 	init_stacks(&node, &a, &b);
-	pb(&a, &b);
-	pb(&a, &b);
-	pb(&a, &b);
-
-	rrr(&a, &b);
-	
+	a_to_b(&a, &b, a->size);
 	print_stack_info(a, 'a');
 	print_stack_info(b, 'b');
 	exit(0);

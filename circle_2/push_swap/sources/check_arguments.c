@@ -6,7 +6,7 @@
 /*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:08 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/11 01:41:56 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/01/13 10:30:26 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,20 @@ void	check_and_append(t_node **node, char *arg)
 	dupcheck_and_append(node, new_node((int)value));
 }
 
+int	is_sorted(t_node **list)
+{
+	t_node	*temp;
+
+	temp = *list;
+	while(temp != NULL)
+	{
+		if (temp->next != NULL && temp->value > temp->next->value)
+			return (0);
+		temp = temp->next;
+	}
+	return (1);
+}
+
 int	check_arguments_and_append(int argc, char **argv, t_node **node)
 {
 	char	**str_nums;
@@ -72,7 +86,9 @@ int	check_arguments_and_append(int argc, char **argv, t_node **node)
 		free_str_nums(str_nums);
 	}
 	if (*node == NULL)
-		error_handler();
+		exit(1);
+	if (is_sorted(node) == 1)
+		exit(1);
 	//TODO : 나중에 지우기
 	t_node *tmp = *node;
 	while (tmp->next != NULL)

@@ -6,7 +6,7 @@
 /*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:00 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/12 14:10:18 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/01/13 13:04:53 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ int		rr(t_stack **a, t_stack **b);
 int		rra(t_stack **a);
 int		rrb(t_stack **b);
 int		rrr(t_stack **a, t_stack **b);
+
+void	a_to_b(t_stack **a, t_stack **b, int size);
+void	b_to_a(t_stack **a, t_stack **b, int size);
 
 void	error_handler(void);
 

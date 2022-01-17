@@ -13,7 +13,8 @@ FILES 		=	main.c \
 				stack_utils.c \
 				stack_operation_1.c \
 				stack_operation_2.c \
-				stack_operation_3.c
+				stack_operation_3.c \
+				sort.c
 
 SRC_DIR		=	./sources/
 INC_DIR		=	./includes
