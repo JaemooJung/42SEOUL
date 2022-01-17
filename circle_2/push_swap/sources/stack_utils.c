@@ -6,7 +6,7 @@
 /*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:10:16 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/01/11 12:15:50 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/01/17 21:24:25 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	push(t_stack **from, t_stack **to)
 	return (0);
 }
 
+//swap에서 문제 발견씨발
 int	swap(t_stack **stack)
 {
 	t_node	*node_to_go_down;

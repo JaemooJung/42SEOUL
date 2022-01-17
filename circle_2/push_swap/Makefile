@@ -14,7 +14,8 @@ FILES 		=	main.c \
 				stack_operation_1.c \
 				stack_operation_2.c \
 				stack_operation_3.c \
-				sort.c
+				sort.c \
+				sort_under_five.c
 
 SRC_DIR		=	./sources/
 INC_DIR		=	./includes
