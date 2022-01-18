@@ -1,40 +1,5 @@
 #include "push_swap.h"
 
-void sort_three_a(t_stack **a, int size)
-{
-	if (size == 0)
-		return;
-	if (size == 1)
-		return ;
-	else
-	{
-		if ((*a)->top->value > (*a)->top->next->value)
-			sa(a);
-		return;
-	}
-	//sort_three(a);
-		return ;
-}
-
-void sort_three_b(t_stack **a, t_stack **b, int size)
-{
-	if (size == 0)
-		return ;
-	if (size == 1)
-	{
-		pa(a, b);
-		return;
-	}
-	else
-	{
-		if ((*b)->top->value > (*b)->top->next->value)
-			sb(b);
-	}
-	while (size-- > 0)
-		pa(a, b);
-	return ;
-}
-
 void	set_pivot(int *bigger, int *smaller, t_stack **a)
 {
 	int	first;
@@ -66,7 +31,7 @@ void	a_to_b(t_stack **a, t_stack **b, int size)
 	int	pb_count;
 	int	rb_count;
 
-	if (size < 3)
+	if (size <= 3)
 	{
 		sort_three_a(a, size);
 		return ;

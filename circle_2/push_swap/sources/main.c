@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:18 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/18 14:52:03 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/01/18 16:46:32 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ int	main(int argc, char **argv)
 	init_stacks(&node, &a, &b);
 	print_stack_info(a, 'a');
 	print_stack_info(b, 'b');
-	if (a->size == 3)
-		sort_three(&a);
-	else
-		a_to_b(&a, &b, a->size);
+	a_to_b(&a, &b, a->size);
 	print_stack_info(a, 'a');
 	print_stack_info(b, 'b');
 	exit(0);
