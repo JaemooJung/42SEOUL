@@ -6,7 +6,9 @@ void	set_pivot(int *bigger, int *smaller, t_stack **a)
 	int	second;
 
 	first = (*a)->top->value;
-	second = (*a)->bottom->value;
+	second = (*a)->top->next->value;
+	if (first + 1 == second || first - 1 == second)
+	second = (*a)->top->next->next->value;
 	if (first < second)
 	{
 		*smaller = first;
@@ -31,9 +33,9 @@ void	a_to_b(t_stack **a, t_stack **b, int size)
 	int	pb_count;
 	int	rb_count;
 
-	if (size <= 3)
+	if (size < 3)
 	{
-		sort_three_a(a, size);
+		sort_under_three_a(a, size);
 		return ;
 	}
 	set_pivot(&bigger, &smaller, a);
@@ -46,17 +48,17 @@ void	a_to_b(t_stack **a, t_stack **b, int size)
 	{
 		if (tmp >= bigger)
 		{
-			if (ra(a) == 0)
-				ra_count++;
+			ra(a);
+			ra_count++;
 		}
 		else
 		{
-			if (pb(a, b) == 0)
-				pb_count++;
+			pb(a, b);
+			pb_count++;
 			if (tmp >= smaller)
 			{
-				if (rb(b) == 0)
-					rb_count++;
+				rb(b);
+				rb_count++;
 			}
 		}
 		if ((*a)->top != NULL)
@@ -87,7 +89,7 @@ void	b_to_a(t_stack **a, t_stack **b, int size)
 
 	if (size < 3)
 	{
-		sort_three_b(a, b, size);
+		sort_under_three_b(a, b, size);
 		return ;
 	}
 	set_pivot(&bigger, &smaller, b);
@@ -100,17 +102,17 @@ void	b_to_a(t_stack **a, t_stack **b, int size)
 	{
 		if (tmp < smaller)
 		{
-			if (rb(b) == 0)
-				rb_count++;
+			rb(b);
+			rb_count++;
 		}
 		else
 		{
-			if (pa(a, b) == 0)
-				pa_count++;
+			pa(a, b);
+			pa_count++;
 			if (tmp < bigger)
 			{
-				if (ra(a) == 0)
-					ra_count++;
+				ra(a);
+				ra_count++;
 			}
 		}
 		if ((*b)->top != NULL)
@@ -120,9 +122,9 @@ void	b_to_a(t_stack **a, t_stack **b, int size)
 	j = 0;
 	k = 0;
 	while (j++ < ra_count)
-		ra(a);
+		rra(a);
 	while (k++ < rb_count)
-		rb(b);
+		rrb(b);
 	a_to_b(a, b, ra_count);
 	b_to_a(a, b, rb_count);
 }

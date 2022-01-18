@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	sort_under_three_for_a(t_stack **stack)
+void	sort_three_for_a(t_stack **stack)
 {
 	int	top;
 	int	middle;
@@ -28,7 +28,7 @@ void	sort_under_three_for_a(t_stack **stack)
 	return ;
 }
 
-void sort_three_a(t_stack **a, int size)
+void	sort_under_three_a(t_stack **a, int size)
 {
 	if (size <= 1)
 		return ;
@@ -38,15 +38,15 @@ void sort_three_a(t_stack **a, int size)
 			sa(a);
 		return ;
 	}
-	else if (size == 3)
-	{
-		sort_three_for_a(a);
-		return ;
-	}
+	// else if (size == 3)
+	// {
+	// 	sort_three_for_a(a);
+	// 	return ;
+	// }
 	return ;
 }
 
-void sort_three_b(t_stack **a, t_stack **b, int size)
+void	sort_under_three_b(t_stack **a, t_stack **b, int size)
 {
 	if (size == 0)
 		return ;
@@ -55,11 +55,17 @@ void sort_three_b(t_stack **a, t_stack **b, int size)
 		pa(a, b);
 		return;
 	}
-	else
+	if (size == 2)
 	{
-		if ((*b)->top->value > (*b)->top->next->value)
+		if ((*b)->top->value < (*b)->top->next->value)
 			sb(b);
 	}
+	// if (size == 3)
+	// {
+	// 	sort_three_for_a(b);
+	// 	sb(b);
+	// 	rrb(b);
+	// }
 	while (size-- > 0)
 		pa(a, b);
 	return ;
