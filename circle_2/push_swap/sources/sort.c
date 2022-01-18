@@ -1,34 +1,36 @@
 #include "push_swap.h"
 
-void sort_three_a(t_stack **a)
+void sort_three_a(t_stack **a, int size)
 {
-	if ((*a)->size == 1)
+	if (size == 0)
+		return;
+	if (size == 1)
 		return ;
-	else if ((*a)->size == 2)
+	else
 	{
 		if ((*a)->top->value > (*a)->top->next->value)
 			sa(a);
 		return;
 	}
-	sort_three(a);
+	//sort_three(a);
 		return ;
 }
 
-void sort_three_b(t_stack **a, t_stack **b)
+void sort_three_b(t_stack **a, t_stack **b, int size)
 {
-	if ((*b)->size == 1)
+	if (size == 0)
+		return ;
+	if (size == 1)
 	{
 		pa(a, b);
 		return;
 	}
-	else if ((*b)->size == 2)
+	else
 	{
 		if ((*b)->top->value > (*b)->top->next->value)
 			sb(b);
 	}
-	else
-		sort_three(b);
-	while ((*b)->size > 0)
+	while (size-- > 0)
 		pa(a, b);
 	return ;
 }
@@ -66,7 +68,7 @@ void	a_to_b(t_stack **a, t_stack **b, int size)
 
 	if (size < 3)
 	{
-		sort_three_a(a);
+		sort_three_a(a, size);
 		return ;
 	}
 	set_pivot(&bigger, &smaller, a);
@@ -79,20 +81,21 @@ void	a_to_b(t_stack **a, t_stack **b, int size)
 	{
 		if (tmp >= bigger)
 		{
-			ra(a);
-			ra_count++;
+			if (ra(a) == 0)
+				ra_count++;
 		}
 		else
 		{
-			pb(a, b);
-			pb_count++;
+			if (pb(a, b) == 0)
+				pb_count++;
 			if (tmp >= smaller)
 			{
-				rb(b);
-				rb_count++;
+				if (rb(b) == 0)
+					rb_count++;
 			}
 		}
-		tmp = (*a)->top->value;
+		if ((*a)->top != NULL)
+			tmp = (*a)->top->value;
 	}
 	j = 0;
 	k = 0;
@@ -119,7 +122,7 @@ void	b_to_a(t_stack **a, t_stack **b, int size)
 
 	if (size < 3)
 	{
-		sort_three_b(a, b);
+		sort_three_b(a, b, size);
 		return ;
 	}
 	set_pivot(&bigger, &smaller, b);
@@ -132,20 +135,21 @@ void	b_to_a(t_stack **a, t_stack **b, int size)
 	{
 		if (tmp < smaller)
 		{
-			rb(b);
-			rb_count++;
+			if (rb(b) == 0)
+				rb_count++;
 		}
 		else
 		{
-			pa(a, b);
-			pa_count++;
+			if (pa(a, b) == 0)
+				pa_count++;
 			if (tmp < bigger)
 			{
-				ra(a);
-				ra_count++;
+				if (ra(a) == 0)
+					ra_count++;
 			}
 		}
-		tmp = (*b)->top->value;
+		if ((*b)->top != NULL)
+			tmp = (*b)->top->value;
 	}
 	a_to_b(a, b, pa_count - ra_count);
 	j = 0;

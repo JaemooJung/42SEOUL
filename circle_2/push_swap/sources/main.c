@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:18 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/18 12:13:01 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/01/18 14:52:03 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	main(int argc, char **argv)
 	a = NULL;
 	b = NULL;
 	init_stacks(&node, &a, &b);
+	print_stack_info(a, 'a');
+	print_stack_info(b, 'b');
 	if (a->size == 3)
 		sort_three(&a);
 	else
