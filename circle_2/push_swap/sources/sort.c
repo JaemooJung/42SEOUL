@@ -1,63 +1,35 @@
 #include "push_swap.h"
 
-void sort_three_a(t_stack **stack)
+void sort_three_a(t_stack **a)
 {
-	int	top;
-	int	middle;
-	int	bottom;
-
-	top = (*stack)->top->value;
-	middle = (*stack)->top->next->value;
-	bottom = (*stack)->bottom->value;
-	if (top < middle && middle < bottom)
+	if ((*a)->size == 1)
 		return ;
-	else if (top > middle && top < bottom)
-		sa(stack);
-	else if (top > middle && middle > bottom)
+	else if ((*a)->size == 2)
 	{
-		sa(stack);
-		rra(stack);
+		if ((*a)->top->value > (*a)->top->next->value)
+			sa(a);
+		return;
 	}
-	else if (top > middle && middle < bottom && top > bottom)
-		ra(stack);
-	else if (top < middle && bottom < middle)
-	{
-		sa(stack);
-		ra(stack);
-	}
-	else if (top < middle && bottom < middle && bottom < top)
-		rra(stack);
-	return ;
+	sort_three(a);
+		return ;
 }
 
-void sort_three_b(t_stack **stack)
+void sort_three_b(t_stack **a, t_stack **b)
 {
-	int	top;
-	int	middle;
-	int	bottom;
-
-	top = (*stack)->top->value;
-	middle = (*stack)->top->next->value;
-	bottom = (*stack)->bottom->value;
-	if (top < middle && middle < bottom)
-		return ;
-	else if (top > middle && top < bottom)
-		sb(stack);
-	else if (top > middle && middle > bottom)
+	if ((*b)->size == 1)
 	{
-		sb(stack);
-		rrb(stack);
+		pa(a, b);
+		return;
 	}
-	else if (top > middle && middle < bottom && top > bottom)
-		rb(stack);
-	else if (top < middle && bottom < middle)
+	else if ((*b)->size == 2)
 	{
-		sb(stack);
-		rb(stack);
+		if ((*b)->top->value > (*b)->top->next->value)
+			sb(b);
 	}
-	else if (top < middle && bottom < middle && bottom < top)
-		rrb(stack);
-	
+	else
+		sort_three(b);
+	while ((*b)->size > 0)
+		pa(a, b);
 	return ;
 }
 
@@ -128,9 +100,9 @@ void	a_to_b(t_stack **a, t_stack **b, int size)
 		rra(a);
 	while (k++ < rb_count)
 		rrb(b);
-	//print_stack_info(*a, 'a');
-	//print_stack_info(*b, 'b');
 	a_to_b(a, b, ra_count);
+	b_to_a(a, b, rb_count);
+	b_to_a(a, b, pb_count - rb_count);
 }
 
 void	b_to_a(t_stack **a, t_stack **b, int size)
@@ -147,13 +119,10 @@ void	b_to_a(t_stack **a, t_stack **b, int size)
 
 	if (size < 3)
 	{
-		sort_three_b(b);
-		pa(a, b);
-		pa(a, b);
-		pa(a, b);
+		sort_three_b(a, b);
 		return ;
 	}
-	set_pivot(&bigger, &smaller, a);
+	set_pivot(&bigger, &smaller, b);
 	tmp = (*b)->top->value;
 	ra_count = 0;
 	rb_count = 0;
@@ -185,8 +154,6 @@ void	b_to_a(t_stack **a, t_stack **b, int size)
 		ra(a);
 	while (k++ < rb_count)
 		rb(b);
-	//print_stack_info(*a, 'a');
-	//print_stack_info(*b, 'b');
 	a_to_b(a, b, ra_count);
 	b_to_a(a, b, rb_count);
 }

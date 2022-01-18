@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:10:16 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/01/17 21:24:25 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/01/18 12:26:39 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 int	push(t_stack **from, t_stack **to)
 {
@@ -43,18 +43,21 @@ int	push(t_stack **from, t_stack **to)
 	return (0);
 }
 
-//swap에서 문제 발견씨발
 int	swap(t_stack **stack)
 {
 	t_node	*node_to_go_down;
 	t_node	*node_to_go_up;
+	t_node	*next_of_ngd;
 
 	if ((*stack)->size < 2)
 		return (-1);
 	node_to_go_down = (*stack)->top;
 	node_to_go_up = (*stack)->top->next;
+	next_of_ngd = (*stack)->top->next->next;
 	node_to_go_down->prev = node_to_go_up;
 	node_to_go_down->next = node_to_go_up->next;
+	if (next_of_ngd != NULL)
+		next_of_ngd->prev = node_to_go_down;
 	node_to_go_up->prev = NULL;
 	node_to_go_up->next = node_to_go_down;
 	(*stack)->top = node_to_go_up;

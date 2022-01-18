@@ -14,9 +14,7 @@ void	sort_three(t_stack **stack)
 	else if (top > middle && middle > bottom)
 	{
 		sa(stack);
-		print_stack_info(*stack, 'a');
 		rra(stack);
-		print_stack_info(*stack, 'a');
 	}
 	else if (top > middle && middle < bottom && top > bottom)
 		ra(stack);
