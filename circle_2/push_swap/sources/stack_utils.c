@@ -6,11 +6,17 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:10:16 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/01/19 12:38:41 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/01/19 13:53:49 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	set_node(t_node **n_to_m, t_node **n_t_f, t_stack **from)
+{
+	*n_to_m = (*from)->top;
+	*n_t_f = (*from)->top->next;
+}
 
 int	push(t_stack **from, t_stack **to)
 {
@@ -19,8 +25,7 @@ int	push(t_stack **from, t_stack **to)
 
 	if ((*from)->size < 1)
 		return (-1);
-	node_to_move = (*from)->top;
-	next_top_of_from = (*from)->top->next;
+	set_node(&node_to_move, &next_top_of_from, from);
 	if ((*to)->size == 0)
 	{
 		(*to)->top = node_to_move;
