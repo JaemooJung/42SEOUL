@@ -102,22 +102,6 @@ void	re_rotate_ab(t_stack **a, t_stack **b, t_vars *vars, int flag)
 		while (temp_rb_cnt--)
 		rrb(b);
 	}
-	// while (temp_ra_cnt != 0 && temp_rb_cnt != 0)
-	// {
-	// 	rrr(a, b);
-	// 	temp_ra_cnt--;
-	// 	temp_rb_cnt--;
-	// }
-	// if (temp_ra_cnt > 0)
-	// {
-	// 	while (temp_ra_cnt--)
-	// 		rra(a);
-	// }
-	// else if (temp_rb_cnt > 0)
-	// {
-	// 	while (temp_rb_cnt--)
-	// 		rrb(b);
-	// }
 }
 
 void	re_rotate_ba(t_stack **a, t_stack **b, t_vars *vars)
