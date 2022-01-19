@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:00 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/19 13:27:00 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/01/19 18:54:57 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,19 @@ int			rra(t_stack **a);
 int			rrb(t_stack **b);
 int			rrr(t_stack **a, t_stack **b);
 
-void		a_to_b(t_stack **a, t_stack **b, int size);
-void		b_to_a(t_stack **a, t_stack **b, int size);
+void		a_to_b(t_stack **a, t_stack **b, int size, int *flag);
+void		b_to_a(t_stack **a, t_stack **b, int size, int *flag);
 
 void		sort_under_three_a(t_stack **a, int size);
+void		sort_three_for_a(t_stack **stack);
 void		sort_under_three_b(t_stack **a, t_stack **b, int size);
 void		compair_and_move_a(t_stack **a, t_stack **b, t_vars *vars,
 				int size);
 void		compair_and_move_b(t_stack **a, t_stack **b, t_vars *vars,
 				int size);
 void		set_pivot(t_vars *vars, t_stack **a);
-void		re_rotate(t_stack **a, t_stack **b, t_vars *vars);
-
+void		re_rotate_ab(t_stack **a, t_stack **b, t_vars *vars, int flag);
+void		re_rotate_ba(t_stack **a, t_stack **b, t_vars *vars);
 void		error_handler(void);
 
 long long	ft_atoi(char *str);

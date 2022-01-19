@@ -71,7 +71,56 @@ void	compair_and_move_b(t_stack **a, t_stack **b, t_vars *vars, int size)
 	}
 }
 
-void	re_rotate(t_stack **a, t_stack **b, t_vars *vars)
+void	re_rotate_ab(t_stack **a, t_stack **b, t_vars *vars, int flag)
+{
+	int	temp_ra_cnt;
+	int	temp_rb_cnt;
+
+	temp_ra_cnt = vars->ra_cnt;
+	temp_rb_cnt = vars->rb_cnt;
+	if (flag != 0)
+	{
+		while (temp_ra_cnt != 0 && temp_rb_cnt != 0)
+		{
+			rrr(a, b);
+			temp_ra_cnt--;
+			temp_rb_cnt--;
+		}
+		if (temp_ra_cnt > 0)
+		{
+			while (temp_ra_cnt--)
+				rra(a);
+		}
+		else if (temp_rb_cnt > 0)
+		{
+			while (temp_rb_cnt--)
+				rrb(b);
+		}
+	}
+	else
+	{
+		while (temp_rb_cnt--)
+		rrb(b);
+	}
+	// while (temp_ra_cnt != 0 && temp_rb_cnt != 0)
+	// {
+	// 	rrr(a, b);
+	// 	temp_ra_cnt--;
+	// 	temp_rb_cnt--;
+	// }
+	// if (temp_ra_cnt > 0)
+	// {
+	// 	while (temp_ra_cnt--)
+	// 		rra(a);
+	// }
+	// else if (temp_rb_cnt > 0)
+	// {
+	// 	while (temp_rb_cnt--)
+	// 		rrb(b);
+	// }
+}
+
+void	re_rotate_ba(t_stack **a, t_stack **b, t_vars *vars)
 {
 	int	temp_ra_cnt;
 	int	temp_rb_cnt;

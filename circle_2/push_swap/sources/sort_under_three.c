@@ -1,31 +1,67 @@
 #include "push_swap.h"
 
-void	sort_three(t_stack **stack)
+void	sort_three_arg_for_a(t_stack **a)
 {
 	int	top;
 	int	middle;
 	int	bottom;
 
-	top = (*stack)->top->value;
-	middle = (*stack)->top->next->value;
-	bottom = (*stack)->bottom->value;
+	top = (*a)->top->value;
+	middle = (*a)->top->next->value;
+	bottom = (*a)->bottom->value;
 	if (top > middle && top < bottom && middle < bottom)
-		sa(stack);
+		sa(a);
 	else if (top > middle && middle > bottom)
 	{
-		sa(stack);
-		rra(stack);
+		sa(a);
+		rra(a);
 	}
 	else if (top > middle && middle < bottom && top > bottom)
-		ra(stack);
+		ra(a);
 	else if (top < middle && bottom < middle && top < bottom)
 	{
-		sa(stack);
-		ra(stack);
+		sa(a);
+		ra(a);
 	}
 	else if (top < middle && bottom < middle && bottom < top)
-		rra(stack);
+		rra(a);
 	return ;
+}
+
+void	sort_three_for_a(t_stack **a)
+{
+	if ((*a)->top->value < (*a)->top->next->value
+		&& (*a)->top->next->value < (*a)->top->next->next->value)
+		return ;
+	if ((*a)->top->value > (*a)->top->next->value
+		&& (*a)->top->value > (*a)->top->next->next->value)
+		sa(a);
+	if ((*a)->top->value < (*a)->top->next->value)
+	{
+		ra(a);
+		sa(a);
+		rra(a);
+	}
+	if ((*a)->top->value > (*a)->top->next->value)
+		sa(a);
+}
+
+void	sort_three_for_b(t_stack **b)
+{
+	if ((*b)->top->value > (*b)->top->next->value
+		&& (*b)->top->next->value > (*b)->top->next->next->value)
+		return ;
+	if ((*b)->top->value < (*b)->top->next->value
+		&& (*b)->top->value < (*b)->top->next->next->value)
+		sb(b);
+	if ((*b)->top->value > (*b)->top->next->value)
+	{
+		rb(b);
+		sb(b);
+		rrb(b);
+	}
+	if ((*b)->top->value < (*b)->top->next->value)
+		sb(b);
 }
 
 void	sort_under_three_a(t_stack **a, int size)
@@ -37,6 +73,13 @@ void	sort_under_three_a(t_stack **a, int size)
 		if ((*a)->top->value > (*a)->top->next->value)
 			sa(a);
 		return ;
+	}
+	else if (size == 3)
+	{
+		if ((*a)->size == 3)
+			sort_three_arg_for_a(a);
+		else
+			sort_three_for_a(a);
 	}
 	return ;
 }
@@ -55,6 +98,8 @@ void	sort_under_three_b(t_stack **a, t_stack **b, int size)
 		if ((*b)->top->value < (*b)->top->next->value)
 			sb(b);
 	}
+	else if (size == 3)
+		sort_three_for_b(b);
 	while (size-- > 0)
 		pa(a, b);
 	return ;
