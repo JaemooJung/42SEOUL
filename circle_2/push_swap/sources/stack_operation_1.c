@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:10:05 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/01/18 14:59:03 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/01/19 12:39:09 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	sa(t_stack **a)
 
 int	sb(t_stack **b)
 {
-	if(swap(b) == 0)
+	if (swap(b) == 0)
 	{
 		ft_putstr_fd("sb\n", 1);
 		return (0);

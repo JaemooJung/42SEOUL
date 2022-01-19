@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:10:16 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/01/18 12:26:39 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/01/19 12:38:41 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	swap(t_stack **stack)
 	return (0);
 }
 
-int rotate(t_stack **stack)
+int	rotate(t_stack **stack)
 {
 	t_node	*next_top;
 	t_node	*next_bottom;
@@ -86,7 +86,7 @@ int rotate(t_stack **stack)
 	return (0);
 }
 
-int reverse_rotate(t_stack **stack)
+int	reverse_rotate(t_stack **stack)
 {
 	t_node	*next_top;
 	t_node	*next_bottom;

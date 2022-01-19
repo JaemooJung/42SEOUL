@@ -6,12 +6,11 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:08 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/17 18:14:45 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/01/19 13:38:27 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h> //TODO : 나중에 지우기
 
 void	free_str_nums(char **str_nums)
 {
@@ -59,7 +58,7 @@ int	is_sorted(t_node **list)
 	t_node	*temp;
 
 	temp = *list;
-	while(temp != NULL)
+	while (temp != NULL)
 	{
 		if (temp->next != NULL && temp->value > temp->next->value)
 			return (0);
@@ -89,14 +88,5 @@ int	check_arguments_and_append(int argc, char **argv, t_node **node)
 		exit(1);
 	if (is_sorted(node) == 1)
 		exit(1);
-	//TODO : 나중에 지우기
-	// t_node *tmp = *node;
-	// while (tmp->next != NULL)
-	// {
-	// 	printf("%d ", tmp->value);
-	// 	tmp = tmp->next;
-	// }
-	// printf("%d\n", tmp->value);
-	//---------------------
 	return (0);
 }

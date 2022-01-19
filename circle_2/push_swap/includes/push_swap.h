@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:00 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/18 17:09:24 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/01/19 13:27:00 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,40 +30,58 @@ typedef struct s_stack
 	t_node		*bottom;
 }				t_stack;
 
-int		check_arguments_and_append(int argc, char **argv, t_node **node);
-void	dupcheck_and_append(t_node **head, t_node *new_node);
-void	append(t_node **head, t_node *new_node);
-t_node	*new_node(int value);
+typedef struct s_vars
+{
+	int	bigger;
+	int	smaller;
+	int	tmp;
+	int	i;
+	int	j;
+	int	k;
+	int	ra_cnt;
+	int	rb_cnt;
+	int	pa_cnt;
+	int	pb_cnt;
+}		t_vars;
 
+int			check_arguments_and_append(int argc, char **argv, t_node **node);
+void		dupcheck_and_append(t_node **head, t_node *new_node);
+void		append(t_node **head, t_node *new_node);
+t_node		*new_node(int value);
 
-void	print_stack_info(t_stack *stack, char stack_name); //TODO : 나중에 지우기
-int		init_stacks(t_node **node, t_stack **a, t_stack **b);
+void		print_stack_info(t_stack *stack, char stack_name); //TODO : 나중에 지우기
+int			init_stacks(t_node **node, t_stack **a, t_stack **b);
 
-int		push(t_stack **from, t_stack **to);
-int		swap(t_stack **stack);
-int		rotate(t_stack **stack);
-int		reverse_rotate(t_stack **stack);
+int			push(t_stack **from, t_stack **to);
+int			swap(t_stack **stack);
+int			rotate(t_stack **stack);
+int			reverse_rotate(t_stack **stack);
 
-int		sa(t_stack **a);
-int		sb(t_stack **b);
-int		ss(t_stack **a, t_stack **b);
-int		pa(t_stack **a, t_stack **b);
-int		pb(t_stack **a, t_stack **b);
-int		ra(t_stack **a);
-int		rb(t_stack **b);
-int		rr(t_stack **a, t_stack **b);
-int		rra(t_stack **a);
-int		rrb(t_stack **b);
-int		rrr(t_stack **a, t_stack **b);
+int			sa(t_stack **a);
+int			sb(t_stack **b);
+int			ss(t_stack **a, t_stack **b);
+int			pa(t_stack **a, t_stack **b);
+int			pb(t_stack **a, t_stack **b);
+int			ra(t_stack **a);
+int			rb(t_stack **b);
+int			rr(t_stack **a, t_stack **b);
+int			rra(t_stack **a);
+int			rrb(t_stack **b);
+int			rrr(t_stack **a, t_stack **b);
 
-void	a_to_b(t_stack **a, t_stack **b, int size);
-void	b_to_a(t_stack **a, t_stack **b, int size);
+void		a_to_b(t_stack **a, t_stack **b, int size);
+void		b_to_a(t_stack **a, t_stack **b, int size);
 
-void	sort_under_three_a(t_stack **a, int size);
-void	sort_under_three_b(t_stack **a, t_stack **b, int size);
+void		sort_under_three_a(t_stack **a, int size);
+void		sort_under_three_b(t_stack **a, t_stack **b, int size);
+void		compair_and_move_a(t_stack **a, t_stack **b, t_vars *vars,
+				int size);
+void		compair_and_move_b(t_stack **a, t_stack **b, t_vars *vars,
+				int size);
+void		set_pivot(t_vars *vars, t_stack **a);
+void		re_rotate(t_stack **a, t_stack **b, t_vars *vars);
 
-void	error_handler(void);
+void		error_handler(void);
 
 long long	ft_atoi(char *str);
-
 #endif
