@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:00 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/20 13:48:55 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/01/20 18:23:57 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ typedef struct s_stack
 	t_node		*top;
 	t_node		*bottom;
 }				t_stack;
+
+typedef struct s_five_vars
+{
+	int		median;
+	int		cnt;
+	int		r_cnt;
+}			t_five_vars;
 
 typedef struct s_vars
 {
@@ -74,15 +81,27 @@ void		b_to_a(t_stack **a, t_stack **b, int size, int *flag);
 
 void		sort_under_three_a(t_stack **a, int size);
 void		sort_three_for_a(t_stack **stack);
+void		sort_three_arg_for_a(t_stack **a);
+
+void		sort_three_for_b(t_stack **b);
 void		sort_under_three_b(t_stack **a, t_stack **b, int size);
+
+void		sort_five_for_a(t_stack **a, t_stack **b);
+void		sort_five_arg_for_a(t_stack **a, t_stack **b);
+void		sort_five_for_b(t_stack **a, t_stack **b);
 void		compair_and_move_a(t_stack **a, t_stack **b, t_vars *vars,
 				int size);
 void		compair_and_move_b(t_stack **a, t_stack **b, t_vars *vars,
 				int size);
+
+int			*make_arr(t_stack **a, int size);
+void		quick_sort(int **arr, int l, int r);
 void		set_pivot(t_vars *vars, t_stack **a, int size);
+
 void		re_rotate_ab(t_stack **a, t_stack **b, t_vars *vars, int flag);
 void		re_rotate_ba(t_stack **a, t_stack **b, t_vars *vars);
 void		error_handler(void);
 
 long long	ft_atoi(char *str);
+
 #endif

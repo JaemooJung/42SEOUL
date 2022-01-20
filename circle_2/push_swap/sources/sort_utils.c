@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_pivot.c                                        :+:      :+:    :+:   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 12:41:54 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/01/20 14:36:36 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/01/20 16:50:11 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void	set_pivot(t_vars *vars, t_stack **stack, int size)
 	if (arr == NULL)
 		error_handler();
 	quick_sort(&arr, 0, size - 1);
-	s_idx = size * (0.33);
-	b_idx = size * (0.66);
+	s_idx = size * (0.3);
+	b_idx = size * (0.6);
 	vars->bigger = arr[(int)s_idx];
 	vars->smaller = arr[(int)b_idx];
 	free(arr);

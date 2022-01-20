@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 12:40:56 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/01/20 13:49:13 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/01/20 18:10:00 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ void	a_to_b(t_stack **a, t_stack **b, int size, int *flag)
 	if (size <= 3)
 	{
 		sort_under_three_a(a, size);
+		return ;
+	}
+	else if (size == 5)
+	{
+		if ((*a)->size == 5)
+			sort_five_arg_for_a(a, b);
+		else
+			sort_five_for_a(a, b);
 		return ;
 	}
 	set_pivot(&vars, a, size);
@@ -39,6 +47,11 @@ void	b_to_a(t_stack **a, t_stack **b, int size, int *flag)
 	if (size <= 3)
 	{
 		sort_under_three_b(a, b, size);
+		return ;
+	}
+	else if (size == 5)
+	{
+		sort_five_for_b(a, b);
 		return ;
 	}
 	set_pivot(&vars, b, size);

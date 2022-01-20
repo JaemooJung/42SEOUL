@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_arguments.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:08 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/20 12:39:43 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/01/20 17:12:57 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ int	check_arguments_and_append(int argc, char **argv, t_node **node)
 		free_str_nums(str_nums);
 	}
 	if (*node == NULL)
-		exit(1);
+		exit(0);
 	if (is_sorted(node) == 1)
-		exit(1);
+		exit(0);
 	return (0);
 }

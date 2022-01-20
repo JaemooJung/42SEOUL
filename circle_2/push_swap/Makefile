@@ -16,8 +16,10 @@ FILES 		=	main.c \
 				stack_operation_3.c \
 				sort.c \
 				sort_under_three.c \
+				sort_under_five.c \
+				sort_under_five_2.c \
 				sort_functions.c \
-				set_pivot.c
+				sort_utils.c
 
 SRC_DIR		=	./sources/
 INC_DIR		=	./includes
