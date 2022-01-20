@@ -6,11 +6,11 @@
 /*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:11 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/10 01:23:45 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/01/20 12:39:49 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 static int	is_duplicated(t_node *curr, t_node *new_node)
 {

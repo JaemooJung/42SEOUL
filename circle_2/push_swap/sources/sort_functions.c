@@ -1,25 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_functions.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/20 12:40:46 by jaemoojung        #+#    #+#             */
+/*   Updated: 2022/01/20 12:47:14 by jaemoojung       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-
-void	set_pivot(t_vars *vars, t_stack **a)
-{
-	int	first;
-	int	second;
-
-	first = (*a)->top->value;
-	second = (*a)->top->next->value;
-	if (first + 1 == second || first - 1 == second)
-		second = (*a)->top->next->next->value;
-	if (first < second)
-	{
-		vars->smaller = first;
-		vars->bigger = second;
-	}
-	else
-	{
-		vars->bigger = first;
-		vars->smaller = second;
-	}
-}
 
 void	compair_and_move_a(t_stack **a, t_stack **b, t_vars *vars, int size)
 {
