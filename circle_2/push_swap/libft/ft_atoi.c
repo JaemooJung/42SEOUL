@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 15:14:06 by jaemjung          #+#    #+#             */
-/*   Updated: 2021/10/22 03:38:32 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/01/20 15:24:58 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ long long	ft_atoi(char *str)
 {
 	long long	sign;
 	long long	int_ret;
-	int	i;
+	int			i;
 
 	sign = 1;
 	i = 0;

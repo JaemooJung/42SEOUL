@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 12:40:46 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/01/20 12:47:14 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/01/20 15:32:07 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,29 +69,21 @@ void	re_rotate_ab(t_stack **a, t_stack **b, t_vars *vars, int flag)
 
 	temp_ra_cnt = vars->ra_cnt;
 	temp_rb_cnt = vars->rb_cnt;
-	if (flag != 0)
+	while (temp_ra_cnt != 0 && temp_rb_cnt != 0 && flag != 0)
 	{
-		while (temp_ra_cnt != 0 && temp_rb_cnt != 0)
-		{
-			rrr(a, b);
-			temp_ra_cnt--;
-			temp_rb_cnt--;
-		}
-		if (temp_ra_cnt > 0)
-		{
-			while (temp_ra_cnt--)
-				rra(a);
-		}
-		else if (temp_rb_cnt > 0)
-		{
-			while (temp_rb_cnt--)
-				rrb(b);
-		}
+		rrr(a, b);
+		temp_ra_cnt--;
+		temp_rb_cnt--;
 	}
-	else
+	if (temp_ra_cnt > 0 && flag != 0)
+	{
+		while (temp_ra_cnt--)
+			rra(a);
+	}
+	if (temp_rb_cnt > 0)
 	{
 		while (temp_rb_cnt--)
-		rrb(b);
+			rrb(b);
 	}
 }
 

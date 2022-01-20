@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:18 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/20 13:52:12 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/01/20 15:32:40 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	push_swap(t_stack **a, t_stack **b)
 {
-	int flag;
+	int	flag;
 
 	flag = 0;
 	a_to_b(a, b, (*a)->size, &flag);
@@ -34,7 +34,5 @@ int	main(int argc, char **argv)
 	b = NULL;
 	init_stacks(&node, &a, &b);
 	push_swap(&a, &b);
-	//print_stack_info(a, 'a');
-	//print_stack_info(b, 'b');
 	exit(0);
 }
