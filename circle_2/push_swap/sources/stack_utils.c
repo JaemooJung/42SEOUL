@@ -3,19 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:10:16 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/01/20 15:37:09 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/01/22 23:47:13 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	set_node(t_node **n_to_m, t_node **n_t_f, t_stack **from)
+int	set_node(t_node **n_to_m, t_node **n_t_f, t_stack **from)
 {
+	if ((*from)->size < 1)
+		return (-1);
 	*n_to_m = (*from)->top;
 	*n_t_f = (*from)->top->next;
+	return (0);
 }
 
 int	push(t_stack **from, t_stack **to)
@@ -23,9 +26,8 @@ int	push(t_stack **from, t_stack **to)
 	t_node	*node_to_move;
 	t_node	*next_top_of_from;
 
-	if ((*from)->size < 1)
+	if (set_node(&node_to_move, &next_top_of_from, from) == -1)
 		return (-1);
-	set_node(&node_to_move, &next_top_of_from, from);
 	if ((*to)->size == 0)
 	{
 		(*to)->top = node_to_move;
@@ -43,8 +45,8 @@ int	push(t_stack **from, t_stack **to)
 	else
 		(*from)->bottom = NULL;
 	(*from)->top = next_top_of_from;
-	(*to)->size++;
 	(*from)->size--;
+	(*to)->size++;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:00 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/22 10:51:13 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/01/22 23:38:12 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,11 @@ void		sort_under_three_b(t_stack **a, t_stack **b, int size);
 void		sort_five_for_a(t_stack **a, t_stack **b);
 void		sort_five_arg_for_a(t_stack **a, t_stack **b);
 void		sort_five_for_b(t_stack **a, t_stack **b);
+
+void		check_and_push_a(t_stack **a, t_stack **b,
+				t_five_vars *vars);
+void		check_and_push_b(t_stack **a, t_stack **b,
+				t_five_vars *vars);
 void		compair_and_move_a(t_stack **a, t_stack **b, t_vars *vars,
 				int size);
 void		compair_and_move_b(t_stack **a, t_stack **b, t_vars *vars,
