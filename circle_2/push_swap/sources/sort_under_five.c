@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_under_five.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:44:30 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/20 18:58:39 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/01/22 10:51:55 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	sort_five_arg_for_a(t_stack **a, t_stack **b)
 	int		median;
 	int		cnt;
 
+	if (is_a_sorted(a, 5))
+		return;
 	median = get_median(a, 5);
 	cnt = 0;
 	while (cnt < 2)
@@ -57,6 +59,8 @@ void	sort_five_for_a(t_stack **a, t_stack **b)
 {
 	t_five_vars	vars;
 
+	if (is_a_sorted(a, 5))
+		return;
 	ft_bzero(&vars, sizeof(t_five_vars));
 	vars.median = get_median(a, 5);
 	while (vars.cnt < 2)
@@ -84,7 +88,15 @@ void	sort_five_for_a(t_stack **a, t_stack **b)
 void	sort_five_for_b(t_stack **a, t_stack **b)
 {
 	t_five_vars	vars;
+	int			size;
 
+	size = 5;
+	if (is_b_sorted(b, size))
+	{
+		while (size--)
+			pa(a, b);
+		return ;
+	}
 	ft_bzero(&vars, sizeof(t_five_vars));
 	vars.median = get_median(b, 5);
 	while (vars.cnt < 2)

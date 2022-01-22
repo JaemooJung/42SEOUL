@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:00 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/20 18:23:57 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/01/22 10:51:13 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ void		compair_and_move_b(t_stack **a, t_stack **b, t_vars *vars,
 int			*make_arr(t_stack **a, int size);
 void		quick_sort(int **arr, int l, int r);
 void		set_pivot(t_vars *vars, t_stack **a, int size);
+int			is_a_sorted(t_stack **a, int size);
+int			is_b_sorted(t_stack **b, int size);
 
 void		re_rotate_ab(t_stack **a, t_stack **b, t_vars *vars, int flag);
 void		re_rotate_ba(t_stack **a, t_stack **b, t_vars *vars);

@@ -17,7 +17,7 @@ FILES 		=	main.c \
 				sort.c \
 				sort_under_three.c \
 				sort_under_five.c \
-				sort_under_five_2.c \
+				sort_under_five_utils.c \
 				sort_functions.c \
 				sort_utils.c
 
