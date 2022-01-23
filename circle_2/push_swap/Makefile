@@ -15,11 +15,11 @@ FILES 		=	main.c \
 				stack_operation_2.c \
 				stack_operation_3.c \
 				sort.c \
+				sort_utils.c \
+				sort_functions.c \
 				sort_under_three.c \
 				sort_under_five.c \
-				sort_under_five_utils.c \
-				sort_functions.c \
-				sort_utils.c
+				sort_under_five_utils.c
 
 SRC_DIR		=	./sources/
 INC_DIR		=	./includes

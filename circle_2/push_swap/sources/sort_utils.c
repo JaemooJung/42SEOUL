@@ -6,7 +6,7 @@
 /*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 12:41:54 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/01/22 10:51:11 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/01/23 10:37:18 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,15 @@ void	quick_sort(int **arr, int l, int r)
 void	set_pivot(t_vars *vars, t_stack **stack, int size)
 {
 	int		*arr;
-	double	s_idx;
-	double	b_idx;
+	int		s_idx;
+	int		b_idx;
 
 	arr = make_arr(stack, size);
 	if (arr == NULL)
 		error_handler();
 	quick_sort(&arr, 0, size - 1);
-	s_idx = size * (0.3);
-	b_idx = size * (0.6);
+	s_idx = size / 3 + 1;
+	b_idx = size * 2 / 3 + 1;
 	vars->bigger = arr[(int)s_idx];
 	vars->smaller = arr[(int)b_idx];
 	free(arr);
