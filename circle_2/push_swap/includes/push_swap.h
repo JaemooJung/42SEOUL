@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:00 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/22 23:38:12 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/01/24 12:38:16 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void		dupcheck_and_append(t_node **head, t_node *new_node);
 void		append(t_node **head, t_node *new_node);
 t_node		*new_node(int value);
 
-void		print_stack_info(t_stack *stack, char stack_name); //TODO : 나중에 지우기
 int			init_stacks(t_node **node, t_stack **a, t_stack **b);
 
 int			push(t_stack **from, t_stack **to);

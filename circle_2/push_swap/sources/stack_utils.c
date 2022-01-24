@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:10:16 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/01/22 23:47:13 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/01/24 12:38:03 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,31 +112,3 @@ int	reverse_rotate(t_stack **stack)
 	next_top->next = former_top;
 	return (0);
 }
-
-//TODO : 나중에 지우기
-
-#include <stdio.h>
-void print_stack_info(t_stack *stack, char stack_name)
-{
-	if (stack->size == 0)
-	{
-		printf("stack %c is Empty\n", stack_name);
-		return ;
-	}
-	printf("-------------------------------------------------\n");
-	printf("stack %c top : %d\n", stack_name, stack->top->value);
-	printf("stack %c bottom : %d\n", stack_name, stack->bottom->value);
-	printf("stack %c size : %d\n", stack_name, stack->size);
-
-	printf("stack elements : ");
-	t_node *tmp = stack->top;
-	while (tmp != NULL)
-	{
-		printf("%d ", tmp->value);
-		tmp = tmp->next;
-	}
-	printf("\n-------------------------------------------------");
-	printf("\n");
-}
-
-// ---------------------
