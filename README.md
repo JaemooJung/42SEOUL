@@ -10,7 +10,9 @@
 |        | Born2beroot   | Set up your own operating system while implementing strict rules.          |                       40 h |              50 h | 120/100 |   pass  |
 |        | ft_printf     | Make your own printf function.                                             |                      175 h |             100 h | 115/100 |   pass  |
 |    2   | minitalk      | Make a small data exchange program using UNIX signal; SIGUSR1 and SIGUSR2. |                       50 h |              30 h | 100/100 |   pass  |
-|        | so_long       | Make a very small 2D game.                                                 |                       60 h |              80 h | 100/100  | pass |
+|        | so_long       | Make a very small 2D game.                                                 |                       60 h |              80 h | 100/100 |   pass  |
+|        | push_swap     | Sort numbers using 2 stacks, with minimum number of operations..           |                       60 h |              90 h | 90/100  |   pass  |
+|    3   | philosophers  | I’ve never thought philosophy would be so deadly.                          |                       70 h |                   |         |         |
 
 \*Estimated Time to Complete 
 <br/>
