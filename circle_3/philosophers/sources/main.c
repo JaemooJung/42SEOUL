@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 12:38:26 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/27 12:46:12 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/01/27 16:23:14 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(int argc, char **argv)
 {
-	if (argc < 2)
-		return (1);
-	printf("arg : %s", argv[1]);
+	if (argc < 5)
+		error_handler();
+	
 }
