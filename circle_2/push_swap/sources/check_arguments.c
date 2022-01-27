@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:08 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/20 17:12:57 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/01/24 17:08:17 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	is_arg_digit(char *arg)
 			return (0);
 		i++;
 	}
+	if (i > 11)
+		return (0);
 	return (1);
 }
 
