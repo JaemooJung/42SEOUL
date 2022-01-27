@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 15:14:06 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/24 13:01:05 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/01/24 17:17:28 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static	int	is_num(int c)
 		return (0);
 }
 
-static	int	get_int_ret(char *str, int i)
+static	long long	get_int_ret(char *str, int i)
 {
-	int	int_ret;
+	long long	int_ret;
 
 	int_ret = 0;
 	while ((str[i] >= '0') && (str[i] <= '9'))

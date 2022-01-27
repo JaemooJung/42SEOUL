@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:16:00 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/24 12:38:16 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/01/24 17:16:37 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,5 @@ int			is_b_sorted(t_stack **b, int size);
 void		re_rotate_ab(t_stack **a, t_stack **b, t_vars *vars, int flag);
 void		re_rotate_ba(t_stack **a, t_stack **b, t_vars *vars);
 void		error_handler(void);
-
-long long	ft_atoi(char *str);
 
 #endif
