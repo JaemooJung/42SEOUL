@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   philosophers_functions.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/27 12:43:11 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/28 13:28:22 by jaemjung         ###   ########.fr       */
+/*   Created: 2022/01/28 12:53:27 by jaemjung          #+#    #+#             */
+/*   Updated: 2022/01/28 13:41:22 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "philo.h"
 
-# include <stdio.h>
-# include <pthread.h>
-# include "../libft/libft.h"
-
-typedef struct s_philo
+void *say_hello(void *data)
 {
-	int			philo_args[5];
-	pthread_t	*philo_threads;
-}	t_philo;
+	pthread_t tid;
 
-void	check_args(int argc, char **argv, t_philo *philo);
-void	error_handler(char *err);
-void	*say_hello(void *data);
-
-#endif
+	tid = pthread_self();
+	printf("Hello! ");
+	printf("this is tid %i\n", (int)tid);
+	return data;
+}

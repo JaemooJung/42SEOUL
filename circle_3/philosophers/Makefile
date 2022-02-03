@@ -6,6 +6,10 @@ LIB			=	libft/libft.a
 RM			=	rm -f
 
 FILES 		=	main.c \
+				error_handler.c \
+				check_args.c \
+				init_philosophers.c \
+				philosophers_functions.c \
 
 SRC_DIR		=	./sources/
 INC_DIR		=	./includes
