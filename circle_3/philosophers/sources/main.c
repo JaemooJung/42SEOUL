@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 12:38:26 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/03 13:28:47 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:26:20 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ int main(int argc, char **argv)
 	}
 	//_____________________
 	init_philosophers(&info);
-	sleep(2);
+	sleep(1);
 	system("leaks philo > leaks_result_temp; cat leaks_result_temp && rm -rf leaks_result_temp");
 }
