@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 12:43:11 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/03 15:02:00 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/03 17:45:09 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,21 @@
 # include <pthread.h>
 # include "../libft/libft.h"
 
-typedef struct s_philo_info	t_philo_info;
-
 typedef struct s_philosopher
 {
-	int					number;
-	pthread_t			thread;
-	//왼쪽포크
-	//오른쪽포크
-	struct s_philo_info	*info;
+	int				number;
+	pthread_t		thread;
+	pthread_mutex_t	*print;
+	pthread_mutex_t	*fork_left;
+	pthread_mutex_t *fork_right;
 }	t_philosopher;
 
 typedef struct s_philo_info
 {
 	int				philo_args[5];
-	pthread_mutex_t	print;
 	t_philosopher	*philo_arr;
+	pthread_mutex_t	print;
+	pthread_mutex_t	*fork_arr;
 }	t_philo_info;
 
 int		check_args(int argc, char **argv, t_philo_info *philo);
