@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 12:38:26 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/28 13:42:39 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/03 13:28:47 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 int main(int argc, char **argv)
 {
-	t_philo philo;
-	pthread_t test;
+	t_philo_info info;
 
 	if (5 > argc || argc > 6)
-		error_handler("error : wrong usage");
-	ft_bzero(&philo, sizeof(philo));
-	check_args(argc, argv, &philo);
+		return (error_handler("error : wrong usage"));
+	ft_bzero(&info, sizeof(t_philo_info));
+	check_args(argc, argv, &info);
 	//TODO : Delete this code later
 	for (int i = 0; i < argc - 1; i++)
 	{
-		printf("%d ", philo.philo_args[i]);
+		printf("%d ", info.philo_args[i]);
 		printf("\n");
 	}
 	//_____________________
-	pthread_create(&test, NULL, say_hello, NULL);
-	pthread_join(test, NULL); //조인을 쓰면 메인함수가 종료
+	init_philosophers(&info);
+	sleep(2);
+	system("leaks philo > leaks_result_temp; cat leaks_result_temp && rm -rf leaks_result_temp");
 }

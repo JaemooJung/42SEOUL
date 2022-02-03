@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:21:31 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/28 12:49:57 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/03 13:28:43 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	is_arg_digit(char *arg)
 	return (1);
 }
 
-void check_args(int argc, char **argv, t_philo *philo)
+int check_args(int argc, char **argv, t_philo_info *info)
 {
 	long long	temp;
 	int			i;
@@ -37,12 +37,13 @@ void check_args(int argc, char **argv, t_philo *philo)
 	while (i < argc)
 	{
 		if (is_arg_digit(argv[i]) == 0)
-			error_handler("error : arguments must be int");
+			return (error_handler("error : arguments must be int"));
 		temp = ft_atoi(argv[i]);
 		if (temp < 0 || temp > INT_MAX)
-			error_handler("error : arguments must be int");
+			return (error_handler("error : arguments must be int"));
 		else
-			philo->philo_args[i - 1] = temp;
+			info->philo_args[i - 1] = temp;
 		i++;
 	}
+	return (0);
 }

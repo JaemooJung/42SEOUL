@@ -6,14 +6,15 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:20:07 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/01/28 12:48:48 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/03 12:02:01 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	error_handler(char *err)
+int	error_handler(char *err)
 {
-	printf("%s\n", err);
-	exit(1);
+	ft_putstr_fd(err, 2);
+	ft_putstr_fd("\n", 2);
+	return (1);
 }
