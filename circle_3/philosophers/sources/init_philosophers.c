@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 12:29:53 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/03 18:25:11 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/07 18:39:06 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	init_philosophers(t_philo_info *info)
 	int				i;
 	int				j;
 	int				pthread_check;
+	int				n_of_philos;
 
 	//뮤텍스 생성
 	pthread_mutex_init(&(info->print), NULL);
@@ -39,18 +40,17 @@ int	init_philosophers(t_philo_info *info)
 
 	//스레드 생성
 	i = 0;
-	int n_of_philos = info->philo_args[N_OF_PHILO];
+	info->time_start = get_time();
+	n_of_philos = info->philo_args[N_OF_PHILO];
 	while (i < info->philo_args[N_OF_PHILO])
 	{
 		info->philo_arr[i].number = i + 1;
 		info->philo_arr[i].print = &(info->print);
 		info->philo_arr[i].fork_left = &(info->fork_arr[i]);
 		info->philo_arr[i].fork_right = &(info->fork_arr[((i + 1) % n_of_philos)]);
-		
-
+		info->philo_arr[i].info = info;
 		pthread_check = pthread_create(&(info->philo_arr[i].thread),
-					NULL, say_hello, &(info->philo_arr[i]));
-		//pthread_join(info->philo_arr[i].thread, NULL);
+					NULL, philo_do, &(info->philo_arr[i]));
 		if (pthread_check != 0)
 			return (error_handler("error: thread creation failed"));
 		

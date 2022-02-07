@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 12:43:11 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/03 17:45:09 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/07 18:12:18 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@
 
 # include <stdio.h>
 # include <pthread.h>
+# include <sys/time.h>
 # include "../libft/libft.h"
+
+typedef struct s_philo_info	t_philo_info;
 
 typedef struct s_philosopher
 {
@@ -29,20 +32,25 @@ typedef struct s_philosopher
 	pthread_t		thread;
 	pthread_mutex_t	*print;
 	pthread_mutex_t	*fork_left;
-	pthread_mutex_t *fork_right;
+	pthread_mutex_t	*fork_right;
+	long long		time_fed;
+	t_philo_info	*info;
 }	t_philosopher;
 
 typedef struct s_philo_info
 {
 	int				philo_args[5];
+	long long		time_start;
 	t_philosopher	*philo_arr;
 	pthread_mutex_t	print;
 	pthread_mutex_t	*fork_arr;
 }	t_philo_info;
 
-int		check_args(int argc, char **argv, t_philo_info *philo);
-int		error_handler(char *err);
-void	*say_hello(void *data);
-int		init_philosophers(t_philo_info *vars);
+int			check_args(int argc, char **argv, t_philo_info *philo);
+int			error_handler(char *err);
+void		*say_hello(void *data);
+void		*philo_do(void *data);
+int			init_philosophers(t_philo_info *vars);
+long long	get_time(void);
 
 #endif
