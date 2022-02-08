@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 12:29:53 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/07 18:39:06 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:39:08 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ int	init_philosophers(t_philo_info *info)
 	{
 		info->philo_arr[i].number = i + 1;
 		info->philo_arr[i].print = &(info->print);
-		info->philo_arr[i].fork_left = &(info->fork_arr[i]);
-		info->philo_arr[i].fork_right = &(info->fork_arr[((i + 1) % n_of_philos)]);
+		info->philo_arr[i].fork_l = &(info->fork_arr[i]);
+		info->philo_arr[i].fork_r = &(info->fork_arr[((i + 1) % n_of_philos)]);
 		info->philo_arr[i].info = info;
+		info->philo_arr[i].time_fed = 0;
 		pthread_check = pthread_create(&(info->philo_arr[i].thread),
 					NULL, philo_do, &(info->philo_arr[i]));
 		if (pthread_check != 0)

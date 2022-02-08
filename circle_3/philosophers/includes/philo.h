@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 12:43:11 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/07 18:12:18 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/08 14:49:37 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,11 @@ typedef struct s_philosopher
 	int				number;
 	pthread_t		thread;
 	pthread_mutex_t	*print;
-	pthread_mutex_t	*fork_left;
-	pthread_mutex_t	*fork_right;
+	pthread_mutex_t	*fork_l;
+	pthread_mutex_t	*fork_r;
 	long long		time_fed;
 	t_philo_info	*info;
+	int				eat_cnt;
 }	t_philosopher;
 
 typedef struct s_philo_info
@@ -48,9 +49,11 @@ typedef struct s_philo_info
 
 int			check_args(int argc, char **argv, t_philo_info *philo);
 int			error_handler(char *err);
-void		*say_hello(void *data);
-void		*philo_do(void *data);
+
 int			init_philosophers(t_philo_info *vars);
+void		*philo_do(void *data);
+
 long long	get_time(void);
+void		alt_sleep(long long time_to_sleep);
 
 #endif

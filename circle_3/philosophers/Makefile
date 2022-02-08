@@ -10,6 +10,7 @@ FILES 		=	main.c \
 				check_args.c \
 				init_philosophers.c \
 				philosophers_functions.c \
+				time_functions.c
 
 SRC_DIR		=	./sources/
 INC_DIR		=	./includes
