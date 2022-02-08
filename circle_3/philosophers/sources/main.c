@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 12:38:26 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/08 15:40:09 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/08 17:15:25 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,9 @@
 
 int check_philo(t_philo_info *info)
 {
-	int	done_eat;
-	int	idx;
-
-	idx = 0;
-	done_eat = 0;
-	while (idx < info->philo_args[N_OF_PHILO])
+	while (1)
 	{
-	// 	if (get_time() - info->philo_arr[idx].time_fed > info->philo_args[T_DIE])
-	// 	{
-	// 		pthread_mutex_lock(info->philo_arr[idx].print);
-	// 		printf("%lld %d died", get_time() - info->time_start,
-	// 			info->philo_arr[idx].number);
-	// 	}
-	// 	idx++;
-	// 	if (idx == info->philo_args[N_OF_PHILO])
-	// 		idx = 0;
+		info->philo_args[MUST_EAT]++;
 	}
 	return (0);
 }

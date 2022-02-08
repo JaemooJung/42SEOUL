@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 12:29:53 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/08 15:39:08 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/08 17:13:42 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	init_philosophers(t_philo_info *info)
 					NULL, philo_do, &(info->philo_arr[i]));
 		if (pthread_check != 0)
 			return (error_handler("error: thread creation failed"));
-		
+		pthread_detach(info->philo_arr[i].thread);
 		i++;
 	}
 	return (0);
