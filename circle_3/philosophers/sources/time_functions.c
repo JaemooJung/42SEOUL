@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   time_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:10:32 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/08 13:17:51 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/09 15:41:26 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ void	alt_sleep(long long time_to_sleep)
 
 	target_time = get_time() + time_to_sleep;
 	while (target_time > get_time())
-		;
+		usleep(100);
 }

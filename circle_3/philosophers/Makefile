@@ -8,8 +8,9 @@ RM			=	rm -f
 FILES 		=	main.c \
 				error_handler.c \
 				check_args.c \
-				init_philosophers.c \
-				philosophers_functions.c \
+				init_philo.c \
+				philo_functions.c \
+				philo_functions_2.c \
 				time_functions.c
 
 SRC_DIR		=	./sources/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:21:31 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/03 13:28:43 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/09 13:42:44 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ int check_args(int argc, char **argv, t_philo_info *info)
 			info->philo_args[i - 1] = temp;
 		i++;
 	}
+	if (info->philo_args[MUST_EAT])
+		info->is_must_eat_on = 1;
 	return (0);
 }
