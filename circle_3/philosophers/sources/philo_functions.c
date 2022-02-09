@@ -6,7 +6,7 @@
 /*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 12:53:27 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/09 15:22:20 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/02/09 15:46:51 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int philo_sleep(t_philosopher *philo)
 int philo_think(t_philosopher *philo)
 {
 	philo_print(philo, THINK);
+	usleep(10);
 	return (0);
 }
 
