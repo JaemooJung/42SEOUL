@@ -15,6 +15,8 @@ FILES 		=	main.c \
 				time_functions.c
 
 BONUS_FILES	=	main_bonus.c \
+				check_args_bonus.c \
+				error_handler_bonus.c
 
 SRC_DIR		=	./sources/
 BONUS_DIR	=	./sources_bonus/
