@@ -1,4 +1,5 @@
 NAME 		=	philo
+NAME_BONUS	=	philo_bonus
 
 CC 			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror -g
@@ -13,16 +14,20 @@ FILES 		=	main.c \
 				philo_functions_2.c \
 				time_functions.c
 
+BONUS_FILES	=	main_bonus.c \
+
 SRC_DIR		=	./sources/
+BONUS_DIR	=	./sources_bonus/
 INC_DIR		=	./includes
 
 SRCS		=	$(addprefix $(SRC_DIR), $(FILES))
+BONUS_SRCS	=	$(addprefix $(BONUS_DIR), $(BONUS_FILES))
 OBJS		=	$(SRCS:.c=.o)
+BONUS_OBJS	=	$(BONUS_SRCS:.c=.o)
 
 LIBFT		=	libft.a
 
-
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
 
 all: $(LIBFT) $(NAME)
 
@@ -35,13 +40,17 @@ $(LIBFT):
 $(NAME): $(OBJS)
 	$(CC) -o $@ $^ $(LIB)
 
+$(NAME_BONUS): $(BONUS_OBJS)
+	$(CC) -o $@ $^ $(LIB)
+
+bonus: $(LIBFT) $(NAME_BONUS)
+
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(BONUS_OBJS)
 	make clean -C libft
 
-
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(NAME_BONUS)
 	make fclean -C libft
 	
 re: clean all

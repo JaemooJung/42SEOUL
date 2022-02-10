@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time_functions.c                                   :+:      :+:    :+:   */
+/*   philo_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 13:10:32 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/10 12:46:18 by jaemjung         ###   ########.fr       */
+/*   Created: 2022/02/10 15:50:55 by jaemjung          #+#    #+#             */
+/*   Updated: 2022/02/10 16:00:21 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#ifndef PHILO_BONUS_H
+#define PHILO_BONUS_H
 
-long long	get_time(void)
-{
-	struct timeval	time;
-	long long		ms;
+# define N_OF_PHILO 0
+# define T_DIE 1
+# define T_EAT 2
+# define T_SLEEP 3
+# define MUST_EAT 4
 
-	gettimeofday(&time, NULL);
-	ms = (time.tv_sec * 1000) + (time.tv_usec / 1000);
-	return (ms);
-}
+# include "../libft/libft.h"
+# include <stdio.h>
 
-void	alt_sleep(long long time_to_sleep)
-{
-	long long	target_time;
 
-	target_time = get_time() + time_to_sleep;
-	while (target_time > get_time())
-		usleep(100);
-}
+#endif

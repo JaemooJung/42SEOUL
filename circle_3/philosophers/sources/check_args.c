@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:21:31 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/09 13:42:44 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/02/10 12:39:09 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	is_arg_digit(char *arg)
 	return (1);
 }
 
-int check_args(int argc, char **argv, t_philo_info *info)
+int	check_args(int argc, char **argv, t_philo_info *info)
 {
 	long long	temp;
 	int			i;

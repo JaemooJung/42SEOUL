@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_functions_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:55:59 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/02/09 13:31:14 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/02/10 15:14:44 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ void	philo_print(t_philosopher *philo, int state)
 	else if (state == FORK_R)
 		printf("has taken fork on the right\n");
 	else if (state == DEAD)
+	{
 		printf("died\n");
+		return ;
+	}
 	pthread_mutex_unlock(philo->print);
 }
 

@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   init_philo.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 12:29:53 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/09 15:31:25 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/02/10 12:40:44 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int init_fork(t_philo_info *info)
+int	init_fork(t_philo_info *info)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	info->fork_arr = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t)
-						* info->philo_args[N_OF_PHILO]);
+			* info->philo_args[N_OF_PHILO]);
 	if (info->fork_arr == NULL)
 		return (error_handler("error: fork array malloc failed"));
 	while (i < info->philo_args[N_OF_PHILO])
@@ -29,12 +29,12 @@ int init_fork(t_philo_info *info)
 	return (0);
 }
 
-int init_philosophers(t_philo_info *info)
+int	init_philosophers(t_philo_info *info)
 {
-	int i;
+	int	i;
 
 	info->philo_arr = (t_philosopher *)malloc(sizeof(t_philosopher)
-						* info->philo_args[N_OF_PHILO]);
+			* info->philo_args[N_OF_PHILO]);
 	if (info->philo_arr == NULL)
 		return (error_handler("error: philosopher array malloc failed"));
 	i = 0;
@@ -42,9 +42,10 @@ int init_philosophers(t_philo_info *info)
 	{
 		info->philo_arr[i].number = i + 1;
 		info->philo_arr[i].print = &(info->print);
+		info->philo_arr[i].eat = &(info->eat);
 		info->philo_arr[i].fork_l = &(info->fork_arr[i]);
-		info->philo_arr[i].fork_r = &(info->fork_arr[((i + 1) %
-			info->philo_args[N_OF_PHILO])]);
+		info->philo_arr[i].fork_r = &(info->fork_arr[((i + 1)
+					% info->philo_args[N_OF_PHILO])]);
 		info->philo_arr[i].time_fed = get_time();
 		info->philo_arr[i].info = info;
 		info->philo_arr[i].eat_cnt = 0;
@@ -60,6 +61,7 @@ int init_philosophers(t_philo_info *info)
 int	init_philo(t_philo_info *info)
 {
 	pthread_mutex_init(&(info->print), NULL);
+	pthread_mutex_init(&(info->eat), NULL);
 	if (init_fork(info))
 		return (error_handler("error: fork init failed"));
 	info->time_start = get_time();
