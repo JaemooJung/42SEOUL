@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 12:38:26 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/11 13:00:54 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/11 17:20:22 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,10 @@ int	main(int argc, char **argv)
 
 	if (5 > argc || argc > 6)
 		return (error_handler("error : wrong usage"));
-	ft_bzero(&info, sizeof(t_philo_info));
+	memset(&info, 0, sizeof(t_philo_info));
 	if (check_args(argc, argv, &info) != 0)
 		return (1);
-	init_philo(&info);
+	if (init_philo(&info) != 0)
+		return (1);
 	check_philo(&info);
 }

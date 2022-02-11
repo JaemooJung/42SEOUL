@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 12:43:11 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/10 12:25:05 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/11 17:18:18 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@
 # include <stdio.h>
 # include <pthread.h>
 # include <sys/time.h>
-# include "../libft/libft.h"
+# include <limits.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <string.h>
 
 typedef struct s_philo_info	t_philo_info;
 
@@ -60,6 +63,10 @@ typedef struct s_philo_info
 	int				done_eat;
 }	t_philo_info;
 
+long long	ft_atoi(char *str);
+int			ft_isdigit(int c);
+
+void		ft_putstr_fd(char *s, int fd);
 int			check_args(int argc, char **argv, t_philo_info *philo);
 int			error_handler(char *err);
 

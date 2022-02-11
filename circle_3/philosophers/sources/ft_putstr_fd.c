@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_bonus.h                                      :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 15:50:55 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/11 17:07:10 by jaemjung         ###   ########.fr       */
+/*   Created: 2022/02/11 17:12:39 by jaemjung          #+#    #+#             */
+/*   Updated: 2022/02/11 17:16:57 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_BONUS_H
-#define PHILO_BONUS_H
+#include "philo.h"
 
-# define N_OF_PHILO 0
-# define T_DIE 1
-# define T_EAT 2
-# define T_SLEEP 3
-# define MUST_EAT 4
-
-# include <stdio.h>
-
-typedef struct s_philo_b_info
+size_t	ft_strlen(const char *str)
 {
-	int	philo_args[5];
-	int	is_must_eat_on;
+	size_t	len;
 
-}	t_philo_b_info;
+	len = 0;
+	while (str[len] != '\0')
+		len++;
+	return (len);
+}
 
-int	error_handler(char *err);
-int	check_args(int argc, char **argv, t_philo_b_info *info);
-
-
-#endif
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (!s || fd < 0)
+		return ;
+	write(fd, s, ft_strlen(s));
+}
