@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 12:38:26 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/10 16:22:05 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/11 13:00:54 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_eat(t_philo_info *info)
 	while (info->is_must_eat_on && i < info->philo_args[N_OF_PHILO]
 		&& info->philo_arr[i].eat_cnt >= info->philo_args[MUST_EAT])
 		i++;
-	if (i == info->philo_args[N_OF_PHILO])
+	if (i == info->philo_args[N_OF_PHILO] && info->is_must_eat_on)
 		info->done_eat = 1;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:21:31 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/10 12:39:09 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/11 13:07:21 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	check_args(int argc, char **argv, t_philo_info *info)
 	int			i;
 
 	i = 1;
+	info->philo_args[MUST_EAT] = -1;
 	while (i < argc)
 	{
 		if (is_arg_digit(argv[i]) == 0)
@@ -45,7 +46,9 @@ int	check_args(int argc, char **argv, t_philo_info *info)
 			info->philo_args[i - 1] = temp;
 		i++;
 	}
-	if (info->philo_args[MUST_EAT])
+	if (info->philo_args[N_OF_PHILO] == 0)
+		return (error_handler("error : more than one philo required"));
+	if (info->philo_args[MUST_EAT] >= 0 && argc == 6)
 		info->is_must_eat_on = 1;
 	return (0);
 }
