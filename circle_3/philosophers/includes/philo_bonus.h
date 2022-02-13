@@ -6,7 +6,7 @@
 /*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:50:55 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/13 20:17:08 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/02/13 23:09:50 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_philo_b
 	int				num;
 	long long		time_fed;
 	int				eat_cnt;
+	int				if_finished_eating;
 	int				is_dead;
 	t_philo_b_info	*info;
 }	t_philo_b;
@@ -58,13 +59,13 @@ typedef struct s_philo_b_info
 	t_philo_b	*philo_arr;
 	sem_t		*forks;
 	sem_t		*print;
+	sem_t		*eat_check;
+	int			finished_fork;
 }	t_philo_b_info;
 
 int			error_handler(char *err);
 int			check_args(int argc, char **argv, t_philo_b_info *info);
-long long	ft_atoi(char *str);
-int			ft_isdigit(int c);
-void		ft_putstr_fd(char *s, int fd);
+
 void		alt_sleep(long long time_to_sleep);
 long long	get_time(void);
 void		philo_print(t_philo_b *philo, int state);
@@ -72,4 +73,8 @@ void		philo_print(t_philo_b *philo, int state);
 void		init_philo(t_philo_b_info *info);
 void		philo_do(t_philo_b *philo);
 void		*check_philo(void *data);
+
+long long	ft_atoi(char *str);
+int			ft_isdigit(int c);
+void		ft_putstr_fd(char *s, int fd);
 #endif

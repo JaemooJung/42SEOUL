@@ -6,7 +6,7 @@
 /*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:47:50 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/02/13 17:06:03 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/02/13 23:32:44 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	init_semaphores(t_philo_b_info *info)
 {
 	info->forks = init_sem(info, "fork", info->philo_args[N_OF_PHILO]);
 	info->print = init_sem(info, "print", 1);
+	info->eat_check = init_sem(info, "eat_check", info->philo_args[N_OF_PHILO]);
 }
 
 void	init_philosophers(t_philo_b_info *info)
@@ -46,6 +47,8 @@ void	init_philosophers(t_philo_b_info *info)
 	{
 		info->philo_arr[i].num = i + 1;
 		info->philo_arr[i].eat_cnt = 0;
+		info->philo_arr[i].if_finished_eating = 0;
+		info->philo_arr[i].is_dead = 0;
 		info->philo_arr[i].info = info;
 		i++;
 	}
@@ -65,9 +68,12 @@ void	fork_philosophers(t_philo_b_info *info)
 			philo_do(&info->philo_arr[i]);
 		else if (info->philo_arr[i].pid < 0)
 			error_handler("error : philosopher fork failed");
-		usleep(10);
 		i++;
+		printf("process %d created\n", i);
+		usleep(10);
 	}
+	usleep(100000);
+	info->finished_fork = 1;
 }
 
 void	init_philo(t_philo_b_info *info)
