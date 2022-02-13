@@ -6,7 +6,7 @@
 /*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:47:50 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/02/14 07:35:52 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/02/14 08:09:47 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ void	fork_philosophers(t_philo_b_info *info)
 		printf("process %d created\n", i);
 		usleep(10);
 	}
-	
-	info->finished_fork = 1;
 }
 
 void	init_philo(t_philo_b_info *info)

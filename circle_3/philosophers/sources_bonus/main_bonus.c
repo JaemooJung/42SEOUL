@@ -6,7 +6,7 @@
 /*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:52:11 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/14 07:52:57 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/02/14 08:16:36 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	*wait_for_finish(void *data)
 	while (i < info->philo_args[N_OF_PHILO])
 	{
 		kill(info->philo_arr[i].pid, SIGTERM);
-		waitpid(info->philo_arr[i].pid, NULL, 0);
+		waitpid(info->philo_arr[i].pid, NULL, WNOHANG);
 		i++;
 	}
 	sem_close(info->forks);
@@ -40,6 +40,8 @@ void	*wait_for_finish(void *data)
 	sem_unlink("fork");
 	sem_unlink("print");
 	sem_unlink("eat_check");
+	while (1)
+		;
 	exit(EXIT_FINISHED);
 }
 
@@ -51,7 +53,7 @@ int	end_philo_dead(t_philo_b_info *info)
 	while (i < info->philo_args[N_OF_PHILO])
 	{
 		kill(info->philo_arr[i].pid, SIGTERM);
-		waitpid(info->philo_arr[i].pid, NULL, 0);
+		waitpid(info->philo_arr[i].pid, NULL, WNOHANG);
 		i++;
 	}
 	sem_close(info->forks);
@@ -60,6 +62,8 @@ int	end_philo_dead(t_philo_b_info *info)
 	sem_unlink("fork");
 	sem_unlink("print");
 	sem_unlink("eat_check");
+	while (1)
+		;
 	exit(EXIT_DEAD);
 }
 

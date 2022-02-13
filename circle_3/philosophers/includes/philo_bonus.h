@@ -6,7 +6,7 @@
 /*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:50:55 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/13 23:09:50 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/02/14 08:07:20 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ typedef struct s_philo_b_info
 	sem_t		*forks;
 	sem_t		*print;
 	sem_t		*eat_check;
-	int			finished_fork;
 }	t_philo_b_info;
 
 int			error_handler(char *err);
