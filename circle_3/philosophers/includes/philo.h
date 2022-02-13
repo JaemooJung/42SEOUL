@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 12:43:11 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/11 17:18:18 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/13 19:14:34 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_philo_info
 	long long		time_start;
 	t_philosopher	*philo_arr;
 	pthread_mutex_t	print;
-	pthread_mutex_t	eat;
+	pthread_mutex_t	*eats;
 	pthread_mutex_t	*fork_arr;
 	int				philo_dead;
 	int				is_must_eat_on;

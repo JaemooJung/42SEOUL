@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handler_bonus.c                              :+:      :+:    :+:   */
+/*   time_functions_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 16:18:27 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/12 14:50:22 by jaemoojung       ###   ########.fr       */
+/*   Created: 2022/02/12 17:36:11 by jaemoojung        #+#    #+#             */
+/*   Updated: 2022/02/12 17:37:07 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-int	error_handler(char *err)
+long long	get_time(void)
 {
-	ft_putstr_fd(err, 2);
-	ft_putstr_fd("\n", 2);
-	exit(1);
+	struct timeval	time;
+	long long		ms;
+
+	gettimeofday(&time, NULL);
+	ms = (time.tv_sec * 1000) + (time.tv_usec / 1000);
+	return (ms);
+}
+
+void	alt_sleep(long long time_to_sleep)
+{
+	long long	target_time;
+
+	target_time = get_time() + time_to_sleep;
+	while (target_time > get_time())
+		usleep(100);
 }

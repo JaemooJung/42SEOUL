@@ -20,6 +20,12 @@ BONUS_FILES	=	main_bonus.c \
 				error_handler_bonus.c \
 				ft_atoi_bonus.c \
 				ft_putstr_fd_bonus.c \
+				init_philo_bonus.c \
+				philo_functions_bonus.c \
+				philo_functions_2_bonus.c \
+				time_functions_bonus.c \
+				check_philo_bonus.c \
+
 				
 
 SRC_DIR		=	./sources/

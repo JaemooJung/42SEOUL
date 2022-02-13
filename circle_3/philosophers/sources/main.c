@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 12:38:26 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/11 17:20:22 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/13 19:14:53 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ int	check_dead(t_philo_info *info)
 	i = 0;
 	while (i < info->philo_args[N_OF_PHILO] && (info->philo_dead == 0))
 	{
-		pthread_mutex_lock(&(info->eat));
+		pthread_mutex_lock(&(info->eats[i]));
 		if (get_time() - info->philo_arr[i].time_fed
 			> info->philo_args[T_DIE])
 		{
 			philo_print(&(info->philo_arr[i]), DEAD);
 			info->philo_dead = 1;
 		}
-		pthread_mutex_unlock(&(info->eat));
+		pthread_mutex_unlock(&(info->eats[i]));
 		i++;
 	}
 	return (0);
