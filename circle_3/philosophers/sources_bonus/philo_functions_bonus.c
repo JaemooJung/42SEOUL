@@ -6,7 +6,7 @@
 /*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 18:01:31 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/02/13 23:17:18 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/02/14 07:41:40 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,6 @@ void	philo_do(t_philo_b *philo)
 {
 	pthread_t	thread;
 
-	if (philo->info->is_must_eat_on)
-	{
-		sem_wait(philo->info->eat_check);
-		printf("eat locked from %d\n", philo->num);
-	}
 	pthread_create(&thread, NULL, check_philo, philo);
 	while (philo->is_dead == 0)
 	{
@@ -60,7 +55,7 @@ void	philo_do(t_philo_b *philo)
 			&& philo->eat_cnt >= philo->info->philo_args[MUST_EAT]
 			&& philo->if_finished_eating == 0)
 		{
-			printf("current eat count : %d\n", philo->eat_cnt);
+			printf("%d current eat count : %d\n",philo->num, philo->eat_cnt);
 			philo->if_finished_eating = 1;
 			sem_post(philo->info->eat_check);
 		}

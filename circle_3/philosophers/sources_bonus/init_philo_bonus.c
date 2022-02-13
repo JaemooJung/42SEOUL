@@ -6,7 +6,7 @@
 /*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:47:50 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/02/13 23:32:44 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/02/14 07:35:52 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	init_semaphores(t_philo_b_info *info)
 {
 	info->forks = init_sem(info, "fork", info->philo_args[N_OF_PHILO]);
 	info->print = init_sem(info, "print", 1);
-	info->eat_check = init_sem(info, "eat_check", info->philo_args[N_OF_PHILO]);
+	info->eat_check = init_sem(info, "eat_check", 0);
 }
 
 void	init_philosophers(t_philo_b_info *info)
@@ -72,7 +72,7 @@ void	fork_philosophers(t_philo_b_info *info)
 		printf("process %d created\n", i);
 		usleep(10);
 	}
-	usleep(100000);
+	
 	info->finished_fork = 1;
 }
 
