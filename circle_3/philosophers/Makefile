@@ -25,6 +25,7 @@ BONUS_FILES	=	main_bonus.c \
 				philo_functions_2_bonus.c \
 				time_functions_bonus.c \
 				check_philo_bonus.c \
+				wait_die_or_finish_bonus.c
 
 				
 

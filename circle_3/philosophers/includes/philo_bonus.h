@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   philo_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:50:55 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/14 08:07:20 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/02/14 11:57:32 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_BONUS_H
-#define PHILO_BONUS_H
+# define PHILO_BONUS_H
 
 # define N_OF_PHILO 0
 # define T_DIE 1
@@ -42,7 +42,7 @@ typedef struct s_philo_b_info	t_philo_b_info;
 
 typedef struct s_philo_b
 {
-	pid_t 			pid;
+	pid_t			pid;
 	int				num;
 	long long		time_fed;
 	int				eat_cnt;
@@ -72,6 +72,8 @@ void		philo_print(t_philo_b *philo, int state);
 void		init_philo(t_philo_b_info *info);
 void		philo_do(t_philo_b *philo);
 void		*check_philo(void *data);
+void		*wait_for_finish(void *data);
+int			wait_die_or_finish(t_philo_b_info *info);
 
 long long	ft_atoi(char *str);
 int			ft_isdigit(int c);

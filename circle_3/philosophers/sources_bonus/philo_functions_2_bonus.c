@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_functions_2_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 18:14:54 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/02/13 17:39:10 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/02/14 11:54:59 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

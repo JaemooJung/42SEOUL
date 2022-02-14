@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 12:53:27 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/13 17:39:57 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/02/14 12:01:06 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	*philo_do(void *data)
 	while (philo->info->philo_dead == 0 && philo->info->done_eat == 0)
 	{
 		philo_eat(philo);
-		if (philo->info->done_eat == 1 || philo->info->philo_dead == 1)
+		if (philo->info->philo_dead == 1)
 			break ;
 		philo_sleep(philo);
 		philo_think(philo);

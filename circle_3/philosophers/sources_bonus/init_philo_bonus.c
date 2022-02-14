@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_philo_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:47:50 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/02/14 08:09:47 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/02/14 12:16:10 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void	init_semaphores(t_philo_b_info *info)
 
 void	init_philosophers(t_philo_b_info *info)
 {
-	int i;
+	int	i;
 
-	info->philo_arr = (t_philo_b *)malloc(sizeof(t_philo_b) *
-		info->philo_args[N_OF_PHILO]);
+	info->philo_arr = (t_philo_b *)malloc(sizeof(t_philo_b)
+			* info->philo_args[N_OF_PHILO]);
 	if (!info->philo_arr)
 		error_handler("error : philo arr malloc failed");
 	i = 0;
@@ -69,7 +69,6 @@ void	fork_philosophers(t_philo_b_info *info)
 		else if (info->philo_arr[i].pid < 0)
 			error_handler("error : philosopher fork failed");
 		i++;
-		printf("process %d created\n", i);
 		usleep(10);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_philo_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 14:51:47 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/02/13 23:14:20 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/02/14 12:14:08 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

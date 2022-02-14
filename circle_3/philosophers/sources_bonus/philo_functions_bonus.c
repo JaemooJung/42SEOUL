@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_functions_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 18:01:31 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/02/14 07:41:40 by jaemoojung       ###   ########.fr       */
+/*   Updated: 2022/02/14 12:14:45 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	philo_do(t_philo_b *philo)
 			&& philo->eat_cnt >= philo->info->philo_args[MUST_EAT]
 			&& philo->if_finished_eating == 0)
 		{
-			printf("%d current eat count : %d\n",philo->num, philo->eat_cnt);
 			philo->if_finished_eating = 1;
 			sem_post(philo->info->eat_check);
 		}
