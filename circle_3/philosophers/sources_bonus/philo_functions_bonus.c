@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 18:01:31 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/02/14 15:32:58 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/14 17:50:18 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	philo_eat(t_philo_b *philo)
 	sem_post(philo->info->forks);
 	sem_post(philo->info->forks);
 	if (philo->info->is_must_eat_on
-			&& philo->eat_cnt >= philo->info->philo_args[MUST_EAT]
-			&& philo->if_finished_eating == 0)
+		&& philo->eat_cnt >= philo->info->philo_args[MUST_EAT]
+		&& philo->if_finished_eating == 0)
 	{
 		philo->if_finished_eating = 1;
 		sem_post(philo->info->eat_check);

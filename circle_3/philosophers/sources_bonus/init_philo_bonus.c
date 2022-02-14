@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:47:50 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/02/14 15:50:01 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/14 17:49:41 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,13 @@ void	init_semaphores(t_philo_b_info *info)
 {
 	int		i;
 	char	*temp;
+
 	info->forks = init_sem(info, "fork", info->philo_args[N_OF_PHILO]);
 	info->print = init_sem(info, "print", 1);
 	info->eat_check = init_sem(info, "eat_check",
-		info->philo_args[N_OF_PHILO]);
+			info->philo_args[N_OF_PHILO]);
 	info->eat_dead_checks = (sem_t **)malloc(sizeof(sem_t *)
-		* info->philo_args[N_OF_PHILO]);
+			* info->philo_args[N_OF_PHILO]);
 	if (info->eat_dead_checks == NULL)
 		error_handler("error : eat_dead_check array malloc failed");
 	i = 0;
