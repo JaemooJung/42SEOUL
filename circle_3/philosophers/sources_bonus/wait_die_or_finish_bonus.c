@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 11:39:11 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/14 12:47:04 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/14 15:50:02 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,27 @@
 
 void	end_philo(t_philo_b_info *info)
 {
+	int		i;
+	char	*temp;
+
+	i = 0;
+	while (i < info->philo_args[N_OF_PHILO])
+	{
+		kill(info->philo_arr[i].pid, SIGTERM);
+		waitpid(info->philo_arr[i].pid, NULL, WNOHANG);
+		i++;
+	}
 	sem_close(info->forks);
 	sem_close(info->print);
-	sem_close(info->eat_check);
+	i = 0;
+	while (i < info->philo_args[N_OF_PHILO])
+	{
+		temp = ft_itoa(i);
+		sem_close(info->eat_dead_checks[i]);
+		sem_unlink(temp);
+		free(temp);
+		i++;
+	}
 	sem_unlink("fork");
 	sem_unlink("print");
 	sem_unlink("eat_check");
@@ -36,29 +54,12 @@ void	*wait_for_finish(void *data)
 	}
 	sem_wait(info->print);
 	printf("philosophers are finished eating.\n");
-	i = 0;
-	while (i < info->philo_args[N_OF_PHILO])
-	{
-		kill(info->philo_arr[i].pid, SIGTERM);
-		waitpid(info->philo_arr[i].pid, NULL, WNOHANG);
-		i++;
-	}
 	end_philo(info);
 	exit(EXIT_FINISHED);
 }
 
 int	end_philo_dead(t_philo_b_info *info)
 {
-	int	i;
-
-	i = 0;
-	printf("start killing\n");
-	while (i < info->philo_args[N_OF_PHILO])
-	{
-		kill(info->philo_arr[i].pid, SIGTERM);
-		waitpid(info->philo_arr[i].pid, NULL, WNOHANG);
-		i++;
-	}
 	end_philo(info);
 	exit(EXIT_DEAD);
 }

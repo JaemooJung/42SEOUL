@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:47:50 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/02/14 12:16:10 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/14 15:50:01 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,24 @@ sem_t	*init_sem(t_philo_b_info *info, char *name, unsigned int val)
 
 void	init_semaphores(t_philo_b_info *info)
 {
+	int		i;
+	char	*temp;
 	info->forks = init_sem(info, "fork", info->philo_args[N_OF_PHILO]);
 	info->print = init_sem(info, "print", 1);
-	info->eat_check = init_sem(info, "eat_check", 0);
+	info->eat_check = init_sem(info, "eat_check",
+		info->philo_args[N_OF_PHILO]);
+	info->eat_dead_checks = (sem_t **)malloc(sizeof(sem_t *)
+		* info->philo_args[N_OF_PHILO]);
+	if (info->eat_dead_checks == NULL)
+		error_handler("error : eat_dead_check array malloc failed");
+	i = 0;
+	while (i < info->philo_args[N_OF_PHILO])
+	{
+		temp = ft_itoa(i);
+		info->eat_dead_checks[i] = init_sem(info, temp, 1);
+		free(temp);
+		i++;
+	}
 }
 
 void	init_philosophers(t_philo_b_info *info)
@@ -49,6 +64,7 @@ void	init_philosophers(t_philo_b_info *info)
 		info->philo_arr[i].eat_cnt = 0;
 		info->philo_arr[i].if_finished_eating = 0;
 		info->philo_arr[i].is_dead = 0;
+		info->philo_arr[i].eat_dead_check = info->eat_dead_checks[i];
 		info->philo_arr[i].info = info;
 		i++;
 	}
@@ -59,6 +75,9 @@ void	fork_philosophers(t_philo_b_info *info)
 	int	i;
 
 	info->time_start = get_time();
+	i = -1;
+	while (++i < info->philo_args[N_OF_PHILO])
+		sem_wait(info->eat_check);
 	i = 0;
 	while (i < info->philo_args[N_OF_PHILO])
 	{

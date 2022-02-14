@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:50:55 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/14 11:57:32 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/14 15:47:14 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_philo_b
 	int				eat_cnt;
 	int				if_finished_eating;
 	int				is_dead;
+	sem_t			*eat_dead_check;
 	t_philo_b_info	*info;
 }	t_philo_b;
 
@@ -60,6 +61,7 @@ typedef struct s_philo_b_info
 	sem_t		*forks;
 	sem_t		*print;
 	sem_t		*eat_check;
+	sem_t		**eat_dead_checks;
 }	t_philo_b_info;
 
 int			error_handler(char *err);
@@ -76,6 +78,7 @@ void		*wait_for_finish(void *data);
 int			wait_die_or_finish(t_philo_b_info *info);
 
 long long	ft_atoi(char *str);
+char		*ft_itoa(int n);
 int			ft_isdigit(int c);
 void		ft_putstr_fd(char *s, int fd);
 #endif

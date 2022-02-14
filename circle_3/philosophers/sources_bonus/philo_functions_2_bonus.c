@@ -6,7 +6,7 @@
 /*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 18:14:54 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/02/14 11:54:59 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/14 15:38:42 by jaemjung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	philo_print(t_philo_b *philo, int state)
 	{
 		printf("is eating");
 		if (philo->info->is_must_eat_on)
-			printf(" - have eaten %d times", philo->eat_cnt + 1);
+			printf(" - have eaten %d times", philo->eat_cnt);
 		printf("\n");
 	}
 	else if (state == SLEEP)

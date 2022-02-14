@@ -19,6 +19,7 @@ BONUS_FILES	=	main_bonus.c \
 				check_args_bonus.c \
 				error_handler_bonus.c \
 				ft_atoi_bonus.c \
+				ft_itoa_bonus.c \
 				ft_putstr_fd_bonus.c \
 				init_philo_bonus.c \
 				philo_functions_bonus.c \
