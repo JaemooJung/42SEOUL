@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_philo_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:47:50 by jaemoojung        #+#    #+#             */
-/*   Updated: 2022/02/14 17:49:41 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/14 22:01:21 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	init_semaphores(t_philo_b_info *info)
 	int		i;
 	char	*temp;
 
-	info->forks = init_sem(info, "fork", info->philo_args[N_OF_PHILO]);
+	info->forks = init_sem(info, "forks", info->philo_args[N_OF_PHILO]);
 	info->print = init_sem(info, "print", 1);
 	info->eat_check = init_sem(info, "eat_check",
 			info->philo_args[N_OF_PHILO]);

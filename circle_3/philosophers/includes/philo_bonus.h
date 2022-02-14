@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemjung <jaemjung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaemoojung <jaemoojung@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:50:55 by jaemjung          #+#    #+#             */
-/*   Updated: 2022/02/14 15:47:14 by jaemjung         ###   ########.fr       */
+/*   Updated: 2022/02/14 21:03:31 by jaemoojung       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_philo_b_info
 	int			philo_args[5];
 	long long	time_start;
 	int			is_must_eat_on;
+	int			is_dead;
 	t_philo_b	*philo_arr;
 	sem_t		*forks;
 	sem_t		*print;
