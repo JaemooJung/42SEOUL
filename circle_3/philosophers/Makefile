@@ -28,8 +28,6 @@ BONUS_FILES	=	main_bonus.c \
 				check_philo_bonus.c \
 				wait_die_or_finish_bonus.c
 
-				
-
 SRC_DIR		=	./sources/
 BONUS_DIR	=	./sources_bonus/
 INC_DIR		=	./includes
