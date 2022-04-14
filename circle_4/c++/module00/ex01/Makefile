@@ -1,9 +1,9 @@
-NAME 		=	megaphone
+NAME 		=	AwesomePhonebook
 CC 			=	clang++
 CFLAGS		=	-Wall -Werror -Wextra -std=c++98
 RM			=	rm -f
 
-FILES 		=	./megaphone.cpp
+FILES 		=	
 
 SRCS		=	$(FILES)
 OBJS		=	$(SRCS:.cpp=.o)
