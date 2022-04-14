@@ -1,9 +1,11 @@
-NAME 		=	AwesomePhonebook
-CC 			=	clang++
+NAME 		=	MyAwesomePhoneBook
+CC 			=	c++
 CFLAGS		=	-Wall -Werror -Wextra -std=c++98
 RM			=	rm -f
 
-FILES 		=	
+FILES 		=	main.cpp \
+				Contact.cpp \
+				PhoneBook.cpp \
 
 SRCS		=	$(FILES)
 OBJS		=	$(SRCS:.cpp=.o)
