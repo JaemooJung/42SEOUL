@@ -1,9 +1,10 @@
-NAME 		=	megaphone
+NAME 		=	SedIsForLosers
 CC 			=	c++
 CFLAGS		=	-Wall -Werror -Wextra -std=c++98
 RM			=	rm -f
 
-FILES 		=	./megaphone.cpp
+FILES 		=	main.cpp \
+				CopyMachine.cpp \
 
 SRCS		=	$(FILES)
 OBJS		=	$(SRCS:.cpp=.o)

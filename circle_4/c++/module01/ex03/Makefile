@@ -1,9 +1,12 @@
-NAME 		=	megaphone
+NAME 		=	UnnecessaryViolence
 CC 			=	c++
 CFLAGS		=	-Wall -Werror -Wextra -std=c++98
 RM			=	rm -f
 
-FILES 		=	./megaphone.cpp
+FILES 		=	main.cpp \
+				HumanA.cpp \
+				HumanB.cpp \
+				Weapon.cpp
 
 SRCS		=	$(FILES)
 OBJS		=	$(SRCS:.cpp=.o)

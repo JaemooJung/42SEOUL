@@ -43,7 +43,7 @@ void PhoneBook::addContact() {
 
 std::string PhoneBook::cutOver10(std::string str)
 {
-	if (str.length() >= 10) {
+	if (str.length() > 10) {
 		return (str.substr(0, 9) + ".");
 	} else {
 		return (str);
