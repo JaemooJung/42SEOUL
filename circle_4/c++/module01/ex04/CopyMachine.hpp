@@ -1,3 +1,6 @@
+#ifndef _COPYMACHINE_HPP_
+#define _COPYMACHINE_HPP_
+
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -14,3 +17,5 @@ class CopyMachine {
 	CopyMachine(std::string filename, std::string s1, std::string s2);
 	int writeToCopiedFile();
 };
+
+#endif
