@@ -14,7 +14,7 @@ void	HumanB::attack(void) {
 	if (weapon == 0 || weapon->getType().length() == 0)
 		std::cout << this->name << " is unarmed." << std::endl;
 	else
-		std::cout << this->name << " attacks with" << weapon->getType() << std::endl;
+		std::cout << this->name << " attacks with " << weapon->getType() << std::endl;
 }
 
 void	HumanB::setWeapon(Weapon &weapon) {
