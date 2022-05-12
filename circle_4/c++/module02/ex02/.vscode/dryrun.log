@@ -1,0 +1,8 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/jaemjung/42SEOUL/circle_4/c++/module02/ex02'
+c++ -Wall -Werror -Wextra -std=c++98 -c -o main.o main.cpp
+ 
+c++ -Wall -Werror -Wextra -std=c++98 -c -o Fixed.o Fixed.cpp
+c++ -Wall -Werror -Wextra -std=c++98 -o a.out main.o Fixed.o
+make: Leaving directory `/Users/jaemjung/42SEOUL/circle_4/c++/module02/ex02'
+ 
