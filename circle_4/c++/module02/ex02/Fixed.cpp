@@ -17,7 +17,8 @@ Fixed::Fixed(const Fixed &other) {
 }
 
 Fixed& Fixed::operator=(const Fixed &ref) {
-	_fixedPointValue = ref.getRawBits();
+	if (*this != ref)
+		_fixedPointValue = ref.getRawBits();
 	return (*this);
 }
 
@@ -63,16 +64,12 @@ Fixed Fixed::operator-(const Fixed& other) {
 }
 
 Fixed Fixed::operator*(const Fixed& other) {
-	Fixed result;
-
-	result.setRawBits( (this->getRawBits() * other.getRawBits()) >> _fractionalBits );
+	Fixed result(this->toFloat() * other.toFloat());
 	return result;
 }
 
 Fixed Fixed::operator/(const Fixed& other) {
-	Fixed result;
-
-	result.setRawBits( (this->getRawBits() / other.getRawBits()) << _fractionalBits );
+	Fixed result(this->toFloat() / other.toFloat());
 	return result;
 }
 
