@@ -1,8 +1,8 @@
 #include "Fixed.hpp"
 
 Fixed::Fixed() {
-	_fixedPointValue = 0;
 	std::cout << "Default constructor called" << std::endl;
+	_fixedPointValue = 0;
 }
 
 Fixed::Fixed(const Fixed &other) {
@@ -29,4 +29,3 @@ void Fixed::setRawBits(int value) {
 	std::cout << "setRawBits member function called" << std::endl;
 	_fixedPointValue = value;
 }
-
