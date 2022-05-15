@@ -1,8 +1,8 @@
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main(void) {
-	ScavTrap a("A");
-	ScavTrap b = a;
+	FragTrap a("A");
+	FragTrap b = a;
 
 	b.setName("B");
 	a.printStatus();
@@ -14,6 +14,6 @@ int main(void) {
 	a.printStatus();
 	b.printStatus();
 	std::cout << std::endl;
-
-	a.guardGate();
+	
+	a.highFiveGuys();
 }

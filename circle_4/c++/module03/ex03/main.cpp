@@ -1,10 +1,14 @@
-#include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main(void) {
-	ScavTrap a("A");
-	ScavTrap b = a;
+	DiamondTrap a("A");
+	DiamondTrap b("B");
+	DiamondTrap c = DiamondTrap();
 
-	b.setName("B");
+	a.whoAmI();
+	b.whoAmI();
+	c.whoAmI();
+
 	a.printStatus();
 	b.printStatus();
 	std::cout << std::endl;
@@ -14,6 +18,7 @@ int main(void) {
 	a.printStatus();
 	b.printStatus();
 	std::cout << std::endl;
-
-	a.guardGate();
+	
+	a.whoAmI();
+	b.whoAmI();
 }

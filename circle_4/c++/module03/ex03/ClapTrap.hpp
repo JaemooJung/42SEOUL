@@ -10,7 +10,7 @@
 #define C_ATTACKDAMAGE 0
 
 class ClapTrap {
-	private:
+	protected:
 		std::string _name;
 		unsigned int _hitPoint;
 		unsigned int _energyPoint;
@@ -22,7 +22,7 @@ class ClapTrap {
 		void beRepaired(unsigned int amount);
 		void printStatus() const;
 
-		std::string getName() const;
+		virtual std::string getName() const;
 		unsigned int getHitPoint() const;
 		unsigned int getEnergyPoint() const;
 		unsigned int getAttackDamage() const;
