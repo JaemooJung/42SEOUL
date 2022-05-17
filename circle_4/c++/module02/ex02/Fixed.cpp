@@ -17,7 +17,7 @@ Fixed::Fixed(const Fixed &other) {
 }
 
 Fixed& Fixed::operator=(const Fixed &ref) {
-	if (*this != ref)
+	if (this != &ref)
 		_fixedPointValue = ref.getRawBits();
 	return (*this);
 }
@@ -125,8 +125,8 @@ int Fixed::getRawBits() const {
 	return (_fixedPointValue);
 }
 
-void Fixed::setRawBits(int value) {
-	_fixedPointValue = value;
+void Fixed::setRawBits(int const raw) {
+	_fixedPointValue = raw;
 }
 
 int Fixed::toInt() const {
