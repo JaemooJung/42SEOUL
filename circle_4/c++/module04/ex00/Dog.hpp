@@ -10,7 +10,7 @@ class Dog : public Animal {
 		Dog& operator=(const Dog& other);
 		Dog();
 		Dog(const Dog& other);
-		virtual ~Dog();
+		~Dog();
 };
 
 #endif // __DOG_H__

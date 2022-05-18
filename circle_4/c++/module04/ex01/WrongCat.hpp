@@ -7,5 +7,5 @@ class WrongCat : public WrongAnimal {
 		WrongCat& operator=(const WrongCat& other);
 		WrongCat();
 		WrongCat(const WrongCat& other);
-		virtual ~WrongCat();
+		~WrongCat();
 };

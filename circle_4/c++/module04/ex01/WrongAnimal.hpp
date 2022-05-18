@@ -11,13 +11,13 @@ class WrongAnimal {
 	public:
 		std::string getType() const;
 		void setType(std::string type);
-		virtual void makeSound() const;
+		void makeSound() const;
 
 		WrongAnimal();
 		WrongAnimal(std::string type);
 		WrongAnimal(const WrongAnimal& other);
 		WrongAnimal& operator=(const WrongAnimal& other);
-		virtual ~WrongAnimal();
+		~WrongAnimal();
 };
 
 #endif // __WRONGANIMAL_H__

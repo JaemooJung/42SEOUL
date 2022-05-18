@@ -9,7 +9,6 @@ FILES 		=	main.cpp \
 				Dog.cpp \
 				WrongAnimal.cpp \
 				WrongCat.cpp \
-				brain.cpp \
 
 SRCS		=	$(FILES)
 OBJS		=	$(SRCS:.cpp=.o)
