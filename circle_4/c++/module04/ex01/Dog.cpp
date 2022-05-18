@@ -4,6 +4,17 @@ void Dog::makeSound() const {
 	std::cout << _type << " is making sound: " << "BOW BOW BOWW" << std::endl;
 }
 
+Brain* Dog::getBrain() const {
+	return _brain;
+}
+
+void Dog::setBrain(Brain* const brain) {
+	if (_brain && (_brain != brain)) {
+		delete _brain;
+	}
+	_brain = brain;
+}
+
 Dog& Dog::operator=(const Dog& other) {
 	if (this != &other) {
 		_type = other.getType();
