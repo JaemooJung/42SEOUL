@@ -11,8 +11,9 @@ void Brain::setIdea(const int& i, const std::string& idea) {
 std::string Brain::getIdea(const int& i) const {
 	if (i < 0 || i >= 100) {
 		std::cout << "Error: [" << i << "] out of range" << std::endl;
-		return;
+		return NULL;
 	}
+	return _ideas[i];
 }
 
 Brain& Brain::operator=(const Brain& other) {
@@ -26,6 +27,9 @@ Brain& Brain::operator=(const Brain& other) {
 }
 
 Brain::Brain() {
+	for (int i = 0; i < 100; i++) {
+		this->setIdea(i, "SOME THOUGHT");
+	}
 	std::cout << "Brain default constructor called" << std::endl;
 }
 

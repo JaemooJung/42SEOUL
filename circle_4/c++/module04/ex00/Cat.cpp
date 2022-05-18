@@ -17,7 +17,7 @@ Cat::Cat() : Animal() {
 	std::cout << _type << " default constructor called" << std::endl;
 }
 
-Cat::Cat(const Cat& other) : Animal() {
+Cat::Cat(const Cat& other) : Animal(other) {
 	_type = other.getType();
 	std::cout << _type << " copy constructor called" << std::endl;
 }

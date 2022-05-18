@@ -9,33 +9,32 @@ Brain* Cat::getBrain() const {
 }
 
 void Cat::setBrain(Brain* const brain) {
-	if (_brain && (_brain != brain)) {
-		delete _brain;
-	}
-	_brain = brain;
+	*_brain = *brain;
 }
 
 Cat& Cat::operator=(const Cat& other) {
 	if (this != &other) {
 		_type = other.getType();
-		_brain = other.getBrain();
+		this->setBrain(other.getBrain());
 	}
 	std::cout << _type << " copy assignment constructor called" << std::endl;
 	return *this;
 }
 
-Cat::Cat() : Animal(), _brain(NULL) {
+Cat::Cat() : Animal() {
 	_type = "Cat";
 	_brain = new Brain();
 	std::cout << _type << " default constructor called" << std::endl;
 }
 
-Cat::Cat(const Cat& other) : Animal() {
+Cat::Cat(const Cat& other) : Animal(), _brain(new Brain()) {
 	_type = other.getType();
+	this->setBrain(other.getBrain());
 	std::cout << _type << " copy constructor called" << std::endl;
 }
 
 Cat::~Cat()
 {
 	std::cout << _type << " destructor called" << std::endl;
+	delete _brain;
 }
