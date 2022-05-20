@@ -8,6 +8,17 @@ int Bureaucrat::getGrade() const {
 	return _grade;
 }
 
+void Bureaucrat::signForm(Form& form) const {
+	try {
+		form.beSigned(*this);
+		std::cout << _name << " signed " << form.getName() << std::endl;
+	}
+	catch (std::exception& e) {
+		std::cout << _name << " couldn't sign " << form.getName() 
+					<< " because " << e.what() << std::endl;
+	}
+}
+
 void Bureaucrat::incrementGrade() {
 	if (_grade - 1 < 1) {
 		throw GradeTooHighException();

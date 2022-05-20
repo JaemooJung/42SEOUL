@@ -1,10 +1,11 @@
-NAME 		=	bureaucrat
+NAME 		=	form
 CC 			=	c++
 CFLAGS		=	-Wall -Werror -Wextra -Wshadow -Wno-shadow -std=c++98
 RM			=	rm -f
 
 FILES 		=	main.cpp \
 				Bureaucrat.cpp \
+				Form.cpp
 
 SRCS		=	$(FILES)
 OBJS		=	$(SRCS:.cpp=.o)
