@@ -8,6 +8,11 @@ class Serializer {
 	public:
 		uintptr_t serialize(Data* ptr);
 		Data* deserialize(uintptr_t raw);
+	
+	Serializer& operator=(const Serializer& other);
+	Serializer();
+	Serializer(const Serializer& other);
+	~Serializer();
 };
 
 #endif // __SERIALIZER_H__
