@@ -22,8 +22,7 @@ double Converter::toDouble() const {
 
 void Converter::printChar(std::ostream &os) const {
 	os << "char: ";
-	if (std::isnan(_value) || std::isinf(_value) 
-		|| _value > std::numeric_limits<char>::max() || _value < std::numeric_limits<char>::min()) {
+	if (_value != _value || _value > std::numeric_limits<char>::max() || _value < std::numeric_limits<char>::min()) {
 		os << "impossible" << std::endl;
 	} else if (std::isprint(toChar())) {
 		os << "'" << toChar() << "'" << std::endl;
@@ -34,8 +33,7 @@ void Converter::printChar(std::ostream &os) const {
 
 void Converter::printInt(std::ostream &os) const {
 	os << "int: ";
-	if (std::isnan(_value) || std::isinf(_value) 
-	|| _value > std::numeric_limits<int>::max() || _value < std::numeric_limits<int>::min()) {
+	if (_value != _value || _value > std::numeric_limits<int>::max() || _value < std::numeric_limits<int>::min()) {
 		os << "impossible" << std::endl;
 	} else {
 		os << toInt() << std::endl;
@@ -43,28 +41,18 @@ void Converter::printInt(std::ostream &os) const {
 }
 
 void Converter::printFloat(std::ostream &os) const {
-	if (std::isnan(_value) || std::isinf(_value)) {
-		os << "float: " << std::showpos << toFloat() << "f" << std::endl;
-		return;
-	}
 	if (toFloat() == static_cast<int64_t>(toFloat())) {
 		os << "float: " << toFloat() << ".0f" << std::endl;
 	} else {
-		os << "float: " << std::setprecision(std::numeric_limits<float>::digits10)
-			<< toFloat() << "f" << std::endl;
+		os << "float: " << std::setprecision(std::numeric_limits<float>::digits10) << toFloat() << "f" << std::endl;
 	}
 }
 
 void Converter::printDouble(std::ostream &os) const {
-	if (std::isnan(_value) || std::isinf(_value)) {
-		os << "double: " << std::showpos << toDouble() << std::endl;
-		return;
-	}
 	if (toDouble() == static_cast<int64_t>(toDouble())) {
 		os << "double: " << toDouble() << ".0" << std::endl;
 	} else {
-		os << "double: " << std::setprecision(std::numeric_limits<double>::digits10)
-			<< toDouble() << std::endl;
+		os << "double: " << std::setprecision(std::numeric_limits<double>::digits10) << toDouble() << std::endl;
 	}
 }
 
