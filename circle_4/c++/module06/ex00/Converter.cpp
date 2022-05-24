@@ -93,7 +93,7 @@ Converter::Converter(std::string input)
 }
 
 Converter::Converter(const Converter& other)
-: _isError(false), _input(other._input), _value(other._value) {
+: _isError(other._isError), _input(other._input), _value(other._value) {
 	
 }
 
