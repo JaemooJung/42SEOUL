@@ -4,7 +4,7 @@
 #include "Intern.hpp"
 
 void test() {
-	Bureaucrat jaemjung("jaemjung", 150);
+	Bureaucrat jaemjung("jaemjung", 5);
 	Intern someIntern;
 
 	Form* shrubbery = someIntern.makeForm("shrubbery creation", "GAEPO");

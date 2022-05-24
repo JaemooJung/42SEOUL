@@ -5,7 +5,9 @@ void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
 	checkExecutability(executor);
 
 	std::cout << "DRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR" << std::endl;
-	if (rand() % 2) {
+	std::srand(static_cast<unsigned int>(time(NULL)));
+	int rand = std::rand();
+	if (rand % 2) {
 		std::cout << getTarget() << " has been robotomized successfully" << std::endl;
 	} else {
 		std::cout << "failed to robotomize " << getTarget() << std::endl;

@@ -65,7 +65,7 @@ Form::Form()
 _gradeSign(150),
 _gradeExecute(150),
 _target("") {
-	
+	_isSigned = false;
 }
 
 Form::Form(std::string name, std::string target, int gradeSign, int gradeExecute) 
@@ -73,6 +73,7 @@ Form::Form(std::string name, std::string target, int gradeSign, int gradeExecute
 _gradeSign(gradeSign), 
 _gradeExecute(gradeExecute),
 _target(target) {
+	_isSigned = false;
 	if (_gradeSign < 1 || _gradeExecute < 1) {
 		throw Form::GradeTooHighException();
 	}
@@ -80,7 +81,7 @@ _target(target) {
 		throw Form::GradeTooLowException();
 	}
 }
-	
+
 Form::Form(const Form& other)
 : _name(other.getName()),
 _gradeSign(other.getSignGrade()),
@@ -90,7 +91,7 @@ _target(other.getTarget()) {
 }
 
 Form::~Form() {
-	
+
 }
 
 std::ostream& operator<<(std::ostream& os, const Form& form) {

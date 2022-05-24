@@ -47,13 +47,14 @@ Form::Form()
 : _name(""),
 _gradeSign(150),
 _gradeExecute(150) {
-	
+	_isSigned = false;
 }
 
 Form::Form(std::string name, int gradeSign, int gradeExecute) 
 : _name(name), 
 _gradeSign(gradeSign), 
 _gradeExecute(gradeExecute) {
+	_isSigned = false;
 	if (_gradeSign < 1 || _gradeExecute < 1) {
 		throw Form::GradeTooHighException();
 	}
@@ -66,7 +67,7 @@ Form::Form(const Form& other)
 : _name(other.getName()),
 _gradeSign(other.getSignGrade()),
 _gradeExecute(other.getExcuteGrade()) {
-
+	_isSigned = other.isSigned();
 }
 
 Form::~Form() {

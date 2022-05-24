@@ -10,6 +10,7 @@ class Bureaucrat;
 
 class Form {
 	private:
+		Form();
 		const std::string _name;
 		const int _gradeSign;
 		const int _gradeExecute;
@@ -41,7 +42,6 @@ class Form {
 		};
 	
 		Form& operator=(const Form& other);
-		Form();
 		Form(std::string name, std::string target, int gradeSign, int gradeExecute);
 		Form(const Form& other);
 		virtual ~Form();

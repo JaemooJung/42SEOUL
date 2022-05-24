@@ -19,6 +19,10 @@ int main() {
 		std::cout << e.what() << std::endl;
 	}
 	std::cout << jaemjung << std::endl;
+	Bureaucrat copy(jaemjung);
+	Bureaucrat copy2 = jaemjung;
+	std::cout << copy << std::endl;
+	std::cout << copy2 << std::endl;
 	std::cout << std::endl;
 
 	std::cout << w << std::endl;

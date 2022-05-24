@@ -29,4 +29,9 @@ int main() {
 	std::cout << jaemjung << std::endl;
 	jaemjung.signForm(sellAPPL);
 	std::cout << sellAPPL << std::endl;
+
+	Form copy = sellAPPL;
+	Form copy2(sellAPPL);
+	std::cout << copy << std::endl;
+	std::cout << copy2 << std::endl;
 }
