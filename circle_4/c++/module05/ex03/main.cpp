@@ -3,7 +3,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "Intern.hpp"
 
-int main() {
+void test() {
 	Bureaucrat jaemjung("jaemjung", 150);
 	Intern someIntern;
 
@@ -32,4 +32,13 @@ int main() {
 	std::cout << *pp << std::endl;
 	jaemjung.executeForm(*pp);
 	std::cout << std::endl;
+
+	delete shrubbery;
+	delete robotomy;
+	delete pp;
+}
+
+int main() {
+	test();
+	system("leaks form");
 }
