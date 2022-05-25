@@ -28,19 +28,19 @@ int Span::shortestSpan() const {
 		throw NoSpanException();
 	}
 	std::multiset<int>::iterator it = _data.begin();
-	std::multiset<int>::iterator next = ++it;
+	std::multiset<int>::iterator next = ++_data.begin();
 	std::set<int> sub;
 	for(; next != _data.end(); ++it, ++next) {
 		sub.insert(*next - *it);
 	}
-	return *sub.begin();
+	return *(sub.begin());
 }
 
 int Span::longestSpan() const {
 	if (_data.size() < 2) {
 		throw NoSpanException();
 	}
-	return *--_data.end() - *_data.begin();
+	return *(--_data.end()) - *(_data.begin());
 }
 
 Span& Span::operator=(const Span& other) {
