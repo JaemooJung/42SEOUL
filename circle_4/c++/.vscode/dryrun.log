@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/jaemjung/42SEOUL/circle_4/c++'
+make: Leaving directory `/Users/jaemjung/42SEOUL/circle_4/c++'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
