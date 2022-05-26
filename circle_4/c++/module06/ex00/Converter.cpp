@@ -79,16 +79,15 @@ Converter& Converter::operator=(const Converter& other) {
 
 Converter::Converter(std::string input) 
 : _isError(false), _input(input), _value(0.0) {
-	try {
-		char *ptr = NULL;
-		_value = std::strtod(_input.c_str(), &ptr);
-		if (_value == 0.0 && (_input[0] != '-' && _input[0] != '+' && !std::isdigit(_input[0]))) {
-			throw std::bad_alloc();
-		}
-		if (*ptr && std::strcmp(ptr, "f"))
-			throw std::bad_alloc();
-	} catch (std::exception& ) {
+	char *ptr = NULL;
+	_value = std::strtod(_input.c_str(), &ptr);
+	if (_value == 0.0 && (_input[0] != '-' && _input[0] != '+' && !std::isdigit(_input[0]))) {
 		_isError = true;
+		return;
+	}
+	if (*ptr && std::strcmp(ptr, "f")) {
+		_isError = true;
+		return;
 	}
 }
 

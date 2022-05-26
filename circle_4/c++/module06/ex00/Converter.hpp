@@ -6,7 +6,6 @@
 #include <cstdlib>
 #include <limits>
 #include <iostream>
-#include <stdexcept>
 #include <iomanip>
 
 class Converter {
