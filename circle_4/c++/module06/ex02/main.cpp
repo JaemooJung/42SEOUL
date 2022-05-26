@@ -4,13 +4,17 @@
 #include "C.hpp"
 
 Base* generate() {
+
 	int n = rand() % 3;
 	switch (n) {
 		case 0:
+			std::cout << "Class A generated" << std::endl;
 			return new A();
 		case 1:
+			std::cout << "Class B generated" << std::endl;
 			return new B();
 		case 2:
+			std::cout << "Class C generated" << std::endl;
 			return new C();
 	}
 	return NULL;
