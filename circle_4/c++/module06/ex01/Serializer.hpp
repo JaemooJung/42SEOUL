@@ -9,9 +9,9 @@ class Serializer {
 		uintptr_t serialize(Data* ptr);
 		Data* deserialize(uintptr_t raw);
 	
-	Serializer& operator=(const Serializer& other);
+	Serializer& operator=(const Serializer&);
 	Serializer();
-	Serializer(const Serializer& other);
+	Serializer(const Serializer&);
 	~Serializer();
 };
 

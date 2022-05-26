@@ -51,7 +51,12 @@ Data& Data::operator=(const Data& other) {
 	return *this;
 }
 
-Data::Data() {
+Data::Data()
+: _doomName("NONE"),
+_dayLeft(365),
+_isDoomed(false),
+_doomFactor(0),
+_doomDuration(1){
 	
 }
 
