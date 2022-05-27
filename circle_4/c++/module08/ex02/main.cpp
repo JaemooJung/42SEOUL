@@ -88,7 +88,7 @@ void reverseTest() {
 
 	for (MutantStack<double>::const_reverse_iterator it = mstack.crbegin(); it != mstack.crend(); it++) {
 		std::cout << *it << std::endl;
-		*it = *it + 100;
+		//*it = *it + 100;
 	}
 }
 
