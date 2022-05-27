@@ -1,7 +1,6 @@
 #include "Array.hpp"
 #define MAX_VAL 750
 
-
 int testOnSubject() {
 	Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
@@ -87,7 +86,6 @@ void test() {
 }
 
 int main() {
-	//testOnSubject();
 	test();
 	system("leaks array || grep leaked");
 	return 0;
