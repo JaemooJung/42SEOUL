@@ -3,7 +3,7 @@ CC 			=	c++
 CFLAGS		=	-Wall -Werror -Wextra -Wshadow -Wno-shadow -std=c++98
 RM			=	rm -f
 
-FILES 		=	main.cpp
+FILES 		=	main.cpp 
 
 SRCS		=	$(FILES)
 OBJS		=	$(SRCS:.cpp=.o)
