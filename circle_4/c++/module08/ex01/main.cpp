@@ -39,7 +39,7 @@ void errorTest() {
 	}
 	sp.addNumber(1);
 	displaySpan("[0-1 test]", sp);
-	for (int i = 0; i < 48; i++) {
+	for (int i = 2; i < 50; i++) {
 		sp.addNumber(i);
 	}
 	try {
@@ -62,12 +62,12 @@ void zeroTest() {
 }
 
 void largeTest() {
-	Span sp = Span(10000);
+	Span sp = Span(100000);
 
-	for (int i = 0; i < 9999; i++) {
+	for (int i = 0; i < 99999; i++) {
 		sp.addNumber(i);
 	}
-	sp.addNumber(10000);
+	sp.addNumber(100000);
 	displaySpan("[Large test]", sp);
 }
 

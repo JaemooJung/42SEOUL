@@ -30,7 +30,7 @@ void findNum(T& container, int toFind) {
 int main() {
 	std::vector<int> v;
 	std::deque<int> d;
-	std::list<int> l;
+	std::list<char> l;
 
 	for (int i = 0; i < 100; i+=3) {
 		v.push_back(i);
