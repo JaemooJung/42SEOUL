@@ -12,6 +12,10 @@ const char* Span::NoSpanException::what() const throw() {
 	return "Error: cannot find span";
 }
 
+const char* Span::OutOfRangeException::what() const throw() {
+	return "Error: cannot add numbers to span ; out of range";
+}
+
 const std::multiset<int>& Span::getData() const {
 	return _data;
 }

@@ -71,10 +71,42 @@ void largeTest() {
 	displaySpan("[Large test]", sp);
 }
 
+void rangeTest() {
+	std::cout << "range test----------------------" << std::endl;
+	Span sp = Span(5);
+
+	int a[3] = {0, 10, 200};
+	sp.addRange(std::begin(a), std::end(a));
+	displaySpan("[range 3]", sp);
+
+	try {
+		sp.addNumber(3000);
+	} catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+
+	displaySpan("[add 10000]", sp);
+	
+	try {
+		sp.addRange(std::begin(a), std::end(a));
+	} catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+
+	int b[1] = {10000};
+	try {
+		sp.addRange(std::begin(b), std::end(b));
+	} catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+	displaySpan("[result]", sp);
+}
+
 int main() {
 	basicTest();
 	errorTest();
 	zeroTest();
 	largeTest();
+	rangeTest();
 	std::system("leaks span | grep leaked");
 }
