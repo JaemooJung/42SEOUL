@@ -14,6 +14,7 @@
 |        | push_swap     | Sort numbers using 2 stacks, with minimum number of operations..           |                       60 h |              90 h | 90/100  |   pass  |
 |    3   | philosophers  | Make a simulation of dining philosopher problem.                           |                       70 h |              80 h | 121/100 |   pass  |
 |        | minishell     | Make my own shell just like bash or zsh                                    |                      210 h |             180 h | 101/100 |   pass  |
+|    4   | c++ modules   | Introduction to c++ and Object Oriented Programming                        |                       70 h |             100 h | 100/100 |   pass  |
 
 \*Estimated Time to Complete 
 <br/>
