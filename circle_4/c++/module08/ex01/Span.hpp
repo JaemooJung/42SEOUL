@@ -35,7 +35,7 @@ class Span {
 
 	template <typename T>
 	void addRange(T begin, T end) {
-		if ( static_cast<unsigned int>(std::distance(begin, end)) > (_capacity - _data.size())) {
+		if (static_cast<unsigned int>(std::distance(begin, end)) > (_capacity - _data.size())) {
 			throw OutOfRangeException();
 		}
 		for (; begin != end; ++begin) {
