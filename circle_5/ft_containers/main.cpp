@@ -1,8 +1,10 @@
 #include <vector>
 #include <iostream>
+#include "Vector.hpp"
 
 int main(void) {
 	std::vector<int> v;
+	ft::vector<int> myV;
 	v.push_back(1);
 	v.push_back(2);
 	v.push_back(3);
@@ -19,4 +21,9 @@ int main(void) {
 		std::cout << v.size() << std::endl;
 		v.pop_back();
 	}
+	std::cout << v.size() << std::endl;
+	std::cout << v.max_size() << std::endl;
+	std::cout << v.capacity() << std::endl;
+
+	std::cout << myV.max_size() << std::endl;
 }

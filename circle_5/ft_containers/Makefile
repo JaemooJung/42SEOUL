@@ -1,6 +1,6 @@
 NAME 		=	ft_containers
 CXX			=	c++
-CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
+CXXFLAGS	=	#-Wall -Werror -Wextra-std=c++98
 RM			=	rm -f
 
 FILES 		=	main.cpp
