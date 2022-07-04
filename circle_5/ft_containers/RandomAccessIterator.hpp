@@ -8,9 +8,6 @@ namespace ft {
 	template <typename T>
 	class random_access_iterator : public ft::iterator<random_access_iterator_tag, T> {
 
-		private:
-			pointer	_ptr;
-
 		public:
 			typedef typename ft::iterator<random_access_iterator_tag, T>::iterator_category	iterator_category;
 			typedef typename ft::iterator<random_access_iterator_tag, T>::value_type		value_type;
@@ -18,6 +15,10 @@ namespace ft {
 			typedef typename ft::iterator<random_access_iterator_tag, T>::pointer			pointer;
 			typedef typename ft::iterator<random_access_iterator_tag, T>::reference			reference;
 
+		private:
+			pointer	_ptr;
+
+		public:
 			// constructors ===================================================
 			random_access_iterator() : _ptr(NULL) {}
 			random_access_iterator(pointer ptr) : _ptr(ptr) {}
@@ -78,6 +79,7 @@ namespace ft {
 			pointer base() const { return _ptr; }
 			operator random_access_iterator<const T> () const { return (random_access_iterator<const T>(_ptr)); }
 	};
+	
 	template <typename T>
 	random_access_iterator<T> operator+(typename random_access_iterator<T>::difference_type n, const random_access_iterator<T>& it){
 		random_access_iterator<T> tmp = it;
