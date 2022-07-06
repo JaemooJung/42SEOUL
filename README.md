@@ -16,6 +16,7 @@
 |        | minishell     | Make my own shell just like bash or zsh.                                   |                      210 h |             180 h | 101/100 |   pass  |
 |    4   | c++ modules   | Introduction to c++ and Object Oriented Programming.                       |                       70 h |             100 h | 100/100 |   pass  |
 |        | NetPractice   | Configure small-scale networks using TCP/IP addressing.                    |                       50 h |              30 h | 100/100 |   pass  |
+|        | miniRT        | My first RayTracer with miniLibX                                           |                      300 h |             280 h | 105/100 |   pass  |
 
 \*Estimated Time to Complete 
 <br/>
