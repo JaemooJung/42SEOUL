@@ -159,8 +159,6 @@ namespace ft {
 	typename reverse_iterator<ITER>::difference_type operator-(const reverse_iterator<ITER>& it1, const reverse_iterator<ITER>& it2) {
 		return (it2 - it1);
 	}
-
 } // namespace ft
-
 
 #endif // __REVERSEITERATOR_H__

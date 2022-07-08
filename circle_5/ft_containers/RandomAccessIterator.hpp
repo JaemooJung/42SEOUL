@@ -68,9 +68,9 @@ namespace ft {
 				_ptr -= n;
 				return (*this);
 			}
-			reference operator*() const { return (*_ptr); }
-			const reference operator*() { return (*_ptr); }
-			pointer operator->() const { return (_ptr); }
+			reference operator*() { return (*_ptr); }
+			const reference operator*() const { return (*_ptr); }
+			pointer operator->() { return (_ptr); }
 			reference operator[](difference_type n) { return (_ptr[n]); }
 			const reference operator[](difference_type n) const { return (_ptr[n]); }
 
@@ -80,6 +80,7 @@ namespace ft {
 			operator random_access_iterator<const T> () const { return (random_access_iterator<const T>(_ptr)); }
 	};
 	
+	// template operator overloads ============================================
 	template <typename T>
 	random_access_iterator<T> operator+(typename random_access_iterator<T>::difference_type n, const random_access_iterator<T>& it){
 		random_access_iterator<T> tmp = it;
@@ -155,6 +156,7 @@ namespace ft {
 	bool operator>=(const random_access_iterator<ITER1>& it1, const random_access_iterator<ITER2>& it2) {
 		return (!(it1 < it2));
 	}
+	// ========================================================================
 
 } // namespace ft
 
