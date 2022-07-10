@@ -73,4 +73,49 @@ int main(void) {
 		std::cout << *it << " ";
 	std::cout << std::endl;
 	std::cout << "===========================================================" << std::endl;
+
+	std::cout << "=========================resize test======================" << std::endl;
+	v.resize(10);
+	myV.resize(10);
+	std::cout << "v.size() = " << v.size() << std::endl;
+	std::cout << "myV.size() = " << myV.size() << std::endl;
+	std::cout << "=========================iteration=========================" << std::endl;
+	for (std::vector<int>::iterator it = v.begin(); it != v.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+	for (ft::vector<int>::iterator it = myV.begin(); it != myV.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+	std::cout << "==========================================================" << std::endl;
+
+	std::cout << "=========================reserve test========================" << std::endl;
+	v.reserve(100);
+	myV.reserve(100);
+	std::cout << "v.size() = " << v.size() << std::endl;
+	std::cout << "myV.size() = " << myV.size() << std::endl;
+	std::cout << "v.capacity() = " << v.capacity() << std::endl;
+	std::cout << "myV.capacity() = " << myV.capacity() << std::endl;
+	std::cout << "=========================iteration=========================" << std::endl;
+	for (std::vector<int>::iterator it = v.begin(); it != v.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+	for (ft::vector<int>::iterator it = myV.begin(); it != myV.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+	std::cout << "===========================================================" << std::endl;
+
+
+	std::cout << "=========================insert test========================" << std::endl;
+	v.insert(v.begin() + 9, 12);
+	myV.insert(myV.begin() + 9, 12);
+	std::cout << "v.size() = " << v.size() << std::endl;
+	std::cout << "myV.size() = " << myV.size() << std::endl;
+	std::cout << "=========================iteration=========================" << std::endl;
+	for (std::vector<int>::iterator it = v.begin(); it != v.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+	for (ft::vector<int>::iterator it = myV.begin(); it != myV.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+	std::cout << "===========================================================" << std::endl;
 }

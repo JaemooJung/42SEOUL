@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <memory>
-#include "RandomAccessIterator.hpp"
-#include "ReverseIterator.hpp"
+#include "random_access_iterator.hpp"
+#include "reverse_iterator.hpp"
 #include <cstddef>
 
 
@@ -12,6 +12,9 @@ namespace ft {
 
 	template <typename T, typename Allocator = std::allocator<T> >
 	class vector {
+
+		// Member types ===========================================================
+
 		public:
 			typedef T														value_type;
 			typedef Allocator												allocator_type;
@@ -26,14 +29,22 @@ namespace ft {
 			typedef ft::reverse_iterator<const_iterator>					const_reverse_iterator;
 			typedef typename ft::iterator_traits<iterator>::difference_type	difference_type;
 
+		// ====================================================================
+
+		// Member variables ===================================================
+
 		protected:
 			pointer			_start;
 			pointer			_end;
 			pointer			_capa_end;
 			allocator_type	_alloc;
 
+		// ====================================================================
+
 		public:
-		// constructors =======================================================
+
+		// Constructors =======================================================
+
 			explicit vector(const allocator_type& alloc = allocator_type())
 				: _start(nullptr),
 				_end(nullptr),
@@ -58,7 +69,8 @@ namespace ft {
 
 		// ====================================================================
 
-		// iterators ==========================================================
+		// Iterators ==========================================================
+
 			iterator				begin() { return (_start); }
 			const_iterator			begin() const { return (_start); }
 			iterator				end() { return (_end); }
@@ -67,9 +79,11 @@ namespace ft {
 			const_reverse_iterator	rbegin() const { return (reverse_iterator(_end)); }
 			reverse_iterator		rend() { return (reverse_iterator(_start)); }
 			const_reverse_iterator	rend() const { return (reverse_iterator(_start)); }
+
 		// ====================================================================
 
-		// capacity ==========================================================
+		// Capacity ==========================================================
+
 			bool		empty() const { return (_start == _end); }
 			size_type	size() const { return (_end - _start); }
 			size_type	max_size() const { return (_alloc.max_size()); }
@@ -82,6 +96,7 @@ namespace ft {
 					pointer prev_end = _end;
 					size_type prev_capa = this->capacity();
 					size_type prev_size = this->size();
+
 					_start = _alloc.allocate(n);
 					_end = _start;
 					_capa_end = _start + n;
@@ -94,12 +109,49 @@ namespace ft {
 					_alloc.deallocate(prev - prev_size, prev_capa);
 				}
 			}
+			void		resize(size_type n, value_type val = value_type()) {
+				if (n > this->max_size())
+					throw std::length_error("ft::vector::resize: n > max_size()");
+				if (this->size() == n)
+					return;
+				if (this->size() > n) {
+					while (_start + n != _end) {
+						_alloc.destroy(--_end);
+					}
+				}
+				if (this->size() < n) {
+					this->insert(_end, n - this->size(), val);
+				}
+			}
+
+		// ====================================================================
+
+		// Element Access =====================================================
+
+			reference			operator[](size_type n) { return (_start[n]); }
+			const_reference		operator[](size_type n) const { return (_start[n]); }
+			reference			at(size_type n) {
+				if (n >= this->size())
+					throw std::out_of_range("ft::vector::at: n >= this->size()");
+				return ((*this)[n]);
+			}
+			const_reference		at(size_type n) const {
+				if (n >= this->size())
+					throw std::out_of_range("ft::vector::at: n >= this->size()");
+				return ((*this)[n]);
+			}
+			reference			front() { return (*_start); }
+			const_reference		front() const { return (*_start); }
+			reference			back() { return (*(_end - 1)); }
+			const_reference		back() const { return (*(_end - 1)); }
+
 		// ====================================================================
 
 		// modifiers ==========================================================
+
 			iterator insert(iterator position, const value_type& val) {
-				size_type	pos = position - _start;
-				size_type	rpos = _end - position;
+				size_type	pos = &*position - _start;
+				size_type	rpos = _end - &*position;
 
 				if (this->size() == 0)
 					this->reserve(1);
@@ -112,6 +164,37 @@ namespace ft {
 				_alloc.construct(_start + pos, val);
 				_end++;
 				return (iterator(_start + pos));
+			}
+
+			void insert(iterator position, size_type n, const value_type& val) {
+				if (position > this->end() || position < this->begin())
+					return;
+				
+				size_type	next_size = this->size() + n;
+				size_type	pos = &*position - _start;
+				size_type	prev_capa = this->capacity();
+				pointer		new_start = nullptr;
+
+				if (this->max_size() < next_size)
+					throw std::length_error("ft::vector::insert: max_size() < this->size() + n");
+				if (this->capacity() < next_size) {
+					new_start = _alloc.allocate(next_size);
+					_capa_end = new_start + next_size;
+				} else {
+					new_start = _alloc.allocate(this->capacity() * 2);
+					_capa_end = new_start + this->capacity() * 2;
+				}
+				for (size_type i = 0; i < pos; ++i)
+					_alloc.construct(new_start + i, *(_start + i));
+				for (size_type i = 0; i < n; ++i)
+					_alloc.construct(new_start + pos + i, val);
+				for (size_type i = 0; i < this->size() - pos; ++i)
+					_alloc.construct(new_start + pos + n + i, *(_start + pos + i));
+				for (size_type i = 0; i < this->size(); ++i)
+					_alloc.destroy(_start + i);
+				_alloc.deallocate(_start, prev_capa);
+				_end = new_start + n + this->size();
+				_start = new_start;
 			}
 
 			void push_back(const value_type& val) {
@@ -133,37 +216,66 @@ namespace ft {
 				}
 			}
 
-			void insert(iterator position, size_type n, const value_type& val) {
-				if (position > this->end() || position < this->begin())
-					return;
-
-				size_type	pos = position - _start;
-				size_type	next_size = this->size() + n;
-				size_type	prev_capa = this->capacity();
-				pointer		new_start = nullptr;
-
-				if (this->max_size() < next_size)
-					throw std::length_error("ft::vector::insert: max_size() < next_size()");
-				if (this->capacity() * 2 < next_size) {
-					new_start = _alloc.allocate(next_size);
-					_capa_end = new_start + next_size;
-				} else {
-					new_start = _alloc.allocate(this->capacity() * 2);
-					_capa_end = new_start + this->capacity() * 2;
-				}
-				for (size_type i = 0; i < pos; ++i)
-					_alloc.construct(new_start + i, *(_start + i));
-				for (size_type i = 0; i < n; ++i)
-					_alloc.construct(new_start + pos + i, val);
-				for (size_type i = 0; i < this->size() - pos; ++i)
-					_alloc.construct(new_start + pos + n + i, *(_start + pos + i));
-				for (size_type i = 0; i < this->size(); ++i)
-					_alloc.destroy(_start + i);
-				_alloc.deallocate(_start, prev_capa);
-				_start = new_start;
-				_end = _start + next_size;
+			iterator erase(iterator pos) {
+				return (this->erase(pos, pos + 1));
 			}
+
+			iterator erase(iterator first, iterator last) {
+				pointer	prev_first = &*first;
+
+				for (; first != last; ++first)
+					_alloc.destroy(&*first);
+				for (int i = 0; &*last + i != _end; ++i)
+				{
+					_alloc.construct(prev_first + i, *(&*last + i));
+					_alloc.destroy(&*last + i);
+				}
+				_end -= (&*first - prev_first);
+				return prev_first;
+			}
+
+			void swap(vector& other) {
+				if (this == &other)
+					return;
+				pointer			tmp_start = _start;
+				pointer			tmp_end = _end;
+				pointer			tmp_capa_end = _capa_end;
+				allocator_type	tmp_alloc = _alloc;
+
+				_start = other._start;
+				_end = other._end;
+				_capa_end = other._capa_end;
+				_alloc = other._alloc;
+				other._start = tmp_start;
+				other._end = tmp_end;
+				other._capa_end = tmp_capa_end;
+				other._alloc = tmp_alloc;
+			}
+
+			void clear() {
+				while (_start != _end) {
+					_alloc.destroy(--_end);
+				}
+			}
+
+		// ====================================================================
 	};
+
+	template <class T, class Alloc>
+		bool operator==(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs) {
+			if (lhs.size() != rhs.size())
+				return (false);
+			for (size_t i = 0; i < lhs.size(); i++)
+				if (lhs[i] != rhs[i])
+					return (false);
+			return (true);
+		}
+	
+	template <class T, class Alloc>
+		bool operator!=(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs) {
+			return (!(lhs == rhs));
+		}
+	
 } // namespace ft
 
 

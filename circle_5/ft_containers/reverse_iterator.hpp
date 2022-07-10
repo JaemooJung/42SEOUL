@@ -1,7 +1,7 @@
 #ifndef __REVERSEITERATOR_H__
 #define __REVERSEITERATOR_H__
 
-#include "Iterator.hpp"
+#include "iterator.hpp"
 
 namespace ft {
 	template<typename Iterator>

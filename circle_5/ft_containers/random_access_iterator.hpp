@@ -1,7 +1,7 @@
 #ifndef __RANDOMACCESSITERATOR_H__
 #define __RANDOMACCESSITERATOR_H__
 
-#include "Iterator.hpp"
+#include "iterator.hpp"
 
 namespace ft {
 	
