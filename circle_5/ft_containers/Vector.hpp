@@ -13,9 +13,8 @@ namespace ft {
 	template <typename T, typename Allocator = std::allocator<T> >
 	class vector {
 
-		// Member types ===========================================================
-
 		public:
+		// Member types ===========================================================
 			typedef T														value_type;
 			typedef Allocator												allocator_type;
 			typedef typename allocator_type::reference						reference;
@@ -31,9 +30,9 @@ namespace ft {
 
 		// ====================================================================
 
+		protected:
 		// Member variables ===================================================
 
-		protected:
 			pointer			_start;
 			pointer			_end;
 			pointer			_capa_end;
@@ -42,7 +41,6 @@ namespace ft {
 		// ====================================================================
 
 		public:
-
 		// Constructors =======================================================
 
 			explicit vector(const allocator_type& alloc = allocator_type())
@@ -109,6 +107,7 @@ namespace ft {
 					_alloc.deallocate(prev - prev_size, prev_capa);
 				}
 			}
+
 			void		resize(size_type n, value_type val = value_type()) {
 				if (n > this->max_size())
 					throw std::length_error("ft::vector::resize: n > max_size()");
