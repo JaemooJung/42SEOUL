@@ -199,7 +199,7 @@ namespace ft {
 
 			void assign(size_type n, const value_type& val) {
 				this->clear();
-				if (this->capaciry() < n) {
+				if (this->capacity() < n) {
 					this->reserve(n);
 					while (n--)
 						_alloc.construct(_end++, val);
