@@ -5,7 +5,7 @@
 
 namespace ft {
 
-	// enable_if ==============================================================
+// enable_if ==============================================================
 	
 	template <bool cond, typename T = void>
 	struct enable_if {};
@@ -15,9 +15,9 @@ namespace ft {
 		typedef T type;
 	};
 
-	// ========================================================================
+// ========================================================================
 
-	// is_input_iter ==========================================================
+// is_input_iter ==========================================================
 
 	template <bool is_valid, typename T>
 	struct is_input_iter_base {
@@ -44,9 +44,9 @@ namespace ft {
 	struct is_input_iter<ft::input_iterator_tag>
 		: public is_input_iter_base<true, ft::input_iterator_tag> {};
 
-	// ========================================================================
+// ========================================================================
 
-	// is_integral ============================================================
+// is_integral ============================================================
 
 	template <bool is_integral, typename T>
 	struct is_integral_base {
@@ -90,9 +90,9 @@ namespace ft {
 	template <>
 	struct is_integral<unsigned long long> : public is_integral_base<true, unsigned long long> {};
 
-	// ========================================================================
+// ========================================================================
 
-	// distance ===============================================================
+// distance ===============================================================
 
 	template <typename InputIt>
 	typename ft::iterator_traits<InputIt>::difference_type distance(InputIt first, InputIt last) {
@@ -104,63 +104,63 @@ namespace ft {
 		return n;
 	}
 
-	// ========================================================================
+// ========================================================================
 
-	// lexicographical compare ================================================
+// lexicographical compare ================================================
 
 	template <class InputIterator1, class InputIterator2>
-	bool lexicographical_compare(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2, InputIterator2 last2) {
-		while (first1 != last1) {
+	bool lexicographical_compare(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2, InputIterator2 last2)
+	{
+		while (first1 != last1)
+		{
 			if (first2 == last2 || *first2 < *first1)
-				return true;
-			else if (*first1 < *first2)
 				return false;
-			++first1;
-			++first2;
+			else if (*first1 < *first2)
+				return true;
+			++first1; ++first2;
 		}
 		return (first2 != last2);
 	}
 
 	template <class InputIterator1, class InputIterator2, class Compare>
-	bool lexicographical_compare(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2, InputIterator2 last2, Compare comp) {
-		while (first1 != last1) {
+	bool lexicographical_compare(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2, InputIterator2 last2, Compare comp)
+	{
+		while (first1 != last1)
+		{
 			if (first2 == last2 || comp(*first2, *first1))
 				return false;
-			else if (comp(*first1, *first2))
+			else if (comp(*first1,*first2))
 				return true;
-			++first1;
-			++first2;
+			++first1; ++first2;
 		}
 		return (first2 != last2);
 	}
-	
-	// ========================================================================
 
-	// equal ==================================================================
+// ========================================================================
+
+// equal ==================================================================
 
 	template <class InputIterator1, class InputIterator2>
 	bool equal(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2) {
-		while (first1 != last1) {
-			if (*first1 != *first2)
+		while (first1!=last1) {
+			if (!(*first1 == *first2))
 				return false;
-			++first1;
-			++first2;
+			++first1; ++first2;
 		}
 		return true;
 	}
 
 	template <class InputIterator1, class InputIterator2, class BinaryPredicate>
 	bool equal(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2, BinaryPredicate pred) {
-		while (first1 != last1) {
-			if (!pred(*first1, *first2))
+		while (first1!=last1) {
+			if (!pred(*first1,*first2))
 				return false;
-			++first1;
-			++first2;
+			++first1; ++first2;
 		}
 		return true;
 	}
 
-	// ========================================================================
+// ========================================================================
 
 } // namespace ft
 
