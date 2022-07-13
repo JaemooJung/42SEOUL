@@ -2,7 +2,6 @@
 #include <iostream>
 #include <iterator>
 #include "vector.hpp"
-
 void my_test_1(void) {
 	std::vector<int> v;
 	ft::vector<int> myV;
@@ -133,5 +132,6 @@ void const_test() {
 }
 
 int main(void) {
+	char *hello = nullptr;
 	std::cout << "test done" << std::endl;
 }
