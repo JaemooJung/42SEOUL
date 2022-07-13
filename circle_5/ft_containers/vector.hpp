@@ -45,16 +45,16 @@ namespace ft {
 		// Constructors ======================================================================================
 
 			explicit vector(const allocator_type& alloc = allocator_type())
-				: _start(nullptr),
-				_end(nullptr),
-				_capa_end(nullptr),
+				: _start(ft_nullptr),
+				_end(ft_nullptr),
+				_capa_end(ft_nullptr),
 				_alloc(alloc)
 			{}
 
 			explicit vector(size_type n, const value_type& value = value_type(), const allocator_type& alloc = allocator_type())
-				: _start(nullptr),
-				_end(nullptr),
-				_capa_end(nullptr),
+				: _start(ft_nullptr),
+				_end(ft_nullptr),
+				_capa_end(ft_nullptr),
 				_alloc(alloc)
 			{
 				_start = _alloc.allocate(n);
@@ -67,19 +67,19 @@ namespace ft {
 			template <typename InputIterator>
 			vector(InputIterator first, InputIterator last, 
 					const allocator_type& alloc = allocator_type(), 
-					typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = nullptr)
-				: _start(nullptr),
-				_end(nullptr),
-				_capa_end(nullptr),
+					typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = ft_nullptr)
+				: _start(ft_nullptr),
+				_end(ft_nullptr),
+				_capa_end(ft_nullptr),
 				_alloc(alloc)
 			{
 				insert(_start, first, last);
 			}
 
 			vector(const vector& other)
-				: _start(nullptr),
-				_end(nullptr),
-				_capa_end(nullptr),
+				: _start(ft_nullptr),
+				_end(ft_nullptr),
+				_capa_end(ft_nullptr),
 				_alloc(other._alloc)
 			{
 				insert(_start, other.begin(), other.end());
@@ -184,7 +184,7 @@ namespace ft {
 
 			template <class InputIterator>
 			void	assign(InputIterator first, InputIterator last,
-			typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = nullptr) {
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = ft_nullptr) {
 				this->clear();
 				size_type size = ft::distance(first, last);
 				if (size <= this->capacity()) {
@@ -233,7 +233,7 @@ namespace ft {
 				size_type	next_size = this->size() + n;
 				size_type	pos = &*position - _start;
 				size_type	prev_capa = this->capacity();
-				pointer		new_start = nullptr;
+				pointer		new_start = ft_nullptr;
 
 				if (this->max_size() < next_size)
 					throw std::length_error("ft::vector::insert: max_size() < this->size() + n");
@@ -259,7 +259,7 @@ namespace ft {
 
 			template <class InputIterator>
 			void insert(iterator position, InputIterator first, InputIterator last, 
-			typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type * = nullptr) {
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type * = ft_nullptr) {
 				if (position > this->end() || position < this->begin())
 					return;
 				
@@ -267,7 +267,7 @@ namespace ft {
 				size_type	next_size = this->size() + num;
 				size_type	prev_capa = this->capacity();
 				size_type	pos = &*position - _start;
-				pointer		new_start = nullptr;
+				pointer		new_start = ft_nullptr;
 
 				if (this->max_size() < next_size)
 					throw std::length_error("ft::vector::insert: max_size() < this->size() + n");

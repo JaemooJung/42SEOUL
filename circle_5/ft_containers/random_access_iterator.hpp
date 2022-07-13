@@ -2,6 +2,7 @@
 #define __RANDOMACCESSITERATOR_HPP__
 
 #include "iterator.hpp"
+#include "utils.hpp"
 
 namespace ft {
 	
@@ -25,7 +26,7 @@ namespace ft {
 		public:
 		// Constructors ======================================================================================
 
-			random_access_iterator() : _ptr(nullptr) {}
+			random_access_iterator() : _ptr(ft_nullptr) {}
 
 			random_access_iterator(const random_access_iterator& ref) : _ptr(ref._ptr) {}
 
