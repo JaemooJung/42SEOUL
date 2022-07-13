@@ -1,5 +1,5 @@
-#ifndef __VECTOR_H__
-#define __VECTOR_H__
+#ifndef __VECTOR_HPP__
+#define __VECTOR_HPP__
 
 #include <memory>
 #include "random_access_iterator.hpp"
@@ -305,8 +305,7 @@ namespace ft {
 
 			void pop_back() {
 				if (this->size() != 0) {
-					_alloc.destroy(_end - 1);
-					_end--;
+					_alloc.destroy(--_end);
 				}
 			}
 
@@ -405,4 +404,4 @@ namespace ft {
 } // namespace ft
 
 
-#endif // __VECTOR_H__
+#endif // __VECTOR_HPP__

@@ -3,7 +3,7 @@
 #include <iterator>
 #include "vector.hpp"
 
-int main(void) {
+void my_test_1(void) {
 	std::vector<int> v;
 	ft::vector<int> myV;
 	std::cout << "===========================================================" << std::endl;
@@ -118,4 +118,8 @@ int main(void) {
 		std::cout << *it << " ";
 	std::cout << std::endl;
 	std::cout << "===========================================================" << std::endl;
+}
+
+int main(void) {
+	std::cout << "test done" << std::endl;
 }

@@ -4,11 +4,18 @@
 #include <cstddef>
 
 namespace ft {
+
+// Iterator_category ==========================================================
+
 	struct input_iterator_tag {};
 	struct output_iterator_tag {};
 	struct forward_iterator_tag : public input_iterator_tag, output_iterator_tag {};
 	struct bidirectional_iterator_tag : public forward_iterator_tag {};
 	struct random_access_iterator_tag : public bidirectional_iterator_tag {};
+
+// ============================================================================
+
+// Iterator traits ============================================================
 
 	template <typename Iterator>
 	struct iterator_traits {
@@ -37,6 +44,10 @@ namespace ft {
 		typedef const T&					reference;
 	};
 
+// ============================================================================
+
+// Iterator ===================================================================
+
 	template	<typename	Category,
 				typename	T,
 				typename	Distance = ptrdiff_t,
@@ -49,6 +60,8 @@ namespace ft {
 		typedef Pointer		pointer;
 		typedef Reference	reference;
 	};
+
+// ============================================================================
 
 } // namespace ft
 

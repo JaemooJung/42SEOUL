@@ -1,5 +1,5 @@
-#ifndef __UTILS_H__
-#define __UTILS_H__
+#ifndef __UTILS_HPP__
+#define __UTILS_HPP__
 
 #include "iterator.hpp"
 
@@ -164,4 +164,4 @@ namespace ft {
 
 } // namespace ft
 
-#endif // __UTILS_H__
+#endif // __UTILS_HPP__

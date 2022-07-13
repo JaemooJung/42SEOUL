@@ -1,5 +1,5 @@
-#ifndef __REVERSEITERATOR_H__
-#define __REVERSEITERATOR_H__
+#ifndef __REVERSEITERATOR_HPP__
+#define __REVERSEITERATOR_HPP__
 
 #include "iterator.hpp"
 
@@ -9,6 +9,8 @@ namespace ft {
 	class reverse_iterator {
 
 		public:
+		// Member types ======================================================================================
+
 			typedef	Iterator	iterator_type;
 			typedef	typename	ft::iterator_traits<Iterator>::iterator_category	iterator_category;
 			typedef	typename	ft::iterator_traits<Iterator>::value_type			value_type;
@@ -16,10 +18,13 @@ namespace ft {
 			typedef	typename	ft::iterator_traits<Iterator>::pointer				pointer;
 			typedef	typename	ft::iterator_traits<Iterator>::reference			reference;
 
+		// ===================================================================================================
+
 		private:
 			iterator_type	_iter;
 
 		public:
+		// Constructors ======================================================================================
 		
 			reverse_iterator() : _iter() {};
 			template <typename U>
@@ -32,6 +37,10 @@ namespace ft {
 				_iter = ref.base();
 				return (*this);
 			}
+		
+		// ===================================================================================================
+
+		// Operator overloads ================================================================================
 
 			iterator_type		base() const { return (_iter); }
 
@@ -96,7 +105,11 @@ namespace ft {
 				return &(*(--tmp));
 			}
 
+		// ===================================================================================================
+
 	}; 
+
+// operator overloads ====================================================================================
 
 	template <typename iter>
 	bool operator==(const reverse_iterator<iter>& lhs, const reverse_iterator<iter>& rhs) { return (lhs.base() == rhs.base()); }
@@ -140,6 +153,8 @@ namespace ft {
 	template <typename iter>
 	typename reverse_iterator<iter>::difference_type operator-(const reverse_iterator<iter>& lhs, const reverse_iterator<iter>& rhs) { return (rhs - lhs); }
 
+// ============================================================================================================
+
 } // namespace ft
 
-#endif // __REVERSEITERATOR_H__
+#endif // __REVERSEITERATOR_HPP__

@@ -1,5 +1,5 @@
-#ifndef __RANDOMACCESSITERATOR_H__
-#define __RANDOMACCESSITERATOR_H__
+#ifndef __RANDOMACCESSITERATOR_HPP__
+#define __RANDOMACCESSITERATOR_HPP__
 
 #include "iterator.hpp"
 
@@ -164,4 +164,4 @@ namespace ft {
 
 } // namespace ft
 
-#endif // __RANDOMACCESSITERATOR_H__
+#endif // __RANDOMACCESSITERATOR_HPP__
