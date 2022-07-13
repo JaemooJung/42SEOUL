@@ -120,6 +120,18 @@ void my_test_1(void) {
 	std::cout << "===========================================================" << std::endl;
 }
 
+void const_test() {
+	// const int size = 5;
+	// ft::vector<int> vct(size);
+	// ft::vector<int>::iterator it = vct.begin();
+	// ft::vector<int>::const_iterator ite = vct.begin();
+
+	// for (int i = 0; i < size; ++i)
+	// 	it[i] = i;
+
+	// *ite = 42; // < -- error
+}
+
 int main(void) {
 	std::cout << "test done" << std::endl;
 }
