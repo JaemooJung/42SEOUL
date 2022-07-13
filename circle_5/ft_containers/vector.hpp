@@ -379,6 +379,8 @@ namespace ft {
 		return (true);
 	}
 
+// relational operators =========================================================================================================
+
 	template <class T, class Alloc>
 	bool operator!=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) { return !(lhs == rhs); }
 	
@@ -395,6 +397,8 @@ namespace ft {
 
 	template <class T, class Alloc>
 	bool operator>=(const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs) { return !(lhs < rhs); }
+
+// ============================================================================================================================== 
 
 	template <class T, class Alloc>
 	void swap(vector<T, Alloc>& lhs, vector<T, Alloc>& rhs) {
