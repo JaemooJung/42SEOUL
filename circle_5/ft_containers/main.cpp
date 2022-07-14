@@ -3,6 +3,35 @@
 #include <iterator>
 #include "vector.hpp"
 
+class B {
+public:
+    char *l;
+    int i;
+    B():l(nullptr), i(1) {};
+    B(const int &ex) {
+        this->i = ex;
+        this->l = new char('a');
+    };
+    virtual ~B() {
+        delete this->l;
+        this->l = nullptr;
+    };
+};
+
+class A : public B {
+public:
+    A():B(){};
+    A(const B* ex){
+        this->l = new char(*(ex->l));
+        this->i = ex->i;
+        if (ex->i == -1) throw "n";
+    }
+    ~A() {
+        delete this->l;
+        this->l = nullptr;
+    };
+};
+
 void my_test_1(void) {
 	std::vector<int> v;
 	ft::vector<int> myV;
@@ -132,6 +161,63 @@ void const_test() {
 	// *ite = 42; // < -- error
 }
 
+void insert_test() {
+	std::unique_ptr<B> k2(new B(3));
+    std::unique_ptr<B> k3(new B(4));
+    std::unique_ptr<B> k4(new B(-1));
+    ft::vector<A> vv;
+    ft::vector<B*> v1;
+
+    v1.push_back(&(*k2));
+    v1.push_back(&(*k3));
+    v1.push_back(&(*k4));
+    vv.insert(vv.begin(), v1.begin(), v1.end());
+    // catch (...) {
+    // 	std::cout << vv.size() << std::endl;
+    //     std::cout << vv.capacity() << std::endl;
+    // }
+
+}
+
+void swap_test() {
+	ft::vector<int> vector;
+	int _ratio = 10000;
+    vector.assign(1100 * _ratio, 11);
+    ft::vector<int> tmp(500 * _ratio, 5), tmp2(1000 * _ratio, 10), tmp3(1500 * _ratio, 15), tmp4(3000 * _ratio, 30);
+
+	std::cout << tmp4[2] << std::endl;
+	std::cout << tmp4.size() << std::endl;
+	std::cout << tmp4.capacity() << std::endl;
+
+	std::cout << "=========================swap test========================" << std::endl;
+	
+    std::cout << vector[2] << std::endl;
+	std::cout << vector.size() << std::endl;
+	std::cout << vector.capacity() << std::endl;
+    long *adr1 = reinterpret_cast<long *>(&vector);
+    long *adr2 = reinterpret_cast<long *>(&tmp);
+    vector.swap(tmp);
+    if (reinterpret_cast<long *>(&vector) == adr1 && reinterpret_cast<long *>(&tmp) == adr2)
+    	std::cout << "**1**" << std::endl;
+    std::cout << vector[2] << std::endl;
+	std::cout << vector.size() << std::endl;
+	std::cout << vector.capacity() << std::endl;
+    vector.swap(tmp3);
+    std::cout << vector[2] << std::endl;
+	std::cout << vector.size() << std::endl;
+	std::cout << vector.capacity() << std::endl;
+    vector.swap(tmp2);
+    std::cout << vector[2] << std::endl;
+	std::cout << vector.size() << std::endl;
+	std::cout << vector.capacity() << std::endl;
+    vector.swap(tmp4);
+    std::cout << vector[2] << std::endl;
+	std::cout << vector.size() << std::endl;
+	std::cout << vector.capacity() << std::endl;
+}
+
 int main(void) {
+	//insert_test();
+	swap_test();
 	std::cout << "test done" << std::endl;
 }

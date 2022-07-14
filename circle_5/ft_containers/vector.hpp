@@ -68,12 +68,16 @@ namespace ft {
 			vector(InputIterator first, InputIterator last, 
 					const allocator_type& alloc = allocator_type(), 
 					typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = ft_nullptr)
-				: _start(ft_nullptr),
-				_end(ft_nullptr),
-				_capa_end(ft_nullptr),
-				_alloc(alloc)
+				: _alloc(alloc)
 			{
-				insert(_start, first, last);
+				size_type n = ft::distance(first, last);
+				_start = _alloc.allocate(n);
+				_end = _start;
+				_capa_end = _start + n;
+				while (n--) {
+					_alloc.construct(_end++, *first);
+					++first;
+				}
 			}
 
 			vector(const vector& other)
@@ -82,12 +86,19 @@ namespace ft {
 				_capa_end(ft_nullptr),
 				_alloc(other._alloc)
 			{
-				insert(_start, other.begin(), other.end());
+				size_type n = other.size();
+				_start = _alloc.allocate(n);
+				_end = _start;
+				_capa_end = _start + n;
+				pointer p = other._start;
+				while (n--) {
+					_alloc.construct(_end++, *p);
+					++p;
+				}
 			}
 
 			vector& operator=(const vector& other) {
-				if (this != &other)
-				{
+				if (this != &other) {
 					this->clear();
 					insert(_start, other.begin(), other.end());
 				}
@@ -96,7 +107,7 @@ namespace ft {
 
 			~vector() {
 				this->clear();
-				_alloc.deallocate(_start,this->capacity());
+				_alloc.deallocate(_start, this->capacity());
 			}
 
 		// ===================================================================================================
@@ -147,13 +158,23 @@ namespace ft {
 					throw std::length_error("ft::vector::resize: n > max_size()");
 				if (this->size() == n)
 					return;
-				if (this->size() > n) {
-					while (_start + n != _end) {
-						_alloc.destroy(--_end);
-					}
-				}
-				if (this->size() < n) {
-					this->insert(_end, n - this->size(), val);
+				// if (this->size() > n) {
+				// 	while (_start + n != _end) {
+				// 		_alloc.destroy(--_end);
+				// 	}
+				// }
+				// if (this->size() < n) {
+				// 	this->insert(_end, n - this->size(), val);
+				// }
+
+				if (n < this->size()) {
+					while (this->size() != n)
+						pop_back();
+				} else {
+					if (this->capacity() * 2 < n)
+						reserve(n);
+					while (this->size() != n)
+						push_back(val);
 				}
 			}
 
@@ -257,6 +278,8 @@ namespace ft {
 				_start = new_start;
 			}
 
+			// construct 중 exception으로 종료가 되면 함수 작동이 정상적으로 완료되지 않을 뿐더러
+			// 이미 할당돤 new_start의 값이 해제되지 않는 문제가 있음!
 			template <class InputIterator>
 			void insert(iterator position, InputIterator first, InputIterator last, 
 			typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type * = ft_nullptr) {
@@ -328,8 +351,6 @@ namespace ft {
 			}
 
 			void swap(vector& other) {
-				if (this == &other)
-					return;
 				pointer			tmp_start = _start;
 				pointer			tmp_end = _end;
 				pointer			tmp_capa_end = _capa_end;
@@ -339,6 +360,7 @@ namespace ft {
 				_end = other._end;
 				_capa_end = other._capa_end;
 				_alloc = other._alloc;
+				
 				other._start = tmp_start;
 				other._end = tmp_end;
 				other._capa_end = tmp_capa_end;
