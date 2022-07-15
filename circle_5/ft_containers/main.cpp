@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iterator>
 #include "vector.hpp"
+#include <stack>
 
 class B {
 public:
