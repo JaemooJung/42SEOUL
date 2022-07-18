@@ -64,6 +64,9 @@ namespace ft {
 	struct is_integral<char> : public is_integral_base<true, char> {}; 
 
 	template <>
+	struct is_integral<signed char> : public is_integral_base<true, signed char> {};
+
+	template <>
 	struct is_integral<unsigned char> : public is_integral_base<true, unsigned char> {};
 
 	template <>
@@ -89,6 +92,15 @@ namespace ft {
 
 	template <>
 	struct is_integral<unsigned long long> : public is_integral_base<true, unsigned long long> {};
+
+	template <>
+	struct is_integral<wchar_t> : public is_integral_base<true, wchar_t> {};
+
+	template <>
+	struct is_integral<char16_t> : public is_integral_base<true, char16_t> {};
+
+	template <>
+	struct is_integral<char32_t> : public is_integral_base<true, char32_t> {};
 
 // ========================================================================
 
