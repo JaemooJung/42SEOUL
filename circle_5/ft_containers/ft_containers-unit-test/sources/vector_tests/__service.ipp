@@ -17,20 +17,20 @@ int run_vector_unit_test(std::string test_name, std::vector<int> (func1)(std::ve
 	res1 = func1(vector);
 	res2 = func2(my_vector);
     
-    if (test_name == "swap()" || test_name == "resize()") {
-        std::cout << "result of [" << test_name << "]" << std::endl;
-        std::cout << "=std vector=" << std::endl;
-        for (int i = 0; i < res1.size(); i++) {
-            std::cout << res1[i] << " ";
-        }
-        std::cout << std::endl;
-        std::cout << "=my vector=" << std::endl;
-        for (int i = 0; i < res2.size(); i++) {
-            std::cout << res2[i] << " ";
-        }
-        std::cout << std::endl;
-        std::cout << "============================================================" << std::endl;
-    }
+    // if (test_name == "insert(range)") {
+    //     std::cout << "result of [" << test_name << "]" << std::endl;
+    //     std::cout << "=std vector=" << std::endl;
+    //     for (int i = 0; i < res1.size(); i++) {
+    //         std::cout << res1[i] << " ";
+    //     }
+    //     std::cout << std::endl;
+    //     std::cout << "=my vector=" << std::endl;
+    //     for (int i = 0; i < res2.size(); i++) {
+    //         std::cout << res2[i] << " ";
+    //     }
+    //     std::cout << std::endl;
+    //     std::cout << "============================================================" << std::endl;
+    // }
 
 
 	if (res1 == res2) {

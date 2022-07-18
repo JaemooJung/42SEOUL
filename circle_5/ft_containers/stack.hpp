@@ -44,8 +44,41 @@ namespace ft {
 				_c.pop_back();
 			}
 
-
+			template <class Tn, class Containern>
+				friend bool operator==(const stack<Tn, Containern> &lhs, const stack<Tn, Containern> &rhs);
+			template <class Tn, class Containern>
+				friend bool operator<(const stack<Tn, Containern> &lhs, const stack<Tn, Containern> &rhs);
 	};
+
+	template <class T, class Containern>
+	bool operator==(const stack<T, Containern> &lhs, const stack<T, Containern> &rhs) {
+		return lhs._c == rhs._c;
+	}
+
+	template <class T, class Containern>
+	bool operator!=(const stack<T, Containern> &lhs, const stack<T, Containern> &rhs) {
+		return !(lhs == rhs);
+	}
+
+	template <class T, class Containern>
+	bool operator<(const stack<T, Containern> &lhs, const stack<T, Containern> &rhs) {
+		return lhs._c < rhs._c;
+	}
+	
+	template <class T, class Containern>
+	bool operator>(const stack<T, Containern> &lhs, const stack<T, Containern> &rhs) {
+		return rhs < lhs;
+	}
+
+	template <class T, class Containern>
+	bool operator<=(const stack<T, Containern> &lhs, const stack<T, Containern> &rhs) {
+		return !(rhs < lhs);
+	}
+
+	template <class T, class Containern>
+	bool operator>=(const stack<T, Containern> &lhs, const stack<T, Containern> &rhs) {
+		return !(lhs < rhs);
+	}
 
 }; // namespace ft
 

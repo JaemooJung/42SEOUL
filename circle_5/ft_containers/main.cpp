@@ -172,12 +172,13 @@ void insert_test() {
     v1.push_back(&(*k2));
     v1.push_back(&(*k3));
     v1.push_back(&(*k4));
-    vv.insert(vv.begin(), v1.begin(), v1.end());
-    // catch (...) {
-    // 	std::cout << vv.size() << std::endl;
-    //     std::cout << vv.capacity() << std::endl;
-    // }
-
+	try {
+    	vv.insert(vv.begin(), v1.begin(), v1.end());
+	}
+    catch (...) {
+    	std::cout << vv.size() << std::endl;
+        std::cout << vv.capacity() << std::endl;
+    }
 }
 
 void swap_test() {
@@ -218,7 +219,7 @@ void swap_test() {
 }
 
 int main(void) {
-	//insert_test();
-	swap_test();
+	insert_test();
+	// swap_test();
 	std::cout << "test done" << std::endl;
 }

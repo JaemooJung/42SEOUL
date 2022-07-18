@@ -158,15 +158,6 @@ namespace ft {
 					throw std::length_error("ft::vector::resize: n > max_size()");
 				if (this->size() == n)
 					return;
-				// if (this->size() > n) {
-				// 	while (_start + n != _end) {
-				// 		_alloc.destroy(--_end);
-				// 	}
-				// }
-				// if (this->size() < n) {
-				// 	this->insert(_end, n - this->size(), val);
-				// }
-
 				if (n < this->size()) {
 					while (this->size() != n)
 						pop_back();
@@ -254,23 +245,40 @@ namespace ft {
 				size_type	next_size = this->size() + n;
 				size_type	pos = &*position - _start;
 				size_type	prev_capa = this->capacity();
+				size_type	alloced_size = 0;
 				pointer		new_start = ft_nullptr;
+				pointer		prev_capa_end = _capa_end;
 
 				if (this->max_size() < next_size)
 					throw std::length_error("ft::vector::insert: max_size() < this->size() + n");
 				if (this->capacity() < next_size) {
 					new_start = _alloc.allocate(next_size);
 					_capa_end = new_start + next_size;
+					alloced_size = next_size;
 				} else {
 					new_start = _alloc.allocate(this->capacity() * 2);
 					_capa_end = new_start + this->capacity() * 2;
+					alloced_size = this->capacity() * 2;
 				}
-				for (size_type i = 0; i < pos; ++i)
-					_alloc.construct(new_start + i, *(_start + i));
-				for (size_type i = 0; i < n; ++i)
-					_alloc.construct(new_start + pos + i, val);
-				for (size_type i = 0; i < this->size() - pos; ++i)
-					_alloc.construct(new_start + pos + n + i, *(_start + pos + i));
+				try {
+					for (size_type i = 0; i < pos; ++i)
+						_alloc.construct(new_start + i, *(_start + i));
+					for (size_type i = 0; i < n; ++i)
+						_alloc.construct(new_start + pos + i, val);
+					for (size_type i = 0; i < this->size() - pos; ++i)
+						_alloc.construct(new_start + pos + n + i, *(_start + pos + i));
+				} catch(...) {
+					for (size_type i = 0; i < pos; ++i)
+						_alloc.destroy(new_start + i);
+					for (size_type i = 0; i < n; ++i)
+						_alloc.destroy(new_start + pos + i);
+					for (size_type i = 0; i < this->size() - pos; ++i)
+						_alloc.destroy(new_start + pos + n + i);
+					_alloc.deallocate(new_start, alloced_size);
+					_capa_end = prev_capa_end;
+					throw;
+				}
+
 				for (size_type i = 0; i < this->size(); ++i)
 					_alloc.destroy(_start + i);
 				_alloc.deallocate(_start, prev_capa);
@@ -290,23 +298,39 @@ namespace ft {
 				size_type	next_size = this->size() + num;
 				size_type	prev_capa = this->capacity();
 				size_type	pos = &*position - _start;
+				size_type	alloced_size = 0;
 				pointer		new_start = ft_nullptr;
+				pointer		prev_capa_ptr = _capa_end;
 
 				if (this->max_size() < next_size)
 					throw std::length_error("ft::vector::insert: max_size() < this->size() + n");
 				if (this->capacity() * 2 < next_size) {
 					new_start = _alloc.allocate(next_size);
 					_capa_end = new_start + next_size;
+					alloced_size = next_size;
 				} else {
 					new_start = _alloc.allocate(this->capacity() * 2);
 					_capa_end = new_start + this->capacity() * 2;
+					alloced_size = this->capacity() * 2;
 				}
-				for (size_type i = 0; i < pos; ++i)
-					_alloc.construct(new_start + i, *(_start + i));
-				for (size_type i = 0; i < num; ++i)
-					_alloc.construct(new_start + pos + i, *(&*first++));
-				for (size_type i = 0; i < this->size() - pos; ++i)
-					_alloc.construct(new_start + pos + num + i, *(_start + pos + i));
+				try {
+					for (size_type i = 0; i < pos; ++i)
+						_alloc.construct(new_start + i, *(_start + i));
+					for (size_type i = 0; i < num; ++i)
+						_alloc.construct(new_start + pos + i, *(&*first++));
+					for (size_type i = 0; i < this->size() - pos; ++i)
+						_alloc.construct(new_start + pos + num + i, *(_start + pos + i));
+				} catch(...) {
+					for (size_type i = 0; i < pos; ++i)
+						_alloc.destroy(new_start + i);
+					for (size_type i = 0; i < num; ++i)
+						_alloc.destroy(new_start + pos + i);
+					for (size_type i = 0; i < this->size() - pos; ++i)
+						_alloc.destroy(new_start + pos + num + i);
+					_alloc.deallocate(new_start, alloced_size);
+					_capa_end = prev_capa_ptr;
+					throw;
+				}
 				for (size_type i = 0; i < this->size(); ++i)
 					_alloc.destroy(_start + i);
 				_alloc.deallocate(_start, prev_capa);
