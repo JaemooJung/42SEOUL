@@ -1,4 +1,4 @@
-#ifndef __MAP_H__
-#define __MAP_H__
+#ifndef __MAP_HPP__
+#define __MAP_HPP__
 
 #endif // __MAP_H__
