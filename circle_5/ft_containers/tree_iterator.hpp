@@ -47,7 +47,7 @@ namespace ft {
 
 			node_ptr base() const { return (_node); }
 
-			reference operator++() {
+			tree_iterator& operator++() {
 				if (_node->right != ft_nullptr) {
 					_node = min_value_node(_node->right);
 					return (*this);
@@ -59,7 +59,7 @@ namespace ft {
 				return (*this);
 			}
 
-			reference operator--() {
+			tree_iterator& operator--() {
 				if (_node->left != ft_nullptr) {
 					_node = max_value_node(_node->left);
 					return (*this);
@@ -72,6 +72,30 @@ namespace ft {
 					_node = ft_nullptr;
 				return (*this);
 			}
+
+			reference operator*() const { return (_node->value); }
+			
+			pointer operator->() const { return (&(_node->value)); }
+			
+			tree_iterator operator++(int) {
+				tree_iterator tmp(*this);
+				++(*this);
+				return (tmp);
+			}
+
+			tree_iterator operator--(int) {
+				tree_iterator tmp(*this);
+				--(*this);
+				return (tmp);
+			}
+
+			bool operator==(const tree_iterator& ref) const { return (_node == ref._node); }
+
+			bool operator!=(const tree_iterator& ref) const { return (_node != ref._node); }
+
+			bool operator==(const tree_const_iterator<T>& ref) const { return (_node == ref._node); }
+			
+			bool operator!=(const tree_const_iterator<T>& ref) const { return (_node != ref._node); }
 
 		private:
 			node_ptr min_value_node(node_ptr node) {
