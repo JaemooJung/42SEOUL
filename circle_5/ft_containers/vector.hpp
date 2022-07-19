@@ -286,8 +286,6 @@ namespace ft {
 				_start = new_start;
 			}
 
-			// construct 중 exception으로 종료가 되면 함수 작동이 정상적으로 완료되지 않을 뿐더러
-			// 이미 할당돤 new_start의 값이 해제되지 않는 문제가 있음!
 			template <class InputIterator>
 			void insert(iterator position, InputIterator first, InputIterator last, 
 			typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type * = ft_nullptr) {
