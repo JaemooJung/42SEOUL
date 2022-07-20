@@ -190,11 +190,28 @@ namespace ft {
 
 			if (tmp == ft_nullptr) {
 				set_root(node);
-				return make_pair(iterator(node), true);
+				return ft::make_pair(iterator(node), true);
 			}
 			while (tmp) {
-
+				if (_comp(node->value, tmp->value)) {
+					parent = tmp;
+					tmp = tmp->left;
+				}
+				else if (_comp(tmp->value, node->value)) {
+					parent = tmp;
+					tmp = tmp->right;
+				}
+				else
+					return ft::make_pair(iterator(tmp), false);
 			}
+			if (_comp(parent->value, node->value)) {
+				parent->right = node;
+				node->parent = parent;
+			} else {
+				parent->left = node;
+				node->parent = parent;
+			}
+			return ft::make_pair(iterator(node), true);
 		}
 
 		pair<iterator, bool> insert_value(const value_type& val) {

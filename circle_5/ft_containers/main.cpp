@@ -3,6 +3,7 @@
 #include <iterator>
 #include "vector.hpp"
 #include <stack>
+#include <map>
 
 class B {
 public:
