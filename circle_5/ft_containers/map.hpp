@@ -74,6 +74,48 @@ namespace ft {
 
 		// ==================================================================================================
 
+		// iterators ========================================================================================
+
+			iterator begin() { return _tree.begin(); }
+			iterator end() { return _tree.end(); }
+			const_iterator begin() const { return _tree.begin(); }
+			const_iterator end() const { return _tree.end(); }
+			reverse_iterator rbegin() { return _tree.rbegin(); }
+			reverse_iterator rend() { return _tree.rend(); }
+			const_reverse_iterator rbegin() const { return _tree.rbegin(); }
+			const_reverse_iterator rend() const { return _tree.rend(); }
+
+		// member functions =================================================================================
+
+			// capacity
+			bool empty() const {
+				return _tree.empty();
+			}
+
+			size_type size() const {
+				return _tree.size();
+			}
+
+			size_type max_size() const {
+				return _tree.max_size();
+			}
+
+			// element access
+			
+			//modifiers
+			pair<iterator, bool> insert(const value_type& value) {
+				return _tree.insert(value);
+			}
+
+			iterator insert(iterator position, const value_type& value) {
+				return _tree.insert(position, value);
+			}
+
+			template <typename InputIterator>
+			void insert(InputIterator first, InputIterator last) {
+				_tree.insert(first, last);
+			}
+
 	};
 
 }; // namespace ft

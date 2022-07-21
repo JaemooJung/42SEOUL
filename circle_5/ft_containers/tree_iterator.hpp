@@ -50,34 +50,34 @@ namespace ft {
 			node_ptr base() const { return (_node); }
 
 			tree_iterator& operator++() {
-				if (_node->right != ft_nullptr) {
-					_node = min_value_node(_node->right);
+				if (_node->_right != ft_nullptr) {
+					_node = min_value_node(_node->_right);
 					return (*this);
 				}
-				while (_node->parent != ft_nullptr && _node != _node->parent->left)
-					_node = _node->parent;
-				if (_node->parent != ft_nullptr)
-					_node = _node->parent;
+				while (_node->_parent != ft_nullptr && _node != _node->_parent->_left)
+					_node = _node->_parent;
+				if (_node->_parent != ft_nullptr)
+					_node = _node->_parent;
 				return (*this);
 			}
 
 			tree_iterator& operator--() {
-				if (_node->left != ft_nullptr) {
-					_node = max_value_node(_node->left);
+				if (_node->_left != ft_nullptr) {
+					_node = max_value_node(_node->_left);
 					return (*this);
 				}
-				while (_node->parent != ft_nullptr && _node != _node->parent->right)
-					_node = _node->parent;
-				if (_node->parent != ft_nullptr)
-					_node = _node->parent;
+				while (_node->_parent != ft_nullptr && _node != _node->_parent->_right)
+					_node = _node->_parent;
+				if (_node->_parent != ft_nullptr)
+					_node = _node->_parent;
 				else 
 					_node = ft_nullptr;
 				return (*this);
 			}
 
-			reference operator*() const { return (_node->value); }
+			reference operator*() const { return (_node->_value); }
 			
-			pointer operator->() const { return (&(_node->value)); }
+			pointer operator->() const { return (&(_node->_value)); }
 			
 			tree_iterator operator++(int) {
 				tree_iterator tmp(*this);
@@ -101,15 +101,15 @@ namespace ft {
 
 		private:
 			node_ptr min_value_node(node_ptr node) {
-				if (node->left == ft_nullptr)
+				if (node->_left == ft_nullptr)
 					return (node);
-				return (min_value_node(node->left));
+				return (min_value_node(node->_left));
 			}
 
 			node_ptr max_value_node(node_ptr node) {
-				if (node->right == ft_nullptr)
+				if (node->_right == ft_nullptr)
 					return (node);
-				return (max_value_node(node->right));
+				return (max_value_node(node->_right));
 			}
 	};
 
@@ -164,26 +164,26 @@ namespace ft {
 			node_ptr base() const { return (_node); }
 			
 			tree_const_iterator& operator++() {
-				if (_node->right != ft_nullptr) {
-					_node = min_value_node(_node->right);
+				if (_node->_right != ft_nullptr) {
+					_node = min_value_node(_node->_right);
 					return (*this);
 				}
-				while (_node->parent != ft_nullptr && _node != _node->parent->left)
-					_node = _node->parent;
-				if (_node->parent != ft_nullptr)
-					_node = _node->parent;
+				while (_node->_parent != ft_nullptr && _node != _node->_parent->_left)
+					_node = _node->_parent;
+				if (_node->_parent != ft_nullptr)
+					_node = _node->_parent;
 				return (*this);
 			}
 
 			tree_const_iterator& operator--() {
-				if (_node->left != ft_nullptr) {
-					_node = max_value_node(_node->left);
+				if (_node->_left != ft_nullptr) {
+					_node = max_value_node(_node->_left);
 					return (*this);
 				}
-				while (_node->parent != ft_nullptr && _node != _node->parent->right)
-					_node = _node->parent;
-				if (_node->parent != ft_nullptr)
-					_node = _node->parent;
+				while (_node->_parent != ft_nullptr && _node != _node->_parent->_right)
+					_node = _node->_parent;
+				if (_node->_parent != ft_nullptr)
+					_node = _node->_parent;
 				else 
 					_node = ft_nullptr;
 				return (*this);
@@ -201,8 +201,8 @@ namespace ft {
 				return (tmp);
 			}
 
-			reference operator*() const { return (_node->value); }
-			pointer operator->() const { return (&(_node->value)); }
+			reference operator*() const { return (_node->_value); }
+			pointer operator->() const { return (&(_node->_value)); }
 
 			bool operator==(const tree_const_iterator& ref) const { return (_node == ref._node); }
 			bool operator!=(const tree_const_iterator& ref) const { return (_node != ref._node); }
@@ -211,15 +211,15 @@ namespace ft {
 
 		private:
 			node_ptr min_value_node(node_ptr node) {
-				if (node->left == ft_nullptr)
+				if (node->_left == ft_nullptr)
 					return (node);
-				return (min_value_node(node->left));
+				return (min_value_node(node->_left));
 			}
 			
 			node_ptr max_value_node(node_ptr node) {
-				if (node->right == ft_nullptr)
+				if (node->_right == ft_nullptr)
 					return (node);
-				return (max_value_node(node->right));
+				return (max_value_node(node->_right));
 			}
 
 	};

@@ -225,7 +225,25 @@ void swap_test() {
 void map_test() {
 	ft::map<int, char> map;
 
+	map.insert(ft::make_pair(100, 'a'));
+	
+	map.insert(ft::make_pair(98, 'c'));
 
+
+	map.insert(ft::make_pair(95, 'f'));
+	map.insert(ft::make_pair(94, 'g'));
+
+	map.insert(ft::make_pair(99, 'b'));
+	map.insert(ft::make_pair(96, 'e'));
+	map.insert(ft::make_pair(93, 'h'));
+	map.insert(ft::make_pair(97, 'd'));
+
+	map.insert(ft::make_pair(1, 'y'));
+	map.insert(ft::make_pair(2, 'z'));
+	map.insert(ft::make_pair(3, 'x'));
+	std::cout << "=========================map test========================" << std::endl;
+	for (ft::map<int, char>::iterator it = map.begin(); it != map.end(); it++)
+		std::cout << it->first << " " << it->second << std::endl;
 }
 
 int main(void) {
