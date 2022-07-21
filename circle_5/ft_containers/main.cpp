@@ -4,6 +4,9 @@
 #include "vector.hpp"
 #include <stack>
 #include <map>
+#include "red_black_tree.hpp"
+#include "utils.hpp"
+#include "map.hpp"
 
 class B {
 public:
@@ -219,8 +222,15 @@ void swap_test() {
 	std::cout << vector.capacity() << std::endl;
 }
 
+void map_test() {
+	ft::map<int, char> map;
+
+
+}
+
 int main(void) {
-	insert_test();
+	//insert_test();
 	// swap_test();
+	map_test();
 	std::cout << "test done" << std::endl;
 }

@@ -24,7 +24,8 @@ namespace ft {
 		Color				_color;
 
 		rb_tree_node()
-			: _parent(ft_nullptr),
+			: _value(),
+			_parent(ft_nullptr),
 			_left(ft_nullptr),
 			_right(ft_nullptr),
 			_color(RED) {}
@@ -43,7 +44,7 @@ namespace ft {
 			_right(ref._right),
 			_color(ref._color) {}
 		
-		~rb_tree_node() {}
+		virtual ~rb_tree_node() {}
 		
 		rb_tree_node&	operator=(const rb_tree_node& ref) {
 			if (this != &ref) {

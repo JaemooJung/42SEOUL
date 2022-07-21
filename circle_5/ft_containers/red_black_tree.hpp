@@ -17,7 +17,7 @@ namespace ft {
 	
 		private:
 			typedef ft::rb_tree_node<T>									node_type;
-			typedef ft::rb_tree_node<T*>								node_ptr;
+			typedef ft::rb_tree_node<T>*								node_ptr;
 			typedef typename Alloc::template rebind<node_type>::other	node_alloc_type;
 
 		public:
@@ -37,21 +37,6 @@ namespace ft {
 
 	// ==========================================================================
 
-	// constructors =============================================================
-
-		red_black_tree(value_compare const& comp, allocator_type const& alloc,
-						node_alloc_type const& node_alloc = node_alloc_type())
-		: _comp(comp),
-		_alloc(alloc),
-		_node_alloc(node_alloc),
-		_size(0) {
-		_meta_node = _node_alloc.allocate(1);
-		_node_alloc.construct(_meta_node, node_type());
-		}
-
-
-
-	// ==========================================================================
 
 	// private members ==========================================================
 		
@@ -61,6 +46,24 @@ namespace ft {
 			node_alloc_type	_node_alloc;
 			node_ptr		_meta_node;
 			size_type		_size;
+
+	// ==========================================================================
+
+		public:
+	// constructors =============================================================
+
+		red_black_tree(value_compare const& comp, allocator_type const& alloc,
+						node_alloc_type const& node_alloc = node_alloc_type())
+		: _comp(comp),
+		_alloc(alloc),
+		_node_alloc(node_alloc),
+		_meta_node(ft_nullptr),
+		_size(0) {
+			_meta_node = _node_alloc.allocate(1);
+			_node_alloc.construct(_meta_node, node_type());
+		}
+
+
 
 	// ==========================================================================
 
