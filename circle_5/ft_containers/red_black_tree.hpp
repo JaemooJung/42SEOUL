@@ -65,25 +65,57 @@ namespace ft {
 				_node_alloc.construct(_meta_node, node_type());
 			}
 
+			red_black_tree(const red_black_tree &ref)
+			: _comp(ref._comp),
+			_alloc(ref._alloc),
+			_node_alloc(ref._node_alloc),
+			_meta_node(ft_nullptr),
+			_size(0) {
+				_meta_node = _node_alloc.allocate(1);
+				_node_alloc.construct(_meta_node, node_type());
+				if (ref.get_root() != ft_nullptr) {
+					copy_tree(ref.get_root());
+				}
+			}
+
+			red_black_tree& operator=(const red_black_tree &ref) {
+				if (this == &ref) {
+					return *this;
+				}
+				this->clear();
+				_comp = ref._comp;
+				_alloc = ref._alloc;
+				_node_alloc = ref._node_alloc;
+				copy_tree(ref.get_root());
+				_size = ref._size;
+				return *this;
+			}
+
+			virtual ~red_black_tree() {
+				this->clear();
+				_node_alloc.destroy(_meta_node);
+				_node_alloc.deallocate(_meta_node, 1);
+			}
+
 	// ==========================================================================
 
 	// iterators ================================================================
 
-		iterator				begin() { return iterator(min_value_node(_meta_node)); }
+			iterator				begin() { return iterator(min_value_node(_meta_node)); }
 
-		const_iterator			begin() const { return const_iterator(min_value_node(_meta_node)); }
+			const_iterator			begin() const { return const_iterator(min_value_node(_meta_node)); }
 
-		iterator				end() { return iterator(_meta_node); }
+			iterator				end() { return iterator(_meta_node); }
 
-		const_iterator			end() const { return const_iterator(_meta_node); }
+			const_iterator			end() const { return const_iterator(_meta_node); }
 
-		reverse_iterator		rbegin() { return reverse_iterator(end()); }
+			reverse_iterator		rbegin() { return reverse_iterator(end()); }
 
-		const_reverse_iterator	rbegin() const { return const_reverse_iterator(end()); }
+			const_reverse_iterator	rbegin() const { return const_reverse_iterator(end()); }
 
-		reverse_iterator		rend() { return reverse_iterator(begin()); }
+			reverse_iterator		rend() { return reverse_iterator(begin()); }
 
-		const_reverse_iterator	rend() const { return const_reverse_iterator(begin()); }
+			const_reverse_iterator	rend() const { return const_reverse_iterator(begin()); }
 
 	// ==========================================================================
 
@@ -118,9 +150,70 @@ namespace ft {
 				}
 			}
 
+			void swap(red_black_tree& ref) {
+				if (this == &ref) {
+					return;
+				}
+				value_compare	tmp_comp = ref._comp;
+				allocator_type	tmp_alloc = ref._alloc;
+				node_alloc_type	tmp_node_alloc = ref._node_alloc;
+				node_ptr		tmp_meta_node = ref._meta_node;
+				size_type		tmp_size = ref._size;
+
+				ref._comp = _comp;
+				ref._alloc = _alloc;
+				ref._node_alloc = _node_alloc;
+				ref._meta_node = _meta_node;
+				ref._size = _size;
+
+				_comp = tmp_comp;
+				_alloc = tmp_alloc;
+				_node_alloc = tmp_node_alloc;
+				_meta_node = tmp_meta_node;
+				_size = tmp_size;
+			}
+
+			void clear() {
+				delete_tree(get_root());
+				set_root(ft_nullptr);
+				_size = 0;
+			}
+
+			iterator find(const value_type& v) const {
+				node_ptr tmp = get_root();
+				
+				while (tmp != ft_nullptr) {
+					if (!_comp(tmp->_value, v) && !_comp(v, tmp->value)) {
+						break;
+					} else if (_comp(tmp->_value, v)) {
+						tmp = tmp->_right;
+					} else {
+						tmp = tmp->_left;
+					}
+				}
+				if (tmp == ft_nullptr) {
+					return (iterator(this->_meta_node));
+				}
+				return (iterator(tmp));
+			}
+
+			size_type count(const value_type& v) const {
+				iterator tmp = find(v);
+				if (tmp == end()) {
+					return 0;
+				}
+				size_type count = 0;
+				for (iterator it = tmp; it != end(); ++it) {
+					if (!_comp(*it, v) && !_comp(v, *it)) {
+						++count;
+					}
+				}
+				return count;
+			}
+
 	// ==========================================================================
 
-	// private functions ========================================================
+	// private member functions =================================================
 
 		private:
 
@@ -142,6 +235,14 @@ namespace ft {
 				delete_tree(node->_right);
 				_node_alloc.destroy(node);
 				_node_alloc.deallocate(node, 1);
+			}
+
+			void copy_tree(node_ptr node) {
+				if (node == ft_nullptr)
+					return;
+				insert_value(node->_value);
+				copy_tree(node->_left);
+				copy_tree(node->_right);
 			}
 
 			void rotate_left(node_ptr node) {
