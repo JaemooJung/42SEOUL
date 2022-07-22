@@ -183,7 +183,7 @@ namespace ft {
 				node_ptr tmp = get_root();
 				
 				while (tmp != ft_nullptr) {
-					if (!_comp(tmp->_value, v) && !_comp(v, tmp->value)) {
+					if (!_comp(tmp->_value, v) && !_comp(v, tmp->_value)) {
 						break;
 					} else if (_comp(tmp->_value, v)) {
 						tmp = tmp->_right;

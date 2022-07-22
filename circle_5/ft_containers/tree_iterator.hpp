@@ -91,13 +91,13 @@ namespace ft {
 				return (tmp);
 			}
 
-			bool operator==(const tree_iterator& ref) const { return (_node == ref._node); }
+			bool operator==(const tree_iterator& ref) const { return (_node == ref.base()); }
 
-			bool operator!=(const tree_iterator& ref) const { return (_node != ref._node); }
+			bool operator!=(const tree_iterator& ref) const { return (_node != ref.base()); }
 
-			bool operator==(const tree_const_iterator<T>& ref) const { return (_node == ref._node); }
+			bool operator==(const tree_const_iterator<T>& ref) const { return (_node == ref.base()); }
 			
-			bool operator!=(const tree_const_iterator<T>& ref) const { return (_node != ref._node); }
+			bool operator!=(const tree_const_iterator<T>& ref) const { return (_node != ref.base()); }
 
 		private:
 			node_ptr min_value_node(node_ptr node) {
@@ -151,7 +151,7 @@ namespace ft {
 			
 			tree_const_iterator& operator=(const tree_const_iterator& ref) {
 				if (this != &ref)
-					_node = ref._node;
+					_node = ref.base();
 				return (*this);
 			}
 
@@ -202,11 +202,15 @@ namespace ft {
 			}
 
 			reference operator*() const { return (_node->_value); }
+			
 			pointer operator->() const { return (&(_node->_value)); }
 
-			bool operator==(const tree_const_iterator& ref) const { return (_node == ref._node); }
-			bool operator!=(const tree_const_iterator& ref) const { return (_node != ref._node); }
+			bool operator==(const tree_const_iterator& ref) const { return (_node == ref.base()); }
+
+			bool operator!=(const tree_const_iterator& ref) const { return (_node != ref.base()); }
+
 			bool operator==(const tree_iterator<T>& ref) const { return (_node == ref.base()); }
+
 			bool operator!=(const tree_iterator<T>& ref) const { return (_node != ref.base()); }
 
 		private:
