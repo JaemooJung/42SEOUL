@@ -10,8 +10,8 @@
 #define _STACK_TEST_NUM 12
 #define _UTILITIES_TEST_NUM 5
 #define _SET_TEST_NUM 29
-#define _MAP_TEST_NUM 32
-#define _TOTAL_TEST_NUM 85
+#define _MAP_TEST_NUM 30
+#define _TOTAL_TEST_NUM 83
 #define _TOTAL_TEST_NUM_BONUS 114
 #define _TASK_NUM 4
 #define _TASK_NUM_BONUS 1

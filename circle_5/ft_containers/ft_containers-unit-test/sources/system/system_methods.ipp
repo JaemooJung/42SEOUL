@@ -37,7 +37,6 @@ int leaks_test(pid_t pid) {
 	a += std::to_string(static_cast<int>(pid));
 	usleep(50);
 	string s = get_leak_string(exec(a.c_str()));
-
 	if (s.find("0 leaks for 0 total leaked bytes") != std::string::npos) {
 		printElement(GREEN + "CLEAR" + RESET);
 		return (0);

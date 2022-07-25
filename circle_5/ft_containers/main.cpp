@@ -246,6 +246,19 @@ void map_test() {
 		std::cout << it->first << " " << it->second << std::endl;
 }
 
+template <class T, class V, class C>
+void fillMap(ft::map<T, V, C> &mp) {
+	mp.insert(_make_pair(16, 3));
+	mp.insert(_make_pair(8, 3));
+	mp.insert(_make_pair(23, 3));
+	mp.insert(_make_pair(7, 3));
+	mp.insert(_make_pair(19, 3));
+	mp.insert(_make_pair(29, 3));
+	mp.insert(_make_pair(41, 3));
+	mp.insert(_make_pair(4, 3));
+	mp.insert(_make_pair(11, 3));
+}
+
 int main(void) {
 	//insert_test();
 	// swap_test();

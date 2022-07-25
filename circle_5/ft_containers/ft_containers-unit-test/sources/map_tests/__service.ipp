@@ -63,6 +63,19 @@ int run_map_unit_test(std::string test_name, std::vector<int> (func1)(std::map<T
 	printElement(test_name);
 	res1 = func1(map);
 	res2 = func2(my_map);
+	if (test_name == "compare class") {
+		std::vector<int>::iterator it1 = res1.begin();
+		std::vector<int>::iterator it2 = res2.begin();
+
+		while (it1 != res1.end() && it2 != res2.end()) {
+			if (*it1 != *it2) {
+				std::cout << "Error in " << test_name << ": " << *it1 << " != " << *it2 << std::endl;
+				return (1);
+			}
+			it1++;
+			it2++;
+		}
+	}
 	if (res1 == res2) {
 	    printElement("OK");
 	    result = 0;

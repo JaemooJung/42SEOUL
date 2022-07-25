@@ -12,11 +12,9 @@ int main(int argc, char* argv[], char* env[]) {
 	runFunctionTest("../map_tests/assign overload.cpp", argv, env);
 	runFunctionTest("../map_tests/iterators.cpp", argv, env);
 	runFunctionTest("../map_tests/reverse iterators.cpp", argv, env);
-	runFunctionTest("../map_tests/compare class.cpp", argv, env);
 	runFunctionTest("../map_tests/insert(value).cpp", argv, env);
 	runFunctionTest("../map_tests/insert(InputIt).cpp", argv, env);
 	runFunctionTest("../map_tests/insert(hint).cpp", argv, env);
-	runFunctionTest("../map_tests/at().cpp", argv, env);
 	runFunctionTest("../map_tests/operator[].cpp", argv, env);
 	runFunctionTest("../map_tests/empty().cpp", argv, env);
 	runFunctionTest("../map_tests/size().cpp", argv, env);
