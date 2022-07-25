@@ -15,7 +15,7 @@ srcs="srcs"
 
 CC="clang++"
 CFLAGS="-Wall -Wextra -Werror -std=c++98"
-# CFLAGS+=" -fsanitize=address -g3"
+#CFLAGS+=" -g3"
 
 ft_compile_output="/dev/null"
 std_compile_output="/dev/null"

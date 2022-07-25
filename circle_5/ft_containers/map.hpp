@@ -144,8 +144,17 @@ namespace ft {
 			}
 
 			//	erase
+			void erase(iterator position) {
+				_tree.erase(position);
+			}
 
+			size_type erase(const key_type& key) {
+				return _tree.erase(ft::make_pair(key, mapped_type()));
+			}
 
+			void erase(iterator first, iterator last) {
+				_tree.erase(first, last);
+			}
 
 			//	swap
 			void swap(map& x) {

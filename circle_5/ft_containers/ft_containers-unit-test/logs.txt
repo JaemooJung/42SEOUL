@@ -1,29 +1,10 @@
-../map_tests/erase(InputIt).cpp:24:8: error: no member named 'erase' in 'ft::map<int, int, ft::less<int>, std::__1::allocator<ft::pair<const int, int> > >'
-    mp.erase(mp.begin(), --mp.end());
-    ~~ ^
-../map_tests/erase(InputIt).cpp:32:70: note: in instantiation of function template specialization 'erase_test_3<int, int>' requested here
-    exit(run_map_unit_test<int, int>("erase(InputIt)", erase_test_3, erase_test_3));
-                                                                     ^
-1 error generated.
- > >'
-    mp.erase(it);
-    ~~ ^
-../map_tests/erase(pos).cpp:80:66: note: in instantiation of function template specialization 'erase_test_2<int, int>' requested here
-    exit(run_map_unit_test<int, int>("erase(pos)", erase_test_2, erase_test_2));
-                                                                 ^
-../map_tests/erase(pos).cpp:51:8: error: no member named 'erase' in 'ft::map<int, int, ft::less<int>, std::__1::allocator<ft::pair<const int, int> > >'
-    mp.erase(++it);
-    ~~ ^
-../map_tests/erase(pos).cpp:58:12: error: no member named 'erase' in 'ft::map<int, int, ft::less<int>, std::__1::allocator<ft::pair<const int, int> > >'
-        mp.erase(it4);
-        ~~ ^
-5 errors generated.
-p.erase(0));
-                ~~ ^
-../map_tests/erase(key).cpp:55:12: error: no member named 'erase' in 'ft::map<int, int, ft::less<int>, std::__1::allocator<ft::pair<const int, int> > >'
-        mp.erase(it4->first);
-        ~~ ^
-../map_tests/erase(key).cpp:57:20: error: no member named 'erase' in 'ft::map<int, int, ft::less<int>, std::__1::allocator<ft::pair<const int, int> > >'
-    v.push_back(mp.erase(30 * _ratio - 1));
-                ~~ ^
-7 errors generated.
+../map_tests/at().cpp:27:24: error: no member named 'at' in 'ft::map<int, int, ft::less<int>, std::__1::allocator<ft::pair<const int, int> > >'
+        v.push_back(mp.at(40 * _ratio));
+                    ~~ ^
+../map_tests/at().cpp:38:55: note: in instantiation of function template specialization 'at_test<int, int>' requested here
+    exit(run_map_unit_test<int, int>("at()", at_test, at_test));
+                                                      ^
+../map_tests/at().cpp:28:24: error: no member named 'at' in 'ft::map<int, int, ft::less<int>, std::__1::allocator<ft::pair<const int, int> > >'
+        v.push_back(mp.at(40 * _ratio + 1));
+                    ~~ ^
+2 errors generated.

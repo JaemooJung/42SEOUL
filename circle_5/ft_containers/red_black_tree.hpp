@@ -44,7 +44,7 @@ namespace ft {
 			value_compare	_comp;
 			allocator_type	_alloc;
 			node_alloc_type	_node_alloc;
-			node_ptr		_meta_node;
+			node_ptr		_head_node;
 			size_type		_size;
 
 	// ==========================================================================
@@ -59,20 +59,20 @@ namespace ft {
 			: _comp(comp),
 			_alloc(alloc),
 			_node_alloc(node_alloc),
-			_meta_node(ft_nullptr),
+			_head_node(ft_nullptr),
 			_size(0) {
-				_meta_node = _node_alloc.allocate(1);
-				_node_alloc.construct(_meta_node, node_type());
+				_head_node = _node_alloc.allocate(1);
+				_node_alloc.construct(_head_node, node_type());
 			}
 
 			red_black_tree(const red_black_tree &ref)
 			: _comp(ref._comp),
 			_alloc(ref._alloc),
 			_node_alloc(ref._node_alloc),
-			_meta_node(ft_nullptr),
+			_head_node(ft_nullptr),
 			_size(0) {
-				_meta_node = _node_alloc.allocate(1);
-				_node_alloc.construct(_meta_node, node_type());
+				_head_node = _node_alloc.allocate(1);
+				_node_alloc.construct(_head_node, node_type());
 				if (ref.get_root() != ft_nullptr) {
 					copy_tree(ref.get_root());
 				}
@@ -93,21 +93,21 @@ namespace ft {
 
 			virtual ~red_black_tree() {
 				this->clear();
-				_node_alloc.destroy(_meta_node);
-				_node_alloc.deallocate(_meta_node, 1);
+				_node_alloc.destroy(_head_node);
+				_node_alloc.deallocate(_head_node, 1);
 			}
 
 	// ==========================================================================
 
 	// iterators ================================================================
 
-			iterator				begin() { return iterator(min_value_node(_meta_node)); }
+			iterator				begin() { return iterator(min_value_node(_head_node)); }
 
-			const_iterator			begin() const { return const_iterator(min_value_node(_meta_node)); }
+			const_iterator			begin() const { return const_iterator(min_value_node(_head_node)); }
 
-			iterator				end() { return iterator(_meta_node); }
+			iterator				end() { return iterator(_head_node); }
 
-			const_iterator			end() const { return const_iterator(_meta_node); }
+			const_iterator			end() const { return const_iterator(_head_node); }
 
 			reverse_iterator		rbegin() { return reverse_iterator(end()); }
 
@@ -130,6 +130,8 @@ namespace ft {
 			size_type	max_size() const { return _node_alloc.max_size(); }
 
 			// modifier
+
+			//	insert
 			pair<iterator, bool> insert(const value_type& value) {
 				return insert_value(value);
 			}
@@ -150,6 +152,21 @@ namespace ft {
 				}
 			}
 
+			//	erase
+			void erase(iterator position) {
+				delete_value(*position);
+			}
+
+			size_type erase(const value_type& k) {
+				return delete_value(k);
+			}
+
+			void erase(iterator first, iterator last) {
+				for (iterator it = first; it != last; ) {
+					erase(it++);
+				}
+			}
+
 			void swap(red_black_tree& ref) {
 				if (this == &ref) {
 					return;
@@ -157,19 +174,19 @@ namespace ft {
 				value_compare	tmp_comp = ref._comp;
 				allocator_type	tmp_alloc = ref._alloc;
 				node_alloc_type	tmp_node_alloc = ref._node_alloc;
-				node_ptr		tmp_meta_node = ref._meta_node;
+				node_ptr		tmp_head_node = ref._head_node;
 				size_type		tmp_size = ref._size;
 
 				ref._comp = _comp;
 				ref._alloc = _alloc;
 				ref._node_alloc = _node_alloc;
-				ref._meta_node = _meta_node;
+				ref._head_node = _head_node;
 				ref._size = _size;
 
 				_comp = tmp_comp;
 				_alloc = tmp_alloc;
 				_node_alloc = tmp_node_alloc;
-				_meta_node = tmp_meta_node;
+				_head_node = tmp_head_node;
 				_size = tmp_size;
 			}
 
@@ -192,7 +209,7 @@ namespace ft {
 					}
 				}
 				if (tmp == ft_nullptr) {
-					return (iterator(this->_meta_node));
+					return (iterator(this->_head_node));
 				}
 				return (iterator(tmp));
 			}
@@ -218,14 +235,14 @@ namespace ft {
 		private:
 
 			node_ptr get_root() const {
-				return _meta_node->_left;
+				return _head_node->_left;
 			}
 
 			void set_root(node_ptr node) {
-				_meta_node->_left = node;
-				_meta_node->_right = node;
+				_head_node->_left = node;
+				_head_node->_right = node;
 				if (node != ft_nullptr)
-					node->_parent = _meta_node;
+					node->_parent = _head_node;
 			}
 
 			void delete_tree(node_ptr node) {
@@ -302,7 +319,7 @@ namespace ft {
 			node_ptr get_parent(node_ptr node) const {
 				if (node == ft_nullptr)
 					return node;
-				if (node == _meta_node)
+				if (node == _head_node)
 					return ft_nullptr;
 				return node->_parent;
 			}
@@ -343,6 +360,7 @@ namespace ft {
 				node->_color = color;
 			}
 
+			/* insert **********************************************************/
 			pair<iterator, bool> insert_node(node_ptr node) {
 				node_ptr tmp = get_root();
 				node_ptr parent;
@@ -458,6 +476,183 @@ namespace ft {
 				}
 				std::swap(parent->_color, g_parent->_color);
 				node = parent;
+			}
+			/* insert done ***********************************************************************/
+
+			/* delete ****************************************************************************/
+
+			size_type	delete_value(const value_type& val) {
+				node_ptr target = delete_node(get_root(), val);
+				if (target == ft_nullptr)
+					return (0);
+				delete_fixup(target);
+				this->_size--;
+				return (1);
+			}
+
+			/* delete red case */
+			void	delete_red_case(node_ptr& node) {
+				node_ptr child = node->_left != ft_nullptr ? node->_left : node->_right;
+
+				if (node == node->_parent->_left)
+					node->_parent->_left = child;
+				else
+					node->_parent->_right = child;
+				if (child != ft_nullptr)
+					child->_parent = node->_parent;
+				set_color(child, BLACK);
+				_node_alloc.destroy(node);
+				_node_alloc.deallocate(node, 1);
+			}
+
+			/* delete root case */
+			void	delete_root_case(node_ptr root) {
+				if (root->_right)
+					set_root(root->_right);
+				else
+					set_root(root->_left);
+				_node_alloc.destroy(root);
+				_node_alloc.deallocate(root, 1);
+				set_color(get_root(), BLACK);
+			}
+
+			/* delete case 1 */
+			void	delete_case1(node_ptr& s, node_ptr& p) {
+				set_color(s, BLACK);
+				set_color(p, RED);
+				if (s == p->_right)
+					rotate_left(p);
+				if (s == p->_left)
+					rotate_right(p);
+			}
+
+			/* delete case 2 */
+			void	delete_case2(node_ptr s, node_ptr p, node_ptr& node) {
+				set_color(s, RED);
+				if (get_color(p) == RED)
+					set_color(p, BLACK);
+				else
+					set_color(p, DUB_BLACK);
+				node = p;
+			}
+
+			/* delete case 3 */
+			void	delete_case3(node_ptr& s, node_ptr& p) {
+				if (s == p->_right) {
+					set_color(s->_left, BLACK);
+					set_color(s, RED);
+					rotate_right(s);
+					s = p->_right;
+				}
+				if (s == p->_left) {
+					set_color(s->_right, BLACK);
+					set_color(s, RED);
+					rotate_left(s);
+					s = p->_left;
+				}
+			}
+
+			/* delete case 4 */
+			void	delete_case4(node_ptr& s, node_ptr& p) {
+				if (s == p->_right) {
+					set_color(s, get_color(p));
+					set_color(p, BLACK);
+					set_color(s->_right, BLACK);
+					rotate_left(p);
+				}
+				if (s == p->_left) {
+					set_color(s, get_color(p));
+					set_color(p, BLACK);
+					set_color(s->_left, BLACK);
+					rotate_right(p);
+				}
+			}
+
+			void	delete_fixup(node_ptr node) {
+				if (node == ft_nullptr)
+					return;
+				if (node == get_root()) {
+					delete_root_case(node);
+					return;
+				}
+				if (get_color(node) == RED || get_color(node->_left) == RED|| get_color(node->_right) == RED) {
+					delete_red_case(node);
+					return;
+				}
+				node_ptr s = ft_nullptr;
+				node_ptr p = ft_nullptr;
+				node_ptr tmp = node;
+				set_color(tmp, DUB_BLACK);
+				while (tmp != get_root() && get_color(tmp) == DUB_BLACK) {
+					p = tmp->_parent;
+					s = (tmp == p->_left) ? p->_right : p->_left;
+					if (get_color(s) == RED)
+						delete_case1(s, p);
+					else if (get_color(s->_left) == BLACK && get_color(s->_right) == BLACK)
+						delete_case2(s, p, tmp);
+					else {
+						if ((tmp == p->_left && get_color(s->_right) == BLACK) 
+						|| (tmp == p->_right && get_color(s->_left) == BLACK))
+							delete_case3(s, p);
+						delete_case4(s, p);
+						break;
+					}
+				}
+				if (node == node->_parent->_left)
+					node->_parent->_left = ft_nullptr;
+				else
+					node->_parent->_right = ft_nullptr;
+				_node_alloc.destroy(node);
+				_node_alloc.deallocate(node, 1);
+				set_color(get_root(), BLACK);
+			}
+
+			node_ptr	delete_node(node_ptr node, const value_type& val) {
+				if (node == ft_nullptr)
+					return node;
+				if (_comp(node->_value, val))
+					return delete_node(node->_right, val);
+				if (_comp(val, node->_value))
+					return delete_node(node->_left, val);
+				if (node->_left == ft_nullptr || node->_right == ft_nullptr)
+					return node;
+
+				node_ptr tmp = min_value_node(node->_right);
+				if (tmp->_parent == node) {
+					if (node->_parent && node->_parent->_left == node)
+						node->_parent->_left = tmp;
+					if (node->_parent && node->_parent->_right == node)
+						node->_parent->_right = tmp;
+					tmp->_left = node->_left;
+					node->_left->_parent = tmp;
+					node->_left = ft_nullptr;
+					tmp->_parent = node->_parent;
+					node->_parent = tmp;
+					node->_right = tmp->_right;
+					tmp->_right = node;
+					std::swap(tmp->_color, node->_color);
+				} else {
+					if (node->_parent && node->_parent->_left == node)
+						node->_parent->_left = tmp;
+					if (node->_parent && node->_parent->_right == node)
+						node->_parent->_right = tmp;
+					if (tmp->_parent->_left == tmp)
+						tmp->_parent->_left = node;
+					if (tmp->_parent->_right == tmp)
+						tmp->_parent->_right = node;
+					node_ptr tmp2 = tmp->_parent;
+					node->_right->_parent = tmp;
+					tmp->_parent = node->_parent;
+					node->_parent = tmp2;
+					tmp->_left = node->_left;
+					node->_left->_parent = tmp;
+					node->_left = ft_nullptr;
+					tmp2 = tmp->_right;
+					tmp->_right = node->_right;
+					node->_right = tmp2;
+					std::swap(tmp->_color, node->_color);
+				}
+				return delete_node(tmp->_right, val);
 			}
 
 	// ==========================================================================

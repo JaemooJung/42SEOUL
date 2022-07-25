@@ -7,7 +7,8 @@ namespace ft {
 
 	enum Color {
 		RED,
-		BLACK
+		BLACK,
+		DUB_BLACK
 	};
 
 // ============================================================================
@@ -30,12 +31,13 @@ namespace ft {
 			_right(ft_nullptr),
 			_color(RED) {}
 
-		rb_tree_node(const T& value)
+		rb_tree_node(const T& value, rb_tree_node* parent = ft_nullptr,
+			rb_tree_node* left = ft_nullptr, rb_tree_node* right = ft_nullptr, Color color = RED)
 			: _value(value),
-			_parent(ft_nullptr),
-			_left(ft_nullptr),
-			_right(ft_nullptr),
-			_color(RED) {}
+			_parent(parent),
+			_left(left),
+			_right(right),
+			_color(color) {}
 
 		rb_tree_node(const rb_tree_node& ref)
 			: _value(ref._value),
