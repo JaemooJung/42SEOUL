@@ -136,13 +136,10 @@ namespace ft {
 				return insert_value(value);
 			}
 
-
-			// Todo :: position 부터 삽입하도록 변경.
 			iterator insert(iterator position, const value_type& value) {
 				(void) position;
 				return insert_value(value).first;
 			}
-
 
 			// Todo :: enable if 추가하기
 			template <typename InputIterator>
@@ -435,7 +432,8 @@ namespace ft {
 			}
 
 			/*
-				rbt insert case 1 : uncle of the node is RED.
+				rbt insert case 1 :
+				1. uncle of the inserted node is RED.
 				->	Change the color of parent and uncle to BLACK,
 					then change the color of grand parent to RED.
 					Double RED problem could reoccur at grand parent level,
@@ -450,6 +448,11 @@ namespace ft {
 
 			/*
 				rbt insert case 2 :
+				1. inserted node is red and right(or left) child.
+				2. parent of inserted node is red and is left(or right) child.
+				3. uncle of inserted node is black.
+				-> 	Rotate left at parent of inserted node.
+					then do case 3.
 			*/
 			void insert_case2(node_ptr& node, node_ptr& parent) {
 				if (parent == get_grand_parent(node)->_left) {
@@ -466,6 +469,10 @@ namespace ft {
 
 			/*
 				rbt insert case 3 :
+				1. inserted node is red and left(or right) child.
+				2. parent of the inserted node is red and also left(or right) child.
+				3. uncle of the inserted node is black.
+				->	Exchange the color of grand parent and parent, then rotate right(or left) at grand parent.
 			*/
 			void insert_case3(node_ptr& node, node_ptr parent, node_ptr g_parent) {
 				if (parent == g_parent->_left) {
@@ -477,6 +484,7 @@ namespace ft {
 				std::swap(parent->_color, g_parent->_color);
 				node = parent;
 			}
+
 			/* insert done ***********************************************************************/
 
 			/* delete ****************************************************************************/
