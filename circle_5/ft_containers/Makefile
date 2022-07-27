@@ -3,7 +3,8 @@ CXX			=	c++
 CXXFLAGS	=	#-Wall -Werror -Wextra-std=c++98
 RM			=	rm -f
 
-FILES 		=	main.cpp
+FILES 		=	test_at_subject.cpp\
+				#main.cpp
 
 SRCS		=	$(FILES)
 OBJS		=	$(SRCS:.cpp=.o)
