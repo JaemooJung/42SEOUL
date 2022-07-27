@@ -524,7 +524,13 @@ namespace ft {
 				set_color(get_root(), BLACK);
 			}
 
-			/* delete case 1 */
+			/*
+				delete case 1:
+				1. sibling of doubly black node is red.
+				->	Exchange the color of sibling and parent.
+					Then rotate left(or right) at parent.
+					Then do case 2, 3 or 4.
+			*/
 			void	delete_case1(node_ptr& s, node_ptr& p) {
 				set_color(s, BLACK);
 				set_color(p, RED);
@@ -534,7 +540,12 @@ namespace ft {
 					rotate_right(p);
 			}
 
-			/* delete case 2 */
+			/*
+				delete case 2:
+				1. sibling of doubly black node is black
+				2. sibling's both children are black.
+				-> give blacks to parent. then delegate the problem to parent.
+			*/
 			void	delete_case2(node_ptr s, node_ptr p, node_ptr& node) {
 				set_color(s, RED);
 				if (get_color(p) == RED)
@@ -544,7 +555,13 @@ namespace ft {
 				node = p;
 			}
 
-			/* delete case 3 */
+			/*
+				delete case 3:
+				1. right(or left) sibling of doubly black node is black.
+				2. sibling's left(or right) child is red.
+				3. sibling's right(or left) child is black.
+				-> make sibling's right(or left) child red the do case 4.
+			*/
 			void	delete_case3(node_ptr& s, node_ptr& p) {
 				if (s == p->_right) {
 					set_color(s->_left, BLACK);
@@ -560,7 +577,16 @@ namespace ft {
 				}
 			}
 
-			/* delete case 4 */
+			/*
+				delete case 4:
+				1. sibling of doubly black node is at right(or left) and black.
+				2. sibling's right(or left) child is red.
+				->	turn right(or left) sibling's color into parent's color.
+					turn right(or left) sibling's right(or left) chind's color into black.
+					turn parent's color into black.
+					then rotate left(or right) at parent.
+
+			*/
 			void	delete_case4(node_ptr& s, node_ptr& p) {
 				if (s == p->_right) {
 					set_color(s, get_color(p));
