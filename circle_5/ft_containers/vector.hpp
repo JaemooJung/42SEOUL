@@ -60,8 +60,15 @@ namespace ft {
 				_start = _alloc.allocate(n);
 				_end = _start;
 				_capa_end = _start + n;
-				for (size_type i = 0; i < n; i++)
-					_alloc.construct(_end++, value);
+				try {
+					for (size_type i = 0; i < n; i++)
+						_alloc.construct(_end++, value);
+				} catch(...) {
+					for (pointer p = _start; p != _end; p++)
+						_alloc.destroy(p);
+					_alloc.deallocate(_start, n);
+					throw;
+				}
 			}
 
 			template <typename InputIterator>
@@ -74,9 +81,14 @@ namespace ft {
 				_start = _alloc.allocate(n);
 				_end = _start;
 				_capa_end = _start + n;
-				while (n--) {
-					_alloc.construct(_end++, *first);
-					++first;
+				try {
+					for (size_type i = 0; i < n; i++)
+						_alloc.construct(_end++, *first++);
+				} catch(...) {
+					for (pointer p = _start; p != _end; p++)
+						_alloc.destroy(p);
+					_alloc.deallocate(_start, n);
+					throw;
 				}
 			}
 
@@ -91,9 +103,14 @@ namespace ft {
 				_end = _start;
 				_capa_end = _start + n;
 				pointer p = other._start;
-				while (n--) {
-					_alloc.construct(_end++, *p);
-					++p;
+				try {
+					for (size_type i = 0; i < n; i++)
+						_alloc.construct(_end++, *p++);
+				} catch(...) {
+					for (pointer p = _start; p != _end; p++)
+						_alloc.destroy(p);
+					_alloc.deallocate(_start, n);
+					throw;
 				}
 			}
 
