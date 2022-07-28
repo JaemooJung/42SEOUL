@@ -148,7 +148,7 @@ namespace ft {
 			}
 
 			//	erase
-			void erase(iterator position) {
+			void erase(const_iterator position) {
 				delete_value(*position);
 			}
 
@@ -156,8 +156,8 @@ namespace ft {
 				return delete_value(k);
 			}
 
-			void erase(iterator first, iterator last) {
-				for (iterator it = first; it != last; ) {
+			void erase(const_iterator first, const_iterator last) {
+				for (const_iterator it = first; it != last; ) {
 					erase(it++);
 				}
 			}
