@@ -120,13 +120,6 @@ namespace ft {
 
 	// member functions =================================================================================
 
-			void clear() {
-				if (_head_node != ft_nullptr) {
-					clear_tree(_head_node);
-				}
-				_size = 0;
-			}
-
 		public:
 
 			// capacity

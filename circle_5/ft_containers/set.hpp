@@ -22,11 +22,11 @@ namespace ft {
 			typedef Compare											key_compare;
 			typedef Compare											value_compare;
 			typedef Alloc											allocator_type;
-			typedef value_type&										reference;
-			typedef const value_type&								const_reference;
+			typedef typename allocator_type::reference				reference;
+			typedef typename allocator_type::const_reference		const_reference;
 			typedef typename allocator_type::pointer				pointer;
 			typedef typename allocator_type::const_pointer			const_pointer;
-			typedef typename ft::tree_const_iterator<value_type>	iterator;
+			typedef typename ft::tree_iterator<value_type>			iterator;
 			typedef typename ft::tree_const_iterator<value_type>	const_iterator;
 			typedef typename ft::reverse_iterator<iterator>			reverse_iterator;
 			typedef typename ft::reverse_iterator<const_iterator> 	const_reverse_iterator;
@@ -46,31 +46,7 @@ namespace ft {
 
 		public:
 			
-			explicit set(const key_compare& comp = key_compare(),
-						const allocator_type& alloc = allocator_type())
-			: _comp(comp), _alloc(alloc), _tree(value_compare(), alloc)
-			{}
-		
-			template <class InputIterator>
-			set (InputIterator first, InputIterator last,
-				const key_compare& comp = key_compare(),
-				const allocator_type& alloc = allocator_type())
-			: _comp(comp), _alloc(alloc), _tree(value_compare(), alloc) {
-				_tree.insert(first, last);
-			}
 
-			set(const set& other)
-			: _comp(other._comp), _alloc(other._alloc), _tree(other._tree)
-			{}
-
-			set& operator=(const set& other) {
-				if (this != &other) {
-					_tree = other._tree;
-				}
-				return *this;
-			}
-
-			~set() {}
 
 	// ==================================================================================================
 
@@ -78,95 +54,20 @@ namespace ft {
 
 		public:
 
-			iterator begin() {
-				return _tree.begin();
-			}
-
-			iterator end() {
-				return _tree.end();
-			}
-
-			const_iterator begin() const {
-				return _tree.begin();
-			}
-
-			const_iterator end() const {
-				return _tree.end();
-			}
-
-			reverse_iterator rbegin() {
-				return _tree.rbegin();
-			}
-
-			reverse_iterator rend() {
-				return _tree.rend();
-			}
-
-			const_reverse_iterator rbegin() const {
-				return _tree.rbegin();
-			}
-
-			const_reverse_iterator rend() const {
-				return _tree.rend();
-			}
 
 	// ==================================================================================================
 
 	// Capacity =========================================================================================
 
 		public:
-			
-			bool empty() const {
-				return _tree.empty();
-			}
 
-			size_type size() const {
-				return _tree.size();
-			}
-
-			size_type max_size() const {
-				return _tree.max_size();
-			}
 	
 	// ==================================================================================================
 
 	// Modifiers ========================================================================================
 
 		public:
-			
-			pair<iterator, bool> insert(const value_type& value) {
-				return _tree.insert(value);
-			}
 
-			iterator insert(iterator position, const value_type& value) {
-				(void)position;
-				return _tree.insert(value).first;
-			}
-
-			template <class InputIterator>
-			void insert(InputIterator first, InputIterator last) {
-				_tree.insert(first, last);
-			}
-
-			void erase(iterator position) {
-				_tree.erase(position);
-			}
-
-			size_type erase(const key_type& key) {
-				return _tree.erase(key);
-			}
-
-			void erase(iterator first, iterator last) {
-				_tree.erase(first, last);
-			}
-
-			void swap(set& other) {
-				_tree.swap(other._tree);
-			}
-
-			void clear() {
-				_tree.clear();
-			}
 
 	// ==================================================================================================
 
@@ -187,42 +88,7 @@ namespace ft {
 	// Operations =======================================================================================
 
 		public:
-			
-			iterator find(const key_type& key) {
-				return _tree.find(key);
-			}
-			
-			size_type count(const key_type& key) const {
-				return _tree.count(key);
-			}
 
-			iterator lower_bound(const key_type& key) const {
-				iterator it1 = this->begin();
-				iterator it2 = this->end();
-
-				while (it1 != it2) {
-					if (_comp(*it1, key) == false)
-						break;
-					++it1;
-				}
-				return it1;
-			}
-
-			iterator upper_bound(const key_type& key) const {
-				iterator it1 = this->begin();
-				iterator it2 = this->end();
-
-				while (it1 != it2) {
-					if (_comp(key, *it1) == true)
-						break;
-					++it1;
-				}
-				return it1;
-			}
-
-			pair<iterator, iterator> equal_range(const value_type& value) const {
-				return ft::make_pair(this->lower_bound(value), this->upper_bound(value));
-			}
 
 			allocator_type get_allocator () const {
 				return allocator_type();
