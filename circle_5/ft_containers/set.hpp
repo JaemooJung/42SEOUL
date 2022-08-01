@@ -9,7 +9,10 @@
 
 namespace ft {
 
-	template <class Key, class Compare = ft::less<Key>, class Alloc = std::allocator<Key> >
+	template <	class Key,
+				class Compare = ft::less<Key>,
+				class Alloc = std::allocator<Key>
+				>
 	class set {
 
 	// typedefs =========================================================================================
@@ -36,9 +39,9 @@ namespace ft {
 	// member variables =================================================================================
 
 		private:
-			key_compare									_comp;
-			allocator_type								_alloc;
-			ft::red_black_tree<value_type, key_compare>	_tree;
+			key_compare													_comp;
+			allocator_type												_alloc;
+			ft::red_black_tree<value_type, key_compare, allocator_type>	_tree;
 
 	// ==================================================================================================
 
