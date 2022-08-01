@@ -1,34 +1,18 @@
-In file included from ../set_tests/operator >=.cpp:1:
-In file included from ../set_tests/../system/system_methods.ipp:2:
-In file included from ../set_tests/../system/lib.hpp:30:
-../set_tests/../system/Alloc.hpp:55:27: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
-template <class _Up, class... _Args>
-                          ^
-../set_tests/../system/Alloc.hpp:58:34: warning: rvalue references are a C++11 extension [-Wc++11-extensions]
-        construct(_Up* __p, _Args&&... __args)
-                                 ^
-../set_tests/../system/Alloc.hpp:164:27: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
-template <class _Up, class... _Args>
-                          ^
-../set_tests/../system/Alloc.hpp:167:34: warning: rvalue references are a C++11 extension [-Wc++11-extensions]
-        construct(_Up* __p, _Args&&... __args)
-                                 ^
-4 warnings generated.
-rom ../set_tests/using allocator.cpp:2:
+In file included from ../set_tests/using allocator.cpp:2:
 In file included from ../set_tests/__service.ipp:3:
-../set_tests/../../../set.hpp:51:34: error: no matching constructor for initialization of 'ft::red_black_tree<value_type, key_compare>' (aka 'red_black_tree<int, std::less<int> >')
+../set_tests/../../../set.hpp:51:34: error: no matching constructor for initialization of 'ft::red_black_tree<value_type, key_compare>' (aka 'red_black_tree<int, std::__1::less<int> >')
                         : _comp(comp), _alloc(alloc), _tree(value_compare(), alloc)
                                                       ^     ~~~~~~~~~~~~~~~~~~~~~~
-../set_tests/__service.ipp:85:19: note: in instantiation of member function 'ft::set<int, std::less<int>, Alloc<int> >::set' requested here
+../set_tests/__service.ipp:85:19: note: in instantiation of member function 'ft::set<int, std::__1::less<int>, Alloc<int> >::set' requested here
     _set<T, C, A> my_set;
                   ^
-../set_tests/using allocator.cpp:12:10: note: in instantiation of function template specialization 'run_set_allocator_unit_test<int, std::less<int>, Alloc<int> >' requested here
+../set_tests/using allocator.cpp:12:10: note: in instantiation of function template specialization 'run_set_allocator_unit_test<int, std::__1::less<int>, Alloc<int> >' requested here
     exit(run_set_allocator_unit_test<int, std::less<int>, Alloc<int> >("using allocator", allocator_test));
          ^
-../set_tests/../../../red_black_tree.hpp:56:4: note: candidate constructor not viable: no known conversion from 'const ft::set<int, std::less<int>, Alloc<int> >::allocator_type' (aka 'const Alloc<int>') to 'const ft::red_black_tree<int, std::less<int> >::allocator_type' (aka 'const std::allocator<int>') for 2nd argument
+../set_tests/../../../red_black_tree.hpp:56:4: note: candidate constructor not viable: no known conversion from 'const ft::set<int, std::__1::less<int>, Alloc<int> >::allocator_type' (aka 'const Alloc<int>') to 'const ft::red_black_tree<int, std::__1::less<int>, std::__1::allocator<int> >::allocator_type' (aka 'const std::__1::allocator<int>') for 2nd argument
                         red_black_tree(value_compare const& comp, allocator_type const& alloc,
                         ^
 ../set_tests/../../../red_black_tree.hpp:67:4: note: candidate constructor not viable: requires single argument 'ref', but 2 arguments were provided
                         red_black_tree(const red_black_tree &ref)
                         ^
-4 warnings and 1 error generated.
+1 error generated.

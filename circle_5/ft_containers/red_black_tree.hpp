@@ -139,9 +139,9 @@ namespace ft {
 				return insert_value(value).first;
 			}
 
-			// Todo :: enable if 추가하기
 			template <typename InputIterator>
-			void insert(InputIterator first, InputIterator last) {
+			void insert(InputIterator first, InputIterator last,
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = ft_nullptr) {
 				for (; first != last; ++first) {
 					insert(*first);
 				}

@@ -9,7 +9,7 @@
 #define _VECTOR_TEST_NUM 36
 #define _STACK_TEST_NUM 12
 #define _UTILITIES_TEST_NUM 5
-#define _SET_TEST_NUM 29
+#define _SET_TEST_NUM 28
 #define _MAP_TEST_NUM 30
 #define _TOTAL_TEST_NUM 83
 #define _TOTAL_TEST_NUM_BONUS 114

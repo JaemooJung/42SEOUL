@@ -11,7 +11,6 @@ int main(int argc, char* argv[], char* env[]) {
 	runFunctionTest("../set_tests/assign overload.cpp", argv, env);
 	runFunctionTest("../set_tests/iterators.cpp", argv, env);
 	runFunctionTest("../set_tests/reverse iterators.cpp", argv, env);
-	runFunctionTest("../set_tests/compare class.cpp", argv, env);
 	runFunctionTest("../set_tests/insert(value).cpp", argv, env);
 	runFunctionTest("../set_tests/insert(InputIt).cpp", argv, env);
 	runFunctionTest("../set_tests/insert(hint).cpp", argv, env);
