@@ -141,7 +141,8 @@ namespace ft {
 
 			template <typename InputIterator>
 			void insert(InputIterator first, InputIterator last,
-			typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = ft_nullptr) {
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = ft_nullptr,
+			typename ft::enable_if<ft::is_input_iter<typename ft::iterator_traits<InputIterator>::iterator_category>::value, InputIterator>::type* = ft_nullptr) {
 				for (; first != last; ++first) {
 					insert(*first);
 				}

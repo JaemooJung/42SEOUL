@@ -45,10 +45,10 @@ namespace ft {
 		// Constructors ======================================================================================
 
 			explicit vector(const allocator_type& alloc = allocator_type())
-				: _start(ft_nullptr),
-				_end(ft_nullptr),
-				_capa_end(ft_nullptr),
-				_alloc(alloc)
+			: _start(ft_nullptr),
+			_end(ft_nullptr),
+			_capa_end(ft_nullptr),
+			_alloc(alloc)
 			{}
 
 			explicit vector(size_type n, const value_type& value = value_type(), const allocator_type& alloc = allocator_type())
@@ -72,11 +72,11 @@ namespace ft {
 			}
 
 			template <typename InputIterator>
-			vector(InputIterator first, InputIterator last, 
-					const allocator_type& alloc = allocator_type(), 
-					typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = ft_nullptr)
-				: _alloc(alloc)
-			{
+			explicit vector(InputIterator first, InputIterator last, 
+				const allocator_type& alloc = allocator_type(), 
+				typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = ft_nullptr,
+				typename ft::enable_if<ft::is_input_iter<typename ft::iterator_traits<InputIterator>::iterator_category>::value, InputIterator>::type* = ft_nullptr)
+			: _alloc(alloc) {
 				size_type n = ft::distance(first, last);
 				_start = _alloc.allocate(n);
 				_end = _start;
@@ -93,11 +93,10 @@ namespace ft {
 			}
 
 			vector(const vector& other)
-				: _start(ft_nullptr),
-				_end(ft_nullptr),
-				_capa_end(ft_nullptr),
-				_alloc(other._alloc)
-			{
+			: _start(ft_nullptr),
+			_end(ft_nullptr),
+			_capa_end(ft_nullptr),
+			_alloc(other._alloc) {
 				size_type n = other.size();
 				_start = _alloc.allocate(n);
 				_end = _start;
@@ -213,7 +212,8 @@ namespace ft {
 
 			template <class InputIterator>
 			void	assign(InputIterator first, InputIterator last,
-			typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = ft_nullptr) {
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = ft_nullptr,
+			typename ft::enable_if<ft::is_input_iter<typename ft::iterator_traits<InputIterator>::iterator_category>::value, InputIterator>::type* = ft_nullptr) {
 				this->clear();
 				size_type size = ft::distance(first, last);
 				if (size <= this->capacity()) {
@@ -305,7 +305,8 @@ namespace ft {
 
 			template <class InputIterator>
 			void insert(iterator position, InputIterator first, InputIterator last, 
-			typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type * = ft_nullptr) {
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type * = ft_nullptr,
+			typename ft::enable_if<ft::is_input_iter<typename ft::iterator_traits<InputIterator>::iterator_category>::value, InputIterator>::type* = ft_nullptr) {
 				if (position > this->end() || position < this->begin())
 					return;
 				

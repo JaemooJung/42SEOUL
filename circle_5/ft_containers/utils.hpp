@@ -2,6 +2,7 @@
 #define __UTILS_HPP__
 
 #include "iterator.hpp"
+#include <iterator>
 
 namespace ft {
 
@@ -28,21 +29,37 @@ namespace ft {
 	template <typename iter>
 	struct is_input_iter : public is_input_iter_base<false, iter> {};
 	
-	template<>
+	template <>
 	struct is_input_iter<ft::random_access_iterator_tag>
 		: public is_input_iter_base<true, ft::random_access_iterator_tag> {};
 	
-	template<>
+	template <>
 	struct is_input_iter<ft::bidirectional_iterator_tag>
 		: public is_input_iter_base<true, ft::bidirectional_iterator_tag> {};
 	
-	template<>
+	template <>
 	struct is_input_iter<ft::forward_iterator_tag>
 		: public is_input_iter_base<true, ft::forward_iterator_tag> {};
 
 	template <>
 	struct is_input_iter<ft::input_iterator_tag>
 		: public is_input_iter_base<true, ft::input_iterator_tag> {};
+	
+	template <>
+	struct is_input_iter<std::random_access_iterator_tag>
+		: public is_input_iter_base<true, std::random_access_iterator_tag> {};
+
+	template <>
+	struct is_input_iter<std::bidirectional_iterator_tag>
+		: public is_input_iter_base<true, std::bidirectional_iterator_tag> {};
+
+	template <>
+	struct is_input_iter<std::forward_iterator_tag>
+		: public is_input_iter_base<true, std::forward_iterator_tag> {};
+
+	template <>
+	struct is_input_iter<std::input_iterator_tag>
+		: public is_input_iter_base<true, std::input_iterator_tag> {};
 
 // ============================================================================
 

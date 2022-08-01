@@ -69,6 +69,7 @@ namespace ft {
 			}
 			
 			reference					operator[](difference_type	n) { return (_ptr[n]); }
+
 			const reference				operator[](difference_type	n) const { return (_ptr[n]); }
 
 			template<typename U>
@@ -100,7 +101,9 @@ namespace ft {
 			}
 
 			reference					operator*() { return (*_ptr); }
+
 			const reference				operator*() const { return (*_ptr); }
+			
 			pointer						operator->() { return (_ptr); }
 
 			operator random_access_iterator<const T> () const { return (random_access_iterator<const T>(this->_ptr)); }
