@@ -39,7 +39,7 @@ then
   clang++ $fast_flag run_stack.cpp && ./a.out
   clang++ $fast_flag run_map.cpp && ./a.out
   clang++ libbass.dylib -Ibass24 -Lbass24 check_results.cpp && ./a.out
-elif [[ (($1 = -b || $1 = --bonus) && $2 = -fast) || (($2 = -b || $2 = --bonus) && $1 = -fast) ]]
+elif [[ (($1 = -b || $1 = --bonus) && ($2 = -fast || $2 = '')) || (($2 = -b || $2 = --bonus) && $1 = -fast) ]]
 then
   cat credits/header
   clang++ $fast_flag run_vector.cpp && ./a.out

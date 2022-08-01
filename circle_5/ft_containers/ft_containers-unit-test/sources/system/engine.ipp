@@ -12,7 +12,7 @@
 #define _SET_TEST_NUM 28
 #define _MAP_TEST_NUM 30
 #define _TOTAL_TEST_NUM 83
-#define _TOTAL_TEST_NUM_BONUS 114
+#define _TOTAL_TEST_NUM_BONUS 111
 #define _TASK_NUM 4
 #define _TASK_NUM_BONUS 1
 
