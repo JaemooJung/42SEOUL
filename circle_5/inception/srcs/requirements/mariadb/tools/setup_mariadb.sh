@@ -14,8 +14,9 @@ if [ $? -ne 0 ]; then
 
 	# mysql $MYSQL_DATABASE -u$MYSQL_ROOT -p$MYSQL_ROOT_PASSWORD
 	mysqladmin -u$MYSQL_ROOT -p$MYSQL_ROOT_PASSWORD shutdown
+	# 이거 안꺼주면 개지랄함. 그래서 이거 꺼줌.
 	touch /var/lib/mysql/.setup
 
 fi
 
-exec mysqld --console;
+exec mysqld;

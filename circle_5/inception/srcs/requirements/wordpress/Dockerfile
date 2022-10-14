@@ -21,4 +21,3 @@ RUN		tar xzvf latest.tar.gz
 ENTRYPOINT ["sh", "/tmp/setup_wordpress.sh"]
 
 EXPOSE	9000
-

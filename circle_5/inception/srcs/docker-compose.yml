@@ -6,14 +6,14 @@ services:
     build: ./requirements/mariadb/
     image: mariadb
     restart: always
-    expose:
-      - "3306"
     volumes:
       - db_volume:/var/lib/mysql/
     env_file:
       - .env
     networks:
       - inception_network
+    expose:
+      - "3306"
 
   wordpress:
     container_name: wordpress
@@ -22,14 +22,14 @@ services:
     restart: always
     depends_on:
       - mariadb
-    expose:
-      - "9000"
     volumes:
       - wp_volume:/var/www/
     env_file:
       - .env
     networks:
       - inception_network
+    expose:
+      - "9000"
 
   nginx:
     container_name: nginx
