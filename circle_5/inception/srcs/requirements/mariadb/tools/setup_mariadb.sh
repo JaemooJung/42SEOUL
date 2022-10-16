@@ -12,11 +12,13 @@ if [ $? -ne 0 ]; then
 	mysql -e "FLUSH PRIVILEGES";
 	mysql -e "ALTER USER '$MYSQL_ROOT'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD'";
 
-	# mysql $MYSQL_DATABASE -u$MYSQL_ROOT -p$MYSQL_ROOT_PASSWORD
-	mysqladmin -u$MYSQL_ROOT -p$MYSQL_ROOT_PASSWORD shutdown
-	# 이거 안꺼주면 개지랄함. 그래서 이거 꺼줌.
-	touch /var/lib/mysql/.setup
+	mysql $MYSQL_DATABASE -u$MYSQL_ROOT -p$MYSQL_ROOT_PASSWORD < ./wp_setup.sql;
+	mysqladmin -u$MYSQL_ROOT -p$MYSQL_ROOT_PASSWORD shutdown;
+
+	touch /var/lib/mysql/.setup;
 
 fi
+
+mysqladmin -u$MYSQL_ROOT -p$MYSQL_ROOT_PASSWORD shutdown;
 
 exec mysqld;
