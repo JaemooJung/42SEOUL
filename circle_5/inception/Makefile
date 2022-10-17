@@ -24,7 +24,6 @@ clean:
 	docker-compose -f ./srcs/docker-compose.yml down --rmi "all" --volumes
 
 fclean: clean
-	rm -rf $(DB_PATH)/wordpress/*
-	rm -rf $(DB_PATH)/mariadb/*
+	rm -rf $(DB_PATH)
 
 re: fclean all

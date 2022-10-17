@@ -51,10 +51,12 @@ networks:
 volumes:
   #TODO :가상머신에 올릴 때 바인드 마운트 설정.
   wp_volume:
-    {}
+    driver_opts:
+      type: none
+      o : 'bind'
+      device: '/home/jaemjung/data/wordpress'
   db_volume:
-    {}
-    # driver_opts:
-    #   type: none
-    #   o : 'bind'
-    #   device: '/Users/jaemoojung/Desktop/42/42SEOUL/circle_5/inception/data/mariadb'
+    driver_opts:
+      type: none
+      o : 'bind'
+      device: '/home/jaemjung/data/mariadb'
