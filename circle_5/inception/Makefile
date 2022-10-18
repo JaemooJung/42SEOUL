@@ -20,6 +20,9 @@ $(NAME):
 	mkdir -p $(DB_PATH)/wordpress/
 	docker-compose -f ./srcs/docker-compose.yml up --build -d 
 
+restart:
+	docker-compose -f ./srcs/docker-compose.yml restart
+
 clean:
 	docker-compose -f ./srcs/docker-compose.yml down --rmi "all" --volumes
 
