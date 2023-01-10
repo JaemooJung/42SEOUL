@@ -11,16 +11,16 @@
 |        |    ft_printf     | Make your own printf function.                                             | 175 h | 100 h | 115/100 |  pass  |
 |   2    |     minitalk     | Make a small data exchange program using UNIX signal; SIGUSR1 and SIGUSR2. | 50 h  | 30 h  | 100/100 |  pass  |
 |        |     so_long      | Make a very small 2D game.                                                 | 60 h  | 80 h  | 100/100 |  pass  |
-|        |    push_swap     | Sort numbers using 2 stacks, with minimum number of operations..           | 60 h  | 90 h  | 90/100  |  pass  |
+|        |    push_swap     | Sort numbers using 2 stacks, with minimum number of operations...          | 60 h  | 90 h  | 90/100  |  pass  |
 |   3    |   philosophers   | Make a simulation of dining philosopher problem.                           | 70 h  | 80 h  | 121/100 |  pass  |
-|        |    minishell     | Make my own shell just like bash or zsh.                                   | 210 h | 180 h | 101/100 |  pass  |
+|        |    minishell     | Make your own shell just like bash or zsh.                                 | 210 h | 180 h | 101/100 |  pass  |
 |   4    |   c++ modules    | Introduction to c++ and Object Oriented Programming.                       | 70 h  | 100 h | 100/100 |  pass  |
 |        |   NetPractice    | Configure small-scale networks using TCP/IP addressing.                    | 50 h  | 30 h  | 100/100 |  pass  |
-|        |      miniRT      | My first RayTracer with miniLibX                                           | 300 h | 280 h | 105/100 |  pass  |
-|   5    |  ft_containers   | My first RayTracer with miniLibX                                           | 140 h | 160 h | 125/100 |  pass  |
-|        |     webserv      | My first RayTracer with miniLibX                                           | 210 h | 190 h | 100/100 |  pass  |
-|        |    inception     | My first RayTracer with miniLibX                                           | 210 h | 160 h | 100/100 |  pass  |
-|   6    | ft_transcendnece | My first RayTracer with miniLibX                                           | 245 h | 260 h | 100/100 |  pass  |
+|        |      miniRT      | My first RayTracer with miniLibX.                                          | 300 h | 280 h | 105/100 |  pass  |
+|   5    |  ft_containers   | Create your own c++ container library.                                     | 140 h | 160 h | 125/100 |  pass  |
+|        |     webserv      | Write your own HTTP server.                                                | 210 h | 190 h | 100/100 |  pass  |
+|        |    inception     | Virtualize several Docker images in your virtual machine.                  | 210 h | 160 h | 100/100 |  pass  |
+|   6    | ft_transcendnece | It's time to shine.                                                        | 245 h | 260 h | 100/100 |  pass  |
 
 \*Estimated Time to Complete 
 <br/>
