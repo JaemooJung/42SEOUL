@@ -13,7 +13,7 @@
 |        |          [so_long](https://github.com/JaemooJung/42SEOUL/tree/master/circle_2/so_long)          | Make a very small 2D game.                                                 | 60 h  | 80 h  | 100/100 |  pass  |
 |        |        [push_swap](https://github.com/JaemooJung/42SEOUL/tree/master/circle_2/push_swap)        | Sort numbers using 2 stacks, with minimum number of operations...          | 60 h  | 90 h  | 90/100  |  pass  |
 |   3    |     [philosophers](https://github.com/JaemooJung/42SEOUL/tree/master/circle_3/philosophers)     | Make a simulation of dining philosopher problem.                           | 70 h  | 80 h  | 121/100 |  pass  |
-|        |        [minishell](https://github.com/JaemooJung/42SEOUL/tree/master/circle_3/minishell)        | Make your own shell just like bash or zsh.                                 | 210 h | 180 h | 101/100 |  pass  |
+|        |        [minishell](https://github.com/JaemooJung/42SEOUL/tree/master/circle_3/minishell)        | Make your own shell just like bash.                                 | 210 h | 180 h | 101/100 |  pass  |
 |   4    |        [c++ modules](https://github.com/JaemooJung/42SEOUL/tree/master/circle_4/c%2B%2B)        | Introduction to c++ and Object Oriented Programming.                       | 70 h  | 100 h | 100/100 |  pass  |
 |        |      [NetPractice](https://github.com/JaemooJung/42SEOUL/tree/master/circle_4/NetPractice)      | Configure small-scale networks using TCP/IP addressing.                    | 50 h  | 30 h  | 100/100 |  pass  |
 |        |           [miniRT](https://github.com/JaemooJung/42SEOUL/tree/master/circle_4/miniRT)           | Make a simple ray tracing engine implemeting Phong lighting model.          | 300 h | 280 h | 105/100 |  pass  |
