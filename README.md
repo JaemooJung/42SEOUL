@@ -16,7 +16,7 @@
 |        |        [minishell](https://github.com/JaemooJung/42SEOUL/tree/master/circle_3/minishell)        | Make your own shell just like bash or zsh.                                 | 210 h | 180 h | 101/100 |  pass  |
 |   4    |        [c++ modules](https://github.com/JaemooJung/42SEOUL/tree/master/circle_4/c%2B%2B)        | Introduction to c++ and Object Oriented Programming.                       | 70 h  | 100 h | 100/100 |  pass  |
 |        |      [NetPractice](https://github.com/JaemooJung/42SEOUL/tree/master/circle_4/NetPractice)      | Configure small-scale networks using TCP/IP addressing.                    | 50 h  | 30 h  | 100/100 |  pass  |
-|        |           [miniRT](https://github.com/JaemooJung/42SEOUL/tree/master/circle_4/miniRT)           | Make a simple ray tracing engine implemeting Phong lighting model          | 300 h | 280 h | 105/100 |  pass  |
+|        |           [miniRT](https://github.com/JaemooJung/42SEOUL/tree/master/circle_4/miniRT)           | Make a simple ray tracing engine implemeting Phong lighting model.          | 300 h | 280 h | 105/100 |  pass  |
 |   5    |    [ft_containers](https://github.com/JaemooJung/42SEOUL/tree/master/circle_5/ft_containers)    | Create your own c++ container library.                                     | 140 h | 160 h | 125/100 |  pass  |
 |        |          [webserv](https://github.com/JaemooJung/42SEOUL/tree/master/circle_5/webserv)          | Write your own HTTP server.                                                | 210 h | 190 h | 100/100 |  pass  |
 |        |        [inception](https://github.com/JaemooJung/42SEOUL/tree/master/circle_5/inception)        | Virtualize several Docker images in your virtual machine.                  | 210 h | 160 h | 100/100 |  pass  |
