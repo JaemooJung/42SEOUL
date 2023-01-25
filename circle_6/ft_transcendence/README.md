@@ -1,6 +1,6 @@
 # 42서울 공통과정 최종과제 ft_transcendence
 
-## [github repo 바로가기](https://github.com/over-the-inner-circle/front-end)
+### [github repo 바로가기](https://github.com/over-the-inner-circle/front-end)
 
 ### 참여인원 : seushin jaemjung jaewkim (프론트) / mishin toh (백엔드)
 ### 프론트엔트 프로젝트 기간 : 2022. 11. 04. ~ 2022. 12. 16.
